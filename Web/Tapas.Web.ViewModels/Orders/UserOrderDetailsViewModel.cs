@@ -24,5 +24,7 @@
         public List<ShopingItemsViewModel> CartItems { get; set; }
 
         public OrderStatus Status { get; set; }
+
+        public int CutleryCount { get; set; }
     }
 }

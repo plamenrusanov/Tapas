@@ -125,6 +125,7 @@
                 Status = OrderStatus.Unprocessed,
                 CreatedOn = DateTime.UtcNow,
                 TakeAway = model.TakeAway,
+                Cutlery = model.CutleryCount,
             };
 
             foreach (var item in user.ShopingCart.CartItems)
@@ -160,6 +161,7 @@
                 UserPhone = order.User.PhoneNumber,
                 AddInfo = order.AddInfo,
                 TakeAway = order.TakeAway,
+                CutleryCount = order.Cutlery,
                 CartItems = order.Bag.CartItems
                     .Select(x => new ShopingItemsViewModel()
                     {
@@ -351,6 +353,7 @@
                 CreatedOn = order.CreatedOn.ToLocalTime().ToString("dd/MM/yyyy HH:mm"),
                 OrderId = order.Id,
                 TakeAway = order.TakeAway,
+                CutleryCount = order.Cutlery,
                 CartItems = order.Bag.CartItems
                     .Select(x => new ShopingItemsViewModel()
                     {

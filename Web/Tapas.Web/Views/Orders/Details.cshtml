@@ -168,6 +168,13 @@
     <h5 style="width:70%;">Опаковки</h5>
     <h5>@Model.PackagesPrice лв.</h5>
 </div>
+@if (Model.CutleryCount > 0)
+{
+    <div class="row w-100">
+        <h5 style="width:70%;">Прибори</h5>
+        <h5>@Model.CutleryCount бр.</h5>
+    </div>
+}
 @if (Model.DeliveryFee > 0)
 {
     <div class="row w-100">

@@ -6,25 +6,25 @@
 }
 
 <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-8">
         <div class="row">
-            <h5 style="width:50%;">Поръчана:</h5><h5 id="order">@Model.CreatedOn</h5>
+            <h5 style="width:60%;">Поръчана:</h5><h5 id="order">@Model.CreatedOn</h5>
         </div>
         <div class="row">
-            <h5 style="width:50%;">Статус на поръчката:</h5><h5 id="status">@Html.DisplayFor(x => x.Status)</h5>
+            <h5 style="width:60%;">Статус на поръчката:</h5><h5 id="status">@Html.DisplayFor(x => x.Status)</h5>
         </div>
         <div class="row">
             @if (Model.TakeAway)
             {
-                <h5>Може да вземете поръчката в @Model.TimeForDelivery</h5>
+                <h5 style="width:60%;">Може да вземете поръчката в </h5><h5>@Model.TimeForDelivery</h5>
             }
             else
             {
-                <h5 style="width:50%;">Доставка :</h5><h5>@Model.TimeForDelivery</h5>
+                <h5 style="width:60%;">Доставка :</h5><h5>@Model.TimeForDelivery</h5>
             }
         </div>
     </div>
-    <div class="col-md-6 text-center" id="statusImg">
+    <div class="col-md-4 text-center" id="statusImg">
         @switch (Model.Status)
         {
             case OrderStatus.Unprocessed:
@@ -113,6 +113,14 @@
         <h5 style="width:70%;">Опаковки</h5>
         <h5>@Model.PackagesPrice лв.</h5>
     </div>
+    @if (Model.CutleryCount > 0)
+    {
+        <hr/>
+        <div class="row">
+            <h5 style="width:70%;">Прибори</h5>
+            <h5>@Model.CutleryCount бр.</h5>
+        </div>
+    }
     @if (Model.DeliveryFee > 0)
     {
         <hr/>
