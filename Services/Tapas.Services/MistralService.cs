@@ -165,7 +165,7 @@
             request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
             request.AddParameter("grant_type", "password");
             request.AddParameter("username", UserName);
-            request.AddParameter("password", $"{this.password}");
+            request.AddParameter("password", this.password);
             IRestResponse response = await client.ExecutePostAsync(request);
             if (response.IsSuccessful)
             {

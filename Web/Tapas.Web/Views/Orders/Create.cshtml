@@ -93,7 +93,7 @@
         @Html.AntiForgeryToken();
         @Html.ValidationSummary(true);
         
-        <div class="row"><h4>@Html.CheckBoxFor(x => x.TakeAway, new { onchange="fChange(this)" }) @Html.LabelFor(x => x.TakeAway)</h4> </div>
+        <div class="row"><h4>@Html.CheckBoxFor(x => x.TakeAway, new { onchange="fChange(this)" }) @Html.Display("Вземи от ресторанта.")</h4> </div>
         <div class="row m-0 form-group" id="addressDiv">
             <span asp-validation-for="AddressId" class="text-danger"></span>
             <div class="col-md-9 pl-0 pr-0 mt-2">@Html.DropDownListFor(x => x.AddressId, Model.Addresses.Select(x => new SelectListItem() { Text = x.DisplayName, Value = x.Id }).ToList(), "Избери адрес", new { @class = "form-control" })</div>

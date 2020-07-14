@@ -351,7 +351,6 @@
                 CreatedOn = order.CreatedOn.ToLocalTime().ToString("dd/MM/yyyy HH:mm"),
                 OrderId = order.Id,
                 TakeAway = order.TakeAway,
-                
                 CartItems = order.Bag.CartItems
                     .Select(x => new ShopingItemsViewModel()
                     {
