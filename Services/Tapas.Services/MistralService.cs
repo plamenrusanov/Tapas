@@ -25,8 +25,10 @@
         // http://localhost:51981/api/GetAllData?locationid=1&search=nameOrId
         public async Task<ICollection<ProductMDto>> GetAllData(int locationId, string search = null)
         {
-          /*  var client = new RestClient($"{Url}/api/GetAllData");
-            client.Timeout = -1; */
+            var client = new RestClient($"{Url}/api/GetAllData")
+            {
+                Timeout = -1,
+            };
 
             try
             {
@@ -63,8 +65,10 @@
         // http://localhost:51981/api/Locations
         public async Task<ICollection<LocationMDto>> Locations()
         {
-            var client = new RestClient($"{Url}/api/Locations");
-            client.Timeout = -1;
+            var client = new RestClient($"{Url}/api/Locations")
+            {
+                Timeout = -1,
+            };
             try
             {
                 var request = await this.GetRequestAsync();
@@ -91,8 +95,10 @@
         public async Task SaveWebOrder(OrderMDto order)
         {
             await File.WriteAllTextAsync("./../../Services/Tapas.Services/Result/SaveWebOrder.json", JsonConvert.SerializeObject(order));
-            var client = new RestClient($"{Url}/api/SaveWebOrder");
-            client.Timeout = -1;
+            var client = new RestClient($"{Url}/api/SaveWebOrder")
+            {
+                Timeout = -1,
+            };
             try
             {/*
                 var request = await this.GetRequestAsync();
@@ -115,8 +121,10 @@
         // http://localhost:51981/api/Storages
         public async Task<ICollection<StorageMDto>> Storages()
         {
-            var client = new RestClient($"{Url}/api/Storages");
-            client.Timeout = -1;
+            var client = new RestClient($"{Url}/api/Storages")
+            {
+                Timeout = -1,
+            };
             try
             {
                 var request = await this.GetRequestAsync();
@@ -159,8 +167,10 @@
 
         private async Task<TokenMDto> GetTokenAsync()
         {
-            var client = new RestClient($"{Url}/token");
-            client.Timeout = -1;
+            var client = new RestClient($"{Url}/token")
+            {
+                Timeout = -1,
+            };
             var request = new RestRequest(Method.POST);
             request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
             request.AddParameter("grant_type", "password");

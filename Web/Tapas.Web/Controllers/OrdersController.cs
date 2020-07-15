@@ -87,7 +87,7 @@
                         Console.WriteLine(error.ErrorMessage);
                     }
                 }
-                
+
                 return this.RedirectToAction("Create");
             }
 
@@ -114,9 +114,7 @@
                 return this.NotFound();
             }
 
-            int id = default;
-
-            bool result = int.TryParse(orderId, out id);
+            bool result = int.TryParse(orderId, out int id);
             if (!result || !this.ordersService.IsExists(id))
             {
                 return this.NotFound();
@@ -194,9 +192,7 @@
                 return this.NotFound();
             }
 
-            int id = default;
-
-            bool result = int.TryParse(orderId, out id);
+            bool result = int.TryParse(orderId, out int id);
             if (!result || !this.ordersService.IsExists(id))
             {
                 return this.NotFound();
