@@ -6,6 +6,7 @@
     using System.Threading.Tasks;
 
     using Microsoft.AspNetCore.Mvc.Rendering;
+    using Microsoft.EntityFrameworkCore;
     using Tapas.Common;
     using Tapas.Data.Common.Repositories;
     using Tapas.Data.Models;
@@ -85,7 +86,7 @@
                                 }
 
                                 order.ProcessingTime = DateTime.UtcNow;
-                                await this.SendOrderToMistraalAsync(order);
+                                await this.SendOrderToMistralAsync(order);
                                 break;
                             case OrderStatus.OnDelivery: order.OnDeliveryTime = DateTime.UtcNow; break;
                             case OrderStatus.Delivered: order.DeliveredTime = DateTime.UtcNow; break;
@@ -294,38 +295,38 @@
         public bool IsExists(int id) => this.ordersRepository.All().Any(x => x.Id == id);
 
         // Orders/All
-        public ICollection<OrderCollectionViewModel> GetAll()
+        public async Task<ICollection<OrderCollectionViewModel>> GetAllAsync()
         {
-            return this.ordersRepository.All()
+            return await this.ordersRepository.All()
                 .Select(x => new OrderCollectionViewModel()
                 {
                     Id = x.Id,
                     UserName = x.User.UserName,
                     DateTime = x.CreatedOn.ToLocalTime(),
-                }).OrderByDescending(x => x.Id).ToList();
+                }).OrderByDescending(x => x.Id).ToListAsync();
         }
 
         // Orders/All => OrdersByUser
-        public ICollection<OrdersViewModel> GetOrdersByUserName(string userName)
+        public async Task<ICollection<OrdersViewModel>> GetOrdersByUserNameAsync(string userName)
         {
-            return this.ordersRepository.All()
+            return await this.ordersRepository.All()
                 .Where(x => x.User.UserName == userName)
                 .Select(x => new OrdersViewModel()
                 {
                     Id = x.Id,
                     Status = x.Status.ToString(),
-                }).OrderByDescending(x => x.Id).ToList();
+                }).OrderByDescending(x => x.Id).ToListAsync();
         }
 
         // Orders/UserOrders
-        public ICollection<UserOrderViewModel> GetMyOrders(ApplicationUser user)
+        public async Task<ICollection<UserOrderViewModel>> GetMyOrdersAsync(ApplicationUser user)
         {
             if (user is null)
             {
                 throw new ArgumentNullException("User is null!");
             }
 
-            return this.ordersRepository.All()
+            return await this.ordersRepository.All()
                 .Where(x => x.UserId == user.Id)
                 .OrderByDescending(x => x.CreatedOn)
                 .Select(x => new UserOrderViewModel()
@@ -335,7 +336,7 @@
                     ArriveTime = x.ProcessingTime.ToLocalTime().AddMinutes((double)x.MinutesForDelivery).ToString("dd/MM/yyyy HH:mm"),
                     CreatedOn = x.CreatedOn.ToLocalTime().ToString("dd/MM/yyyy HH:mm"),
                     TakeAway = x.TakeAway,
-                }).Take(10).ToList();
+                }).Take(10).ToListAsync();
         }
 
         // /Orders/UserOrders/UserOrderDetails
@@ -398,7 +399,7 @@
             return model;
         }
 
-        private async Task SendOrderToMistraalAsync(Order order)
+        private async Task SendOrderToMistralAsync(Order order)
         {
             var orderDto = new OrderMDto()
             {

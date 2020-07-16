@@ -134,15 +134,15 @@
 
         // Orders/All
         [Authorize(Roles = "Administrator")]
-        public IActionResult All()
+        public async Task<IActionResult> All()
         {
-            var model = this.ordersService.GetAll();
+            var model = await this.ordersService.GetAllAsync();
             return this.View(model);
         }
 
         // Orders/All => OrdersByUser
         [Authorize(Roles = "Administrator")]
-        public IActionResult OrdersByUser(string userName)
+        public async Task<IActionResult> OrdersByUser(string userName)
         {
             if (string.IsNullOrEmpty(userName))
             {
@@ -152,7 +152,7 @@
             try
             {
                 this.ViewData["Title"] = userName;
-                var model = this.ordersService.GetOrdersByUserName(userName);
+                var model = await this.ordersService.GetOrdersByUserNameAsync(userName);
                 return this.View(model);
             }
             catch (Exception e)
@@ -174,7 +174,7 @@
 
             try
             {
-                var model = this.ordersService.GetMyOrders(user);
+                var model = await this.ordersService.GetMyOrdersAsync(user);
                 return this.View(model);
             }
             catch (Exception e)

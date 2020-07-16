@@ -12,12 +12,14 @@
         public async Task SeedAsync(ApplicationDbContext dbContext, IServiceProvider serviceProvider)
         {
             var user = dbContext.Users.FirstOrDefault();
-
-            await dbContext.DeliveryAddresses.AddAsync(new DeliveryAddress()
+            if (!dbContext.DeliveryAddresses.Any(a => a.DisplayName == GlobalConstants.TakeAway))
             {
-                DisplayName = GlobalConstants.TakeAway,
-                ApplicationUserId = user.Id,
-            });
+                await dbContext.DeliveryAddresses.AddAsync(new DeliveryAddress()
+                {
+                    DisplayName = GlobalConstants.TakeAway,
+                    ApplicationUserId = user.Id,
+                });
+            }
         }
     }
 }

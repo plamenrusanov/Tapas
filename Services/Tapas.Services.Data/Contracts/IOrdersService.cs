@@ -21,11 +21,11 @@
 
         Task<string> ChangeStatusAsync(string status, string orderId, string setTime, string deliveryFee);
 
-        ICollection<OrderCollectionViewModel> GetAll();
+        Task<ICollection<OrderCollectionViewModel>> GetAllAsync();
 
-        ICollection<OrdersViewModel> GetOrdersByUserName(string userName);
+        Task<ICollection<OrdersViewModel>> GetOrdersByUserNameAsync(string userName);
 
-        ICollection<UserOrderViewModel> GetMyOrders(ApplicationUser user);
+        Task<ICollection<UserOrderViewModel>> GetMyOrdersAsync(ApplicationUser user);
 
         UserOrderDetailsViewModel GetUserDetailsById(int id);
     }
