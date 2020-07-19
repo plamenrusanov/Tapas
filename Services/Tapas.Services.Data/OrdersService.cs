@@ -358,6 +358,7 @@
                 CartItems = order.Bag.CartItems
                     .Select(x => new ShopingItemsViewModel()
                     {
+                        Id = x.Id,
                         ProductId = x.ProductId,
                         ProductName = x.Product.Name,
                         ProductPrice = x.Size.Price,

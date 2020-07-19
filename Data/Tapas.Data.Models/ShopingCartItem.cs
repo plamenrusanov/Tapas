@@ -16,6 +16,8 @@
 
         public int Quantity { get; set; }
 
+        public byte Rating { get; set; }
+
         public string Description { get; set; }
 
         public int SizeId { get; set; }

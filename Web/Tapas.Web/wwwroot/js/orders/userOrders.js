@@ -47,3 +47,29 @@ function displayDeliveryTax() {
     var el = document.getElementById(`btnDeliveryTax`);
     el.click();
 }
+
+function sendRating(rating, message) {
+    connection.invoke("UserSetRating", rating, message);
+};
+
+
+function getRating() {
+    var dataRating = [];
+    var message;
+    var holder = document.getElementById("ratingHolder");
+    for (var i = 0; i < holder.childElementCount; i++) {
+        var productItemId = holder.children[i].firstElementChild.innerHTML;
+        if (document.querySelector(`input[name="rating-input-${productItemId}"]:checked`)) {
+            var rating = document.querySelector(`input[name="rating-input-${productItemId}"]:checked`).value;
+            dataRating.push({ itemId: productItemId, rating: rating })
+        } else {
+            if (document.getElementById(`rating${productItemId}`)) {
+                var r = document.getElementById(`rating${productItemId}`);
+                r.style.backgroundColor = "red";
+                r.style.borderRadius = "0.25rem"
+            }
+        }
+    }
+    alert(dataRating.length);
+    sendRating(dataRating, message);
+}

@@ -48,5 +48,7 @@
         public bool TakeAway { get; set; }
 
         public int Cutlery { get; set; }
+
+        public string CustomerComment { get; set; }
     }
 }

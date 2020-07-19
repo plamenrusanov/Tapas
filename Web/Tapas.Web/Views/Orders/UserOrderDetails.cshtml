@@ -115,7 +115,7 @@
     </div>
     @if (Model.CutleryCount > 0)
     {
-        <hr/>
+        <hr />
         <div class="row">
             <h5 style="width:70%;">Прибори</h5>
             <h5>@Model.CutleryCount бр.</h5>
@@ -123,7 +123,7 @@
     }
     @if (Model.DeliveryFee > 0)
     {
-        <hr/>
+        <hr />
         <div class="row">
             <h5 style="width:70%;">Доставка</h5>
             <h5>@Model.DeliveryFee лв.</h5>
@@ -168,3 +168,31 @@
         </div>
     </div>
 </div>
+<form id="ratingHolder">
+    @foreach (var item in Model.CartItems)
+    {
+        <div class="row" id="rating@(item.Id)">
+            <div style="display:none">@(item.Id)</div>
+            <div class="w-50 text-center">@item.ProductName</div>
+            <div class="w-50">
+                <span class="rating">
+                    <input type="radio" class="rating-input"
+                           id="rating-input-@item.Id-5" name="rating-input-@item.Id" value="5">
+                    <label for="rating-input-@item.Id-5" class="rating-star"></label>
+                    <input type="radio" class="rating-input"
+                           id="rating-input-@item.Id-4" name="rating-input-@item.Id" value="4">
+                    <label for="rating-input-@item.Id-4" class="rating-star"></label>
+                    <input type="radio" class="rating-input"
+                           id="rating-input-@item.Id-3" name="rating-input-@item.Id" value="3">
+                    <label for="rating-input-@item.Id-3" class="rating-star"></label>
+                    <input type="radio" class="rating-input"
+                           id="rating-input-@item.Id-2" name="rating-input-@item.Id" value="2">
+                    <label for="rating-input-@item.Id-2" class="rating-star"></label>
+                    <input type="radio" class="rating-input"
+                           id="rating-input-@item.Id-1" name="rating-input-@item.Id" value="1">
+                    <label for="rating-input-@item.Id-1" class="rating-star"></label>
+                </span>
+            </div>
+        </div>
+    }
+</form>
