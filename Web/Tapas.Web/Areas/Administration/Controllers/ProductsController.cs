@@ -12,6 +12,7 @@
     using Tapas.Services.Data.Contracts;
     using Tapas.Web.ViewModels.Administration.Products;
 
+    [ResponseCache(Duration = 1000, Location = ResponseCacheLocation.Any)]
     public class ProductsController : AdministrationController
     {
         private const string Active = "Активни";
@@ -37,6 +38,7 @@
         }
 
         [AllowAnonymous]
+        [ResponseCache(Duration = 1000, Location = ResponseCacheLocation.Any)]
         public IActionResult Index()
         {
             this.ViewData["Title"] = "Меню";
@@ -45,6 +47,7 @@
         }
 
         [AllowAnonymous]
+        [ResponseCache(Duration = 1000, Location = ResponseCacheLocation.Any)]
         public IActionResult GetProductsByCategory(string categoryId)
         {
             if (string.IsNullOrEmpty(categoryId))
@@ -83,7 +86,6 @@
         }
 
         [HttpPost]
-        [AutoValidateAntiforgeryToken]
         public async Task<IActionResult> Add([FromForm]ProductInputViewModel inputModel)
         {
             if (!this.ModelState.IsValid)
@@ -136,7 +138,6 @@
         }
 
         [HttpPost]
-        [AutoValidateAntiforgeryToken]
         public async Task<IActionResult> Edit(EditProductModel model)
         {
             if (!this.ModelState.IsValid)
@@ -147,7 +148,7 @@
                     {
                         Text = x.Name,
                         Value = x.Id,
-                        Selected = x.Id == model.CategoryId ? true : false,
+                        Selected = x.Id == model.CategoryId,
                     })
                     .ToList();
                 model.AvailablePackages = this.packagesService.All().ToList();

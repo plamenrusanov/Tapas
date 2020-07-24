@@ -6,7 +6,7 @@
     <div class="row">
 
         <div class="col-lg-3">
-            <div class="mt-3 mb-3" style="width:inherit"><img src="~/Images/tapasLogo.png" style="width:inherit"/></div>
+            <div class="mt-3 mb-3" style="width:inherit"><img src="~/Images/tapasLogo.png" style="width:inherit" alt="Logo" /></div>
             <div class="list-group">
                 @foreach (var item in Model.Categories)
                 {
@@ -35,15 +35,30 @@
                                 <h4 class="name-holder text-center"> @product.Name </h4>
                                 @if (product.IsOneSize)
                                 {
-                                    <h6>@product.Weight гр.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@product.Price лв.</h6>
+                                    <div class="h6">@product.Weight гр.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@product.Price лв.</div>
                                 }
                                 else
                                 {
                                     foreach (var size in product.Sizes)
                                     {
-                                        <h6>@size.SizeName - @size.Price лв.</h6>
+                                        <div class="h6">@size.SizeName - @size.Price лв.</div>
                                     }
                                 }
+                            </div>
+                            <div class="card-footer text-center">
+                                <div>
+                                    @for (int i = 1; i < 6; i++)
+                                    {
+                                        if (i <= product.Rating)
+                                        {
+                                            <div class="checked-star"></div>
+                                        }
+                                        else
+                                        {
+                                            <div class="unchecked-star"></div>
+                                        }
+                                    }
+                                </div>
                             </div>
                         </div>
                     </a>
@@ -55,6 +70,9 @@
 </div>
 @section Style{
     <link href="~/css/menuProducts/index.css" rel="stylesheet" />
- }
+}
+@section Scripts{
+    <script src="~/js/shared/site.js" asp-append-version="true"></script>
+}
 
 

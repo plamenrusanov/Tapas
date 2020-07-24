@@ -48,6 +48,15 @@ li.nav-item{
     float: right;
     width: 16px;
     height: 16px;
-    background: url('https://www.everythingfrontend.com/samples/star-rating/star.png') 0 -16px;
+    background: url('/Images/star.png') 0 -16px;
+    margin-top: 0.45rem;
 }
+
+#ratingBtn {
+    margin: 0 auto;
+}
+
+
+
+
     

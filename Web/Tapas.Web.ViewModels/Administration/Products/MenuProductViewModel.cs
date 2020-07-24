@@ -26,6 +26,8 @@
 
         public decimal? Price { get; set; }
 
+        public byte Rating { get; set; }
+
         public List<ProductSizeViewModel> Sizes { get; set; }
     }
 }

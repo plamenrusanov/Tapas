@@ -2,7 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
-
+    using System.ComponentModel.DataAnnotations;
     using Microsoft.AspNetCore.Mvc.Rendering;
     using Tapas.Data.Models.Enums;
     using Tapas.Web.ViewModels.ShopingCartItems;
@@ -47,5 +47,8 @@
         public OrderStatus Status { get; set; }
 
         public int CutleryCount { get; set; }
+
+        [Display(Name = "Коментар: ")]
+        public string CustomerComment { get; set; }
     }
 }

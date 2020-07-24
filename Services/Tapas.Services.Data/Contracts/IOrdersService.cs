@@ -6,6 +6,7 @@
     using Tapas.Data.Models;
     using Tapas.Data.Models.Enums;
     using Tapas.Web.ViewModels.Orders;
+    using Tapas.Web.ViewModels.Rating;
 
     public interface IOrdersService
     {
@@ -28,5 +29,7 @@
         Task<ICollection<UserOrderViewModel>> GetMyOrdersAsync(ApplicationUser user);
 
         UserOrderDetailsViewModel GetUserDetailsById(int id);
+
+        Task SetRatingAsync(List<RatingItemDto> rating, string message);
     }
 }

@@ -3,6 +3,7 @@
     using System;
     using System.Collections;
     using System.Collections.Generic;
+    using System.Diagnostics;
     using System.Linq;
     using System.Threading.Tasks;
 
@@ -27,6 +28,7 @@
         private readonly IDeletableEntityRepository<Package> packageRepository;
         private readonly IDeletableEntityRepository<ProductSize> sizeRepository;
         private readonly IDeletableEntityRepository<AllergensProducts> allergensProductsRepository;
+        private readonly IDeletableEntityRepository<ShopingCartItem> itemRepository;
         private string productZeroSizes = "Продукта не може да съществува без размер.";
 
         public ProductsService(
@@ -36,7 +38,8 @@
             IRepository<Category> categoriesRepository,
             IDeletableEntityRepository<Package> packageRepository,
             IDeletableEntityRepository<ProductSize> sizeRepository,
-            IDeletableEntityRepository<AllergensProducts> allergensProductsRepository)
+            IDeletableEntityRepository<AllergensProducts> allergensProductsRepository,
+            IDeletableEntityRepository<ShopingCartItem> itemRepository)
         {
             this.productsRepo = productsRepo;
             this.cloudService = cloudService;
@@ -45,6 +48,7 @@
             this.packageRepository = packageRepository;
             this.sizeRepository = sizeRepository;
             this.allergensProductsRepository = allergensProductsRepository;
+            this.itemRepository = itemRepository;
         }
 
         private List<PackageViewModel> GetAvailablePackigesVM => this.packageRepository
@@ -300,6 +304,8 @@
 
         public ProductsIndexViewModel CategoryWhitProducts(string categoryId = null)
         {
+            Stopwatch st = new Stopwatch();
+            st.Start();
             var model = new ProductsIndexViewModel()
             {
                 Categories = this.categoriesRepository
@@ -329,7 +335,19 @@
                       }).ToList(),
                       Weight = x.Sizes.Count == 1 ? x.Sizes.FirstOrDefault().Weight : default,
                       Price = x.Sizes.Count == 1 ? x.Sizes.FirstOrDefault().Price : default,
-                  }).ToList();
+                      Rating = (byte)Math.Round((double)this.itemRepository
+                                .All()
+                                .Where(r => r.ProductId == x.Id && r.Rating > 0)
+                                .Select(p => (int)p.Rating)
+                                .Sum() /
+                                this.itemRepository
+                                .All()
+                                .Where(r => r.ProductId == x.Id && r.Rating > 0)
+                                .ToList()
+                                .Count),
+                  })
+                  .ToList()
+                  .OrderByDescending(x => x.Rating);
                 return model;
             }
 
@@ -348,7 +366,22 @@
                     }).ToList(),
                     Weight = x.Sizes.Count == 1 ? x.Sizes.FirstOrDefault().Weight : default,
                     Price = x.Sizes.Count == 1 ? x.Sizes.FirstOrDefault().Price : default,
-                }).ToList().Take(12);
+                    Rating = (byte)Math.Round((double)this.itemRepository
+                                .All()
+                                .Where(r => r.ProductId == x.Id && r.Rating > 0)
+                                .Select(p => (int)p.Rating)
+                                .Sum() /
+                                this.itemRepository
+                                .All()
+                                .Where(r => r.ProductId == x.Id && r.Rating > 0)
+                                .ToList()
+                                .Count),
+                })
+                .ToList()
+                .OrderByDescending(x => x.Rating)
+                .Take(12);
+            st.Stop();
+            Console.WriteLine(st.Elapsed);
             return model;
         }
 

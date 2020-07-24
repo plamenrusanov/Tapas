@@ -29,6 +29,8 @@
 
         public int SizeId { get; set; }
 
+        public byte Rating { get; set; }
+
         public ProductSizeViewModel Size { get; set; }
 
         public List<ExtraCartItemModel> Extras { get; set; }

@@ -53,7 +53,7 @@
             }
             catch (Exception e)
             {
-                if (e.InnerException is null)
+                if (e.InnerException != null)
                 {
                     throw new Exception(e.InnerException.Message);
                 }
@@ -82,7 +82,7 @@
             }
             catch (Exception e)
             {
-                if (e.InnerException is null)
+                if (e.InnerException != null)
                 {
                     throw new Exception(e.InnerException.Message);
                 }
@@ -109,7 +109,7 @@
             }
             catch (Exception e)
             {
-                if (e.InnerException is null)
+                if (e.InnerException != null)
                 {
                     throw new Exception(e.InnerException.Message);
                 }
@@ -138,7 +138,7 @@
             }
             catch (Exception e)
             {
-                if (e.InnerException is null)
+                if (e.InnerException != null)
                 {
                     throw new Exception(e.InnerException.Message);
                 }

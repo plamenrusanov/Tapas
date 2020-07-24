@@ -23,6 +23,14 @@ function setupConnection(){
             playMusic();       
     });
 
+    connection.on("SuccessfullySetRating", function () {
+        if (document.getElementById("OrderId")) {
+            var orderId = document.getElementById("OrderId").value;
+            orderDetails(orderId);
+        }
+       
+    });
+
     connection.on("UserFinished", function () { connection.stop(); });
 
     connection.start().catch(err => console.error(err.toString()));
@@ -66,10 +74,13 @@ function getRating() {
             if (document.getElementById(`rating${productItemId}`)) {
                 var r = document.getElementById(`rating${productItemId}`);
                 r.style.backgroundColor = "red";
-                r.style.borderRadius = "0.25rem"
+                r.style.borderRadius = "0.25rem";
+                return;
             }
         }
     }
-    alert(dataRating.length);
+    if (document.getElementById("clientComment")) {
+        message = document.getElementById("clientComment").value;
+    }
     sendRating(dataRating, message);
 }

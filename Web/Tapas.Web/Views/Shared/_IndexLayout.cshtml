@@ -1,38 +1,37 @@
 ﻿@using Tapas.Common
 <!DOCTYPE html>
-<html>
+<html lang="bg">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="Description" content="Author: Plamen Rusanov, Category: Food,">
     <title>Tapas</title>
 
     <!-- CSS  -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="~/lib/materialize/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
-    <link href="~/css/home/index.css" type="text/css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-    @*<link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />*@
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" media="screen,projection"/>
+    <link href="~/lib/materialize/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="~/css/home/index.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" media="screen,projection">
     @this.RenderSection("Style", required: false)
 </head>
 <body>
     <button onclick="topFunction()" id="topBtn" title="Go to top"><i class="fa fa-chevron-up" aria-hidden="true"></i></button>
     @this.RenderBody()
 
-    <environment names="Development">
-        <script src="~/lib/jquery/dist/jquery.js" asp-append-version="true"></script>
-        <script type="text/javascript" src="~/lib/materialize/js/materialize.js"></script>
-        <script src="~/lib/materialize/js/init.js"></script>
-        <script src="~/js/shared/site.js"></script>
-        <script src="~/js/home/index.js"></script>
-    </environment>
-    <environment names="Staging,Production">
-        <script src="~/lib/jquery/dist/jquery.js" asp-append-version="true"></script>
-        <script type="text/javascript" src="~/lib/materialize/js/materialize.js"></script>
-        <script src="~/lib/materialize/js/init.js"></script>
-        <script src="~/js/shared/site.js"></script>
-        <script src="~/js/home/index.js"></script>
-    </environment>
+<environment names="Development">
+    <script src="~/lib/jquery/dist/jquery.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/lib/materialize/js/materialize.js" async></script>
+    <script src="~/lib/materialize/js/init.js" async></script>
+    <script src="~/js/shared/site.js" async></script>
+    <script src="~/js/home/index.js" async></script>
+</environment>
+<environment names="Staging,Production">
+    <script src="~/lib/jquery/dist/jquery.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/lib/materialize/js/materialize.js" async></script>
+    <script src="~/lib/materialize/js/init.js" async></script>
+    <script src="~/js/shared/site.js" async></script>
+    <script src="~/js/home/index.js" async></script>
+</environment>
 
     @this.RenderSection("Scripts", required: false)
 </body>

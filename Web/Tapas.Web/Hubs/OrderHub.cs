@@ -37,7 +37,7 @@
             {
                 var userId = await this.ordersService.ChangeStatusAsync(status, order, setTime, taxId);
                 await this.Clients.All.SendAsync("OperatorStatusChanged", order, status);
-                await this.hubUser.Clients.User(userId)?.SendAsync("UserStatusChanged", order, status); // object statusResult = new object { };
+                await this.hubUser.Clients.User(userId)?.SendAsync("UserStatusChanged", order, status);
                 if (Enum.TryParse(typeof(OrderStatus), status, out object statusResult))
                 {
                     if ((OrderStatus)statusResult == OrderStatus.Processed)

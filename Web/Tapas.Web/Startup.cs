@@ -1,5 +1,6 @@
 ﻿namespace Tapas.Web
 {
+    using System;
     using System.Reflection;
 
     using Microsoft.AspNetCore.Builder;
@@ -9,6 +10,7 @@
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
+    using Microsoft.Net.Http.Headers;
     using Tapas.Data;
     using Tapas.Data.Common;
     using Tapas.Data.Common.Repositories;
@@ -39,7 +41,6 @@
             services.AddDbContext<ApplicationDbContext>(
                 options => options.UseSqlServer(this.configuration.GetConnectionString("DefaultConnection"))
                                    .UseLazyLoadingProxies());
-
             services.AddDefaultIdentity<ApplicationUser>(IdentityOptionsProvider.GetIdentityOptions)
                 .AddRoles<ApplicationRole>()
                 .AddErrorDescriber<LocalizedIdentityErrorDescriber>()
@@ -49,7 +50,7 @@
                 options =>
                     {
                         options.CheckConsentNeeded = context => true;
-                        options.MinimumSameSitePolicy = SameSiteMode.None;
+                        options.MinimumSameSitePolicy = Microsoft.AspNetCore.Http.SameSiteMode.None;
                     });
 
             services.AddSignalR(
@@ -61,6 +62,8 @@
             services.AddControllersWithViews();
             services.AddRazorPages();
             services.AddSingleton(this.configuration);
+            services.AddResponseCompression();
+            services.AddResponseCaching();
 
             // Data repositories
             services.AddScoped(typeof(IDeletableEntityRepository<>), typeof(EfDeletableEntityRepository<>));
@@ -124,15 +127,39 @@
                 app.UseHsts();
             }
 
+            app.UseResponseCompression();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            //app.UseStaticFiles(new StaticFileOptions()
+            //{
+            //    HttpsCompression = Microsoft.AspNetCore.Http.Features.HttpsCompressionMode.Compress,
+            //    OnPrepareResponse = (context) =>
+            //    {
+            //        var headers = context.Context.Response.GetTypedHeaders();
+            //        headers.CacheControl = new Microsoft.Net.Http.Headers.CacheControlHeaderValue
+            //        {
+            //            Public = true,
+            //            MaxAge = TimeSpan.FromDays(30),
+            //        };
+            //    },
+            //});
             app.UseCookiePolicy();
-
             app.UseRouting();
-
             app.UseAuthentication();
             app.UseAuthorization();
+            //app.Use(async (context, next) =>
+            //{
+            //    context.Response.GetTypedHeaders().CacheControl =
+            //        new CacheControlHeaderValue()
+            //        {
+            //            Public = true,
+            //            MaxAge = TimeSpan.FromSeconds(31556926),
+            //        };
+            //    context.Response.Headers[HeaderNames.Vary] = new string[] { "Accept-Encoding" };
 
+            //    await next();
+            //});
+            app.UseResponseCaching();
             app.UseEndpoints(
                 endpoints =>
                     {

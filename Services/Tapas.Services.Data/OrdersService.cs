@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Diagnostics;
     using System.Linq;
     using System.Threading.Tasks;
 
@@ -18,6 +19,7 @@
     using Tapas.Web.ViewModels.Administration.Sizes;
     using Tapas.Web.ViewModels.Extras;
     using Tapas.Web.ViewModels.Orders;
+    using Tapas.Web.ViewModels.Rating;
     using Tapas.Web.ViewModels.ShopingCartItems;
 
     public class OrdersService : IOrdersService
@@ -163,6 +165,7 @@
                 AddInfo = order.AddInfo,
                 TakeAway = order.TakeAway,
                 CutleryCount = order.Cutlery,
+                CustomerComment = order.CustomerComment,
                 CartItems = order.Bag.CartItems
                     .Select(x => new ShopingItemsViewModel()
                     {
@@ -171,6 +174,7 @@
                         ProductPrice = x.Size.Price,
                         Quantity = x.Quantity,
                         Description = x.Description,
+                        Rating = x.Rating,
                         Extras = x.ExtraItems
                                   ?.Select(e => new ExtraCartItemModel()
                                   {
@@ -355,6 +359,7 @@
                 OrderId = order.Id,
                 TakeAway = order.TakeAway,
                 CutleryCount = order.Cutlery,
+                CustomerComment = order.CustomerComment,
                 CartItems = order.Bag.CartItems
                     .Select(x => new ShopingItemsViewModel()
                     {
@@ -364,6 +369,7 @@
                         ProductPrice = x.Size.Price,
                         Quantity = x.Quantity,
                         Description = x.Description,
+                        Rating = x.Rating,
                         Size = new ProductSizeViewModel()
                         {
                             SizeName = this.sizeRepository
@@ -398,6 +404,49 @@
             }
 
             return model;
+        }
+
+        public async Task SetRatingAsync(List<RatingItemDto> rating, string message)
+        {
+            if (rating.Count > 0)
+            {
+                var order = this.ordersRepository
+                    .All()
+                    .FirstOrDefault(x => x.Bag.CartItems.Any(i => i.Id.ToString() == rating.First().ItemId));
+                if (order is null)
+                {
+                    throw new ArgumentException("Order not exist!");
+                }
+
+                order.CustomerComment = message;
+                this.ordersRepository.Update(order);
+                await this.ordersRepository.SaveChangesAsync();
+
+                Stopwatch s = new Stopwatch();
+                s.Start();
+                foreach (var item in rating)
+                {
+                    if (byte.TryParse(item.Rating, out byte result) && int.TryParse(item.ItemId, out int itemId))
+                    {
+                        var shopItem = this.itemsRepository
+                            .All()
+                            .Where(x => x.Id == itemId)
+                            .FirstOrDefault();
+
+                        if (shopItem is null || shopItem.Rating != default)
+                        {
+                            throw new Exception("Rating is already set!");
+                        }
+
+                        shopItem.Rating = result;
+                        this.itemsRepository.Update(shopItem);
+                        await this.itemsRepository.SaveChangesAsync();
+                    }
+                }
+
+                s.Stop();
+                Console.WriteLine(s.Elapsed);
+            }
         }
 
         private async Task SendOrderToMistralAsync(Order order)
