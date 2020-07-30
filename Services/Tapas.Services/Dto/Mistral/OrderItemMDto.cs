@@ -6,7 +6,7 @@
     public class OrderItemMDto
     {
         [Required]
-        public int Code { get; set; }
+        public string Code { get; set; }
 
         [Required]
         public string Name { get; set; }

@@ -18,9 +18,9 @@
         @if (true)
         {
             <div class="col-md-6" id="timer">
-                <div id="minus1" onclick="minus()"><i class="btn material-icons" style="font-size:45px; padding:0; ">chevron_left</i></div>
-                <input name="Quantity" id="theInput" type="text" size="4" class="form-control" title="Минути" value="40" min="30" step="5">
-                <div id="plus1" onclick="plus()"><i class="btn material-icons" style="font-size:45px; padding:0;">chevron_right</i></div>
+                <div id="minus1" onclick="minus()"><i class="btn material-icons" style="font-size:45px; padding:0; margin-top: -12px; ">chevron_left</i></div>
+                <input name="Quantity" id="theInput" type="text" size="4" class="form-control" title="Минути" value="40" min="15" step="5">
+                <div id="plus1" onclick="plus()"><i class="btn material-icons" style="font-size:45px; padding:0; margin-top: -12px;">chevron_right</i></div>
 
                 @if (Model.Status == OrderStatus.Unprocessed && Model.TotalPrice < GlobalConstants.MOPTCDF && !Model.TakeAway)
                 {

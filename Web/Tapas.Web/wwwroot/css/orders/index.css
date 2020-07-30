@@ -3,11 +3,15 @@
     display: inline;
 }
 
-#minus, #plus {
+/*#minus, #plus {
     padding: 0;
     border: none;
     font-size: 2rem;
     padding-bottom: 7px;
+}*/
+
+#timer {
+    margin: 3px 0;
 }
 
 .row {
@@ -20,9 +24,10 @@
     width: 45px;
     height: 45px;
     border-radius: 5px;
+    margin-top: -12px;
 }
 
-    #minus1:hover {
+    #minus1:hover, #plus1:hover {
         background-color: rgba(0, 123, 255,0.5);
     }
 

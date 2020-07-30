@@ -73,7 +73,7 @@
         {
             if (!this.ModelState.IsValid)
             {
-                return this.View(viewName: nameof(this.AddItem), model: model);
+                return this.View(viewName: nameof(this.AddItem), model: model.Product.Id);
             }
 
             try

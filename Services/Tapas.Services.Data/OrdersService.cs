@@ -464,7 +464,7 @@
             {
                 orderDto.Sales.Add(new OrderItemMDto()
                 {
-                    Code = item.Size.MistralCode,
+                    Code = item.Size.MistralCode.ToString(),
                     Name = item.Size.MistralName,
                     SalesPrice = item.Size.Price,
                     Qtty = item.Quantity,
@@ -474,7 +474,7 @@
                 {
                     orderDto.Sales.Add(new OrderItemMDto()
                     {
-                        Code = extra.Extra.MistralCode,
+                        Code = extra.Extra.MistralCode.ToString(),
                         Name = extra.Extra.MistralName,
                         SalesPrice = extra.Extra.Price,
                         Qtty = extra.Quantity,
@@ -483,7 +483,7 @@
 
                 orderDto.Sales.Add(new OrderItemMDto()
                 {
-                    Code = item.Size.Package.MistralCode,
+                    Code = item.Size.Package.MistralCode.ToString(),
                     Name = item.Size.Package.MistralName,
                     SalesPrice = item.Size.Package.Price,
                     Qtty = Math.Ceiling((decimal)item.Quantity / item.Size.MaxProductsInPackage),
@@ -500,7 +500,7 @@
                 {
                     orderDto.Sales.Add(new OrderItemMDto()
                     {
-                        Code = tax.MistralCode,
+                        Code = tax.MistralCode.ToString(),
                         Name = tax.MistralName,
                         SalesPrice = tax.Price,
                         Qtty = Qtty,

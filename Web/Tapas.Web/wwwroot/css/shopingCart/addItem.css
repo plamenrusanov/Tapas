@@ -8,9 +8,10 @@
 }
 
 .plus, .minus {
-    font-size: 45px;
+    font-size: 45px !important;
     padding: 0;
     margin-top: -22px;
+    margin-left: -14px;
 }
 
 .row {

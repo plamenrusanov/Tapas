@@ -13,7 +13,7 @@
 
     public class MistralService : IMistralService
     {
-        private const string Url = "http://localhost:51981";
+        private const string Url = "http://87.120.246.18:8066";
         private const string UserName = "1";
         private readonly string password;
 
@@ -22,7 +22,7 @@
             this.password = password;
         }
 
-        // http://localhost:51981/api/GetAllData?locationid=1&search=nameOrId
+        // api/GetAllData?locationid=1&search=nameOrId
         public async Task<ICollection<ProductMDto>> GetAllData(int locationId, string search = null)
         {
             var client = new RestClient($"{Url}/api/GetAllData")
@@ -32,22 +32,15 @@
 
             try
             {
-                /*  var request = await this.GetRequestAsync();
-                  request.AddParameter("locationId", locationId);
-                  request.AddParameter("search", search);
-                  IRestResponse response = await client.ExecuteGetAsync(request);
-                  if (response.IsSuccessful)
-                  {
-                      return JsonConvert.DeserializeObject<ICollection<ProductMDto>>(response.Content);
-                  } */
-                if (search is null)
+                var request = await this.GetRequestAsync();
+                request.AddParameter("locationId", locationId);
+                request.AddParameter("search", search);
+                IRestResponse response = await client.ExecuteGetAsync(request);
+                if (response.IsSuccessful)
                 {
-                    return JsonConvert.DeserializeObject<ICollection<ProductMDto>>(await File.ReadAllTextAsync(@"C:\Users\user\source\repos\Tapas\Services\Tapas.Services\Resources\allData.json"));
+                    var dto = JsonConvert.DeserializeObject<ICollection<ProductMDto>>(response.Content);
+                    return dto;
                 }
-
-                var dto = JsonConvert.DeserializeObject<ICollection<ProductMDto>>(File.ReadAllText(@"C:\Users\user\source\repos\Tapas\Services\Tapas.Services\Resources\allData.json"));
-
-                return dto.Where(x => x.Name == search).ToList();
 
                 throw new Exception("Request failed!");
             }
@@ -62,7 +55,7 @@
             }
         }
 
-        // http://localhost:51981/api/Locations
+        // api/Locations
         public async Task<ICollection<LocationMDto>> Locations()
         {
             var client = new RestClient($"{Url}/api/Locations")
@@ -91,7 +84,7 @@
             }
         }
 
-        // POST http://localhost:51981/api/SaveWebOrde
+        // POST api/SaveWebOrder
         public async Task SaveWebOrder(OrderMDto order)
         {
             await File.WriteAllTextAsync("./../../Services/Tapas.Services/Result/SaveWebOrder.json", JsonConvert.SerializeObject(order));
@@ -100,12 +93,15 @@
                 Timeout = -1,
             };
             try
-            {/*
+            {
                 var request = await this.GetRequestAsync();
                 request.AddJsonBody(JsonConvert.SerializeObject(order));
                 IRestResponse response = await client.ExecutePostAsync(request);
-
-                throw new Exception("Request failed!");   */
+                await File.WriteAllTextAsync("./../../Services/Tapas.Services/Result/responseContent.json", response.Content);
+                if (!response.IsSuccessful)
+                {
+                    throw new Exception("Request failed!");
+                }
             }
             catch (Exception e)
             {
@@ -118,7 +114,7 @@
             }
         }
 
-        // http://localhost:51981/api/Storages
+        // api/Storages
         public async Task<ICollection<StorageMDto>> Storages()
         {
             var client = new RestClient($"{Url}/api/Storages")
@@ -161,7 +157,7 @@
 
             var request = new RestRequest();
             request.AddHeader("Content-Type", "application/json");
-            request.AddHeader("Authorization", $"Bearer {tokenDto.Token}");
+            request.AddHeader("Authorization", $"Bearer {tokenDto.AccessToken}");
             return request;
         }
 
@@ -176,10 +172,11 @@
             request.AddParameter("grant_type", "password");
             request.AddParameter("username", UserName);
             request.AddParameter("password", this.password);
-            IRestResponse response = await client.ExecutePostAsync(request);
+            IRestResponse response = await client.ExecuteAsync(request);
             if (response.IsSuccessful)
             {
-                return JsonConvert.DeserializeObject<TokenMDto>(response.Content);
+                var dto = JsonConvert.DeserializeObject<TokenMDto>(response.Content);
+                return dto;
             }
 
             throw new Exception(message: "Authorization failed!");
