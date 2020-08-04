@@ -210,9 +210,9 @@
 
             if (order.DeliveryTaxId.HasValue)
             {
-                var x = this.deliveryTaxRepository.All().Where(x => x.Id == order.DeliveryTaxId).FirstOrDefault().Price;
-                model.TotalPrice += x;
-                model.DeliveryFee = x;
+                var deliveryPrice = this.deliveryTaxRepository.All().Where(x => x.Id == order.DeliveryTaxId).FirstOrDefault().Price;
+                model.TotalPrice += deliveryPrice;
+                model.DeliveryFee = deliveryPrice;
             }
 
             if (model.Status != OrderStatus.Unprocessed)
@@ -393,9 +393,12 @@
 
             if (order.DeliveryTaxId.HasValue)
             {
-                var x = this.deliveryTaxRepository.All().Where(x => x.Id == order.DeliveryTaxId).FirstOrDefault().Price;
-                model.TotalPrice += x;
-                model.DeliveryFee = x;
+                var x = this.deliveryTaxRepository.All().Where(x => x.Id == order.DeliveryTaxId).FirstOrDefault()?.Price;
+                if (x.HasValue)
+                {
+                    model.TotalPrice += x.Value;
+                    model.DeliveryFee = x.Value;
+                }
             }
 
             if (model.Status != OrderStatus.Unprocessed)

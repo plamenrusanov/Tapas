@@ -304,8 +304,6 @@
 
         public ProductsIndexViewModel CategoryWhitProducts(string categoryId = null)
         {
-            Stopwatch st = new Stopwatch();
-            st.Start();
             var model = new ProductsIndexViewModel()
             {
                 Categories = this.categoriesRepository
@@ -380,8 +378,6 @@
                 .ToList()
                 .OrderByDescending(x => x.Rating)
                 .Take(12);
-            st.Stop();
-            Console.WriteLine(st.Elapsed);
             return model;
         }
 

@@ -212,11 +212,11 @@
 
         // Ajax Orders/OrdersByUser
         [Authorize(Roles =GlobalConstants.AdministratorName)]
-        public async Task<IActionResult> ChangeStatus(string orderId, string status)
+        public async Task<IActionResult> ChangeStatus(string orderId, string status, string setTime, string deliveryFee)
         {
             try
             {
-                var userId = await this.ordersService.ChangeStatusAsync(status, orderId, string.Empty, string.Empty);
+                var userId = await this.ordersService.ChangeStatusAsync(status, orderId, setTime, deliveryFee);
                 this.hubUser.Clients.User(userId)?.SendAsync("UserStatusChanged", orderId, status);
                 return this.Ok();
             }
