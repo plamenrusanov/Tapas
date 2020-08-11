@@ -460,6 +460,8 @@
                 StoreId = StoreId,
                 Date = DateTime.Now,
                 Info = order.AddInfo,
+                IsOrder = true,
+                TestMode = true,
                 Sales = new List<OrderItemMDto>(),
             };
 
