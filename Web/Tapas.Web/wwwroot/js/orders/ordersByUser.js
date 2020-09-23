@@ -11,11 +11,12 @@
 function changeStatus(status) {
 
     if (document.getElementById(`order`)) {
+        var deliveryFee;
         var orderId = document.getElementById(`order`).innerText;
         if (status === "Processed") {
             var time = document.getElementById(`theInput`).value;
-            if (true) {
-                var deliveryFee = document.getElementById(`DeliveryTaxId`).value;
+            if (document.getElementById(`DeliveryTaxId`)) {
+                deliveryFee = document.getElementById(`DeliveryTaxId`).value;
             }
         }
         $.ajax({

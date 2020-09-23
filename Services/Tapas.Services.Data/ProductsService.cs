@@ -29,6 +29,7 @@
         private readonly IDeletableEntityRepository<ProductSize> sizeRepository;
         private readonly IDeletableEntityRepository<AllergensProducts> allergensProductsRepository;
         private readonly IDeletableEntityRepository<ShopingCartItem> itemRepository;
+        private readonly IImageService imageService;
         private string productZeroSizes = "Продукта не може да съществува без размер.";
 
         public ProductsService(
@@ -39,7 +40,8 @@
             IDeletableEntityRepository<Package> packageRepository,
             IDeletableEntityRepository<ProductSize> sizeRepository,
             IDeletableEntityRepository<AllergensProducts> allergensProductsRepository,
-            IDeletableEntityRepository<ShopingCartItem> itemRepository)
+            IDeletableEntityRepository<ShopingCartItem> itemRepository,
+            IImageService imageService)
         {
             this.productsRepo = productsRepo;
             this.cloudService = cloudService;
@@ -49,6 +51,7 @@
             this.sizeRepository = sizeRepository;
             this.allergensProductsRepository = allergensProductsRepository;
             this.itemRepository = itemRepository;
+            this.imageService = imageService;
         }
 
         private List<PackageViewModel> GetAvailablePackigesVM => this.packageRepository
@@ -106,6 +109,8 @@
             if (model.Image != null)
             {
                 product.ImageUrl = await this.cloudService.UploadImageFromForm(model.Image);
+
+               // await this.imageService.SaveImageOnFileSystem(model.Image, model.Name, this.categoriesRepository.All().Where(c => c.Id == model.CategoryId).FirstOrDefault()?.Name);
             }
 
             await this.productsRepo.AddAsync(product);
@@ -193,7 +198,8 @@
         {
             if (model.Image != null)
             {
-                model.ImageUrl = await this.cloudService.UploadImageFromForm(model.Image);
+                // model.ImageUrl = await this.cloudService.UploadImageFromForm(model.Image);
+                await this.imageService.SaveImageOnFileSystem(model.Image, model.Name, this.categoriesRepository.All().Where(c => c.Id == model.CategoryId).FirstOrDefault()?.Name);
             }
 
             var product = this.productsRepo.AllWithDeleted()

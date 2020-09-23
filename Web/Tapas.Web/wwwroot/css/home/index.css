@@ -174,3 +174,9 @@ div.dropdown-item {
         padding-right: 15px;
     }
 }
+
+.secondHeader {
+    font-size: 2.28rem;
+    margin: 1.52rem 0 0.912rem 0;
+    line-height: 110%;
+}

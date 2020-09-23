@@ -172,9 +172,6 @@
     <Content Update="wwwroot\Images\sharp_person_black_48dp.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Update="wwwroot\Images\МасаСЛампа.webp">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Update="wwwroot\js\orders\ordersIndex.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

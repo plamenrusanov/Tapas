@@ -82,6 +82,7 @@
                 this.configuration.GetSection("CloudSettings:ApiSecret").Value));
             services.AddTransient<IMistralService>(x => new MistralService(
                 this.configuration.GetSection("Mistral:Password").Value));
+            services.AddTransient<IImageService, ImageService>();
 
             services.AddTransient<IAllergensService, AllergensService>();
             services.AddTransient<ICategoriesService, CategoriesService>();

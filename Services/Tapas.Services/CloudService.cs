@@ -2,6 +2,7 @@
 {
     using System;
     using System.IO;
+    using System.Net.Http;
     using System.Threading.Tasks;
 
     using CloudinaryDotNet;
@@ -33,6 +34,8 @@
             };
 
             var uploadResult = this.Cloudinary().Upload(uploadParams);
+
+            // await this.DownloadWebPImageFromCloudinary(uploadResult.PublicId);
             var url = uploadResult.Uri.AbsolutePath;
             var index = url.LastIndexOf("/");
             url = url.Substring(index + 1, url.Length - (index + 1));
@@ -51,6 +54,15 @@
             var index = url.LastIndexOf("/");
             url = url.Substring(index + 1, url.Length - (index + 1));
             return await Task.FromResult<string>(url);
+        }
+
+        public async Task DownloadWebPImageFromCloudinary(string publicId)
+        {
+            using (var client = new HttpClient())
+            {
+                var result = await client.GetAsync($"https://res.cloudinary.com/duxtyuzpy/image/upload/c_scale,h_140,w_200,f_auto/v1587540778/{publicId}");
+                var resultContent = await result.Content.ReadAsStreamAsync();
+            }
         }
 
         private Cloudinary Cloudinary() => new Cloudinary(this.account);
