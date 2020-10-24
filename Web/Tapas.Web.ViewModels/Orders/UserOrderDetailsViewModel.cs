@@ -2,6 +2,7 @@
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+
     using Tapas.Data.Models.Enums;
     using Tapas.Web.ViewModels.ShopingCartItems;
 

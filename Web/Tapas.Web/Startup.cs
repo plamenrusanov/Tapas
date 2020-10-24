@@ -148,19 +148,6 @@
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();
-            //app.Use(async (context, next) =>
-            //{
-            //    context.Response.GetTypedHeaders().CacheControl =
-            //        new CacheControlHeaderValue()
-            //        {
-            //            Public = true,
-            //            MaxAge = TimeSpan.FromSeconds(31556926),
-            //        };
-            //    context.Response.Headers[HeaderNames.Vary] = new string[] { "Accept-Encoding" };
-
-            //    await next();
-            //});
-          
             app.UseEndpoints(
                 endpoints =>
                     {
