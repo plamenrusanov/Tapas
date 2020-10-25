@@ -8,13 +8,18 @@
 
     public class TwilioSmsSenderService : ITwilioSmsSenderService
     {
+        private readonly string accountSid;
+        private readonly string authToken;
+
+        public TwilioSmsSenderService(string accountSid, string authToken)
+        {
+            this.accountSid = accountSid;
+            this.authToken = authToken;
+        }
+
         public async Task SendSms()
         {
-            // Find your Account Sid and Token at twilio.com/console
-            const string accountSid = "ACf17a92ab091ad97b1065091430edf62f";
-            const string authToken = "a178a1f56cb474af73097c4cca584ff3";
-
-            TwilioClient.Init(accountSid, authToken);
+            TwilioClient.Init(this.accountSid, this.authToken);
 
             var message = await MessageResource.CreateAsync(
                 body: "This is the ship that made the Kessel Run in fourteen parsecs?",

@@ -82,7 +82,9 @@
                 this.configuration.GetSection("CloudSettings:ApiSecret").Value));
             services.AddTransient<IMistralService>(x => new MistralService(
                 this.configuration.GetSection("Mistral:Password").Value));
-            services.AddTransient<IImageService, ImageService>();
+            services.AddTransient<ITwilioSmsSenderService>(x => new TwilioSmsSenderService(
+                this.configuration.GetSection("Twilio:accountSid").Value,
+                this.configuration.GetSection("Twilio:authToken").Value));
 
             services.AddTransient<IAllergensService, AllergensService>();
             services.AddTransient<ICategoriesService, CategoriesService>();
@@ -97,6 +99,7 @@
             services.AddTransient<ICateringEquipmentService, CateringEquipmentService>();
             services.AddTransient<IExtrasService, ExtrasService>();
             services.AddTransient<IDeliveryTaxService, DeliveryTaxService>();
+            services.AddTransient<IImageService, ImageService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
