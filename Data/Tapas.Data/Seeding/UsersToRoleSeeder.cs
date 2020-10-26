@@ -16,25 +16,31 @@
 
             await this.AddUserToRole(
                 GlobalConstants.AdministratorName,
+                GlobalConstants.AdministratorName,
                 userManager);
-
             await this.AddUserToRole(
+                GlobalConstants.AdministratorName,
+                GlobalConstants.OperatorName,
+                userManager);
+            await this.AddUserToRole(
+                GlobalConstants.OperatorName,
                 GlobalConstants.OperatorName,
                 userManager);
         }
 
         private async Task AddUserToRole(
             string userName,
+            string role,
             UserManager<ApplicationUser> userManager)
         {
             var user = await userManager.FindByNameAsync(userName);
 
-            if (await userManager.IsInRoleAsync(user, userName))
+            if (await userManager.IsInRoleAsync(user, role))
             {
                 return;
             }
 
-            await userManager.AddToRoleAsync(user, userName);
+            await userManager.AddToRoleAsync(user, role);
         }
     }
 }

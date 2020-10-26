@@ -70,6 +70,7 @@
             }
         }
 
+        [HttpGet]
         public IActionResult Add()
         {
             var model = new ProductInputViewModel()

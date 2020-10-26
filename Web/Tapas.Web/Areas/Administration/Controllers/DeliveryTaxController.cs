@@ -44,6 +44,7 @@
             }
         }
 
+        [HttpGet]
         public IActionResult Add()
         {
             return this.View();

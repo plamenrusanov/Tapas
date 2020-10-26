@@ -86,7 +86,6 @@
         // POST api/SaveWebOrder
         public async Task SaveWebOrder(OrderMDto order)
         {
-            await File.WriteAllTextAsync("./../../Services/Tapas.Services/Result/SaveWebOrder.json", JsonConvert.SerializeObject(order));
             var client = new RestClient($"{Url}/api/SaveWebOrder")
             {
                 Timeout = -1,
@@ -96,7 +95,7 @@
                 var request = await this.GetRequestAsync();
                 request.AddJsonBody(JsonConvert.SerializeObject(order));
                 IRestResponse response = await client.ExecutePostAsync(request);
-                await File.WriteAllTextAsync("./../../Services/Tapas.Services/Result/responseContent.json", response.Content);
+
                 if (!response.IsSuccessful)
                 {
                     throw new Exception("Request failed!");

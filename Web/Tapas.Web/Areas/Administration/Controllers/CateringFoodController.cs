@@ -37,6 +37,7 @@
             return this.View(model);
         }
 
+        [HttpGet]
         public IActionResult Create()
         {
             var model = this.cateringFoodService.CreateInputModel();
