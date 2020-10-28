@@ -123,7 +123,7 @@ else
     <div class="col-50 text-center">
         <a class="btn btn-primary btn-lg" href="/Administration/Products/">Към менюто</a>
     </div>
-    @if (DateTime.Now.TimeOfDay > GlobalConstants.CloseTime || DateTime.Now.TimeOfDay < GlobalConstants.OpenTime)
+    @if (DateTime.UtcNow.TimeOfDay.Add(new TimeSpan(3, 0, 0)) > GlobalConstants.CloseTime || DateTime.UtcNow.TimeOfDay.Add(new TimeSpan(3, 0, 0)) < GlobalConstants.OpenTime)
     {
         <div class="col-50 text-center">
             <h3 style="color: #C82333">Затворено</h3>

@@ -19,7 +19,7 @@
         public string Description { get; set; }
 
         [Required]
-        [Range(typeof(decimal), "0,01", "1000000")]
+        [Range(typeof(decimal), "0.01", "999.99")]
         public decimal Price { get; set; }
     }
 }

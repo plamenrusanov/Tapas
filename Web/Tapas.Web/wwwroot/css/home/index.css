@@ -180,3 +180,12 @@ div.dropdown-item {
     margin: 1.52rem 0 0.912rem 0;
     line-height: 110%;
 }
+
+.contacts-links {
+    color: white;
+    font-size: 1.2rem;
+}
+
+    .contacts-links:hover {
+        color: #007BFF;
+    }

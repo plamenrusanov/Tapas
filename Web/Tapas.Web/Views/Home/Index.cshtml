@@ -98,9 +98,9 @@
 
     }
 </div>
-@if (DateTime.Now.TimeOfDay > GlobalConstants.CloseTime || DateTime.Now.TimeOfDay < GlobalConstants.OpenTime)
+@if (DateTime.UtcNow.TimeOfDay.Add(new TimeSpan(3, 0, 0)) > GlobalConstants.CloseTime || DateTime.UtcNow.TimeOfDay.Add(new TimeSpan(3, 0, 0)) < GlobalConstants.OpenTime)
 {
-    if (DateTime.Now.TimeOfDay > GlobalConstants.CloseTime)
+    if (DateTime.UtcNow.TimeOfDay.Add(new TimeSpan(3, 0, 0)) > GlobalConstants.CloseTime)
     {
         <div id="alert" class="alert alert-danger " role="alert">
             <div id="closed" class="center">Затворено. Ще приемаме поръчки отново утре в @GlobalConstants.OpenTime.ToString("hh':'mm") часа.</div>
@@ -114,7 +114,7 @@
     }
 
 }
-else if (DateTime.Now.TimeOfDay < GlobalConstants.CloseTime && DateTime.Now.TimeOfDay > GlobalConstants.LastOrderTime)
+else if (DateTime.UtcNow.TimeOfDay.Add(new TimeSpan(3, 0, 0)) < GlobalConstants.CloseTime && DateTime.UtcNow.TimeOfDay.Add(new TimeSpan(3, 0, 0)) > GlobalConstants.LastOrderTime)
 {
     <div id="alert" class="alert alert-danger " role="alert">
         <div id="lastOrder" class="center">Последни поръчки. Затваряме в @GlobalConstants.CloseTime.ToString("hh':'mm") часа.</div>
@@ -145,7 +145,7 @@ else if (DateTime.Now.TimeOfDay < GlobalConstants.CloseTime && DateTime.Now.Time
         <!--   Icon Section   -->
         <div class="row">
 
-            <div class="col s12 m6">
+            <div style="width: 50%; margin: 0 auto;">
                 <a href="/Administration/CateringFood/">
                     <div class="icon-block">
 
@@ -159,7 +159,7 @@ else if (DateTime.Now.TimeOfDay < GlobalConstants.CloseTime && DateTime.Now.Time
                 </a>
             </div>
 
-            <div class="col s12 m6">
+            <div class="col s12 m6" style="display:none;">
                 <a href="/Administration/CateringEquipment/">
                     <div class="icon-block">
                         <h2 class="center brown-text"><i class="material-icons">group</i></h2>
@@ -224,15 +224,21 @@ else if (DateTime.Now.TimeOfDay < GlobalConstants.CloseTime && DateTime.Now.Time
 <footer class="page-footer teal">
     <div class="container">
         <div class="row">
-            <div class="col l6 s12">
-                <h5 class="white-text">Информация</h5>
-                <p class="white-text">Телефон за резерваций: 0886 58 22 57</p>
-                <p class="white-text">Телефон за поръчки: 0885 56 56 21</p>
-                <p class="white-text">Телефон за поръчки: 082 52 05 03</p>
-                <p class="white-text">Адрес: Русе кв.Чародейка-Юг ул. Ганчо Карамаждраков 2</p>
-
-
-            </div>
+            <ul class="col l6 s12">
+                <li><h5 class="white-text">Контакти</h5></li>
+                <li>
+                    <div>Телефон за резерваций:&nbsp;&nbsp;<a class="contacts-links" href="tel:+359886582257">0886 58 22 57</a> </div>               
+                </li>
+                <li>
+                    <div>Телефон за поръчки:&nbsp;&nbsp;<a class="contacts-links" href="tel:+359885565621">0885 56 56 21</a></div>
+                </li>
+                <li>
+                    <div>Телефон за поръчки:&nbsp;&nbsp;<a class="contacts-links" href="tel:+35982520503">082 52 05 03</a></div>
+                </li>
+                <li>
+                    <div>Адрес:&nbsp;&nbsp;<a class="contacts-links" target="_blank" href="https://www.google.com/maps/place/Tapas+Bar/43.8313163,25.9754988,17z/data=!4m5!3m4!1s0x40ae5f2b9e386061:0xe1a28167a14476aa!8m2!3d43.8312593!4d25.9776342">Русе кв.Чародейка-Юг ул. Ганчо Карамаждраков</a></div>
+                </li>
+            </ul>
             <div class="col l3 s12">
                 <h5 class="white-text">Settings</h5>
                 <ul>

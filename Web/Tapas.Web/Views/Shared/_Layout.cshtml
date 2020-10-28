@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="Description" content="Author: Plamen Rusanov, Category: Order food,">
+    <meta name="Description" content="Author: Plamen Rusanov, Category: Food delivery,">
     <title>@this.ViewData["Title"] - @GlobalConstants.SystemName</title>
 
     <environment names="Development">
@@ -47,9 +47,9 @@
             </div>
         </nav>
     </header>
-    @if (DateTime.Now.TimeOfDay > GlobalConstants.CloseTime || DateTime.Now.TimeOfDay < GlobalConstants.OpenTime)
+    @if (DateTime.UtcNow.TimeOfDay.Add(new TimeSpan(3, 0, 0)) > GlobalConstants.CloseTime || DateTime.UtcNow.TimeOfDay.Add(new TimeSpan(3, 0, 0)) < GlobalConstants.OpenTime)
     {
-        if (DateTime.Now.TimeOfDay > GlobalConstants.CloseTime)
+        if (DateTime.UtcNow.TimeOfDay.Add(new TimeSpan(3, 0, 0)) > GlobalConstants.CloseTime)
         {
             <div id="alert" class="alert alert-danger " role="alert">
                 <div id="closed">Затворено. Ще приемаме поръчки отново утре в @GlobalConstants.OpenTime.ToString("hh':'mm") часа.</div>
@@ -63,7 +63,7 @@
         }
 
     }
-    else if (DateTime.Now.TimeOfDay < GlobalConstants.CloseTime && DateTime.Now.TimeOfDay > GlobalConstants.LastOrderTime)
+    else if (DateTime.UtcNow.TimeOfDay.Add(new TimeSpan(3, 0, 0)) < GlobalConstants.CloseTime && DateTime.UtcNow.TimeOfDay.Add(new TimeSpan(3, 0, 0)) > GlobalConstants.LastOrderTime)
     {
         <div id="alert" class="alert alert-warning " role="alert">
             <div id="closed">Последни поръчки. Затваряме в @GlobalConstants.CloseTime.ToString("hh':'mm") часа.</div>

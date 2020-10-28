@@ -11,7 +11,7 @@
         public string Name { get; set; }
 
         [RequiredBg]
-        [Range(typeof(decimal), minimum: "0,01", maximum: "999,99")]
+        [Range(typeof(decimal), minimum: "0.01", maximum: "999.99")]
         [Display(Name = "Цена")]
         public decimal Price { get; set; }
 

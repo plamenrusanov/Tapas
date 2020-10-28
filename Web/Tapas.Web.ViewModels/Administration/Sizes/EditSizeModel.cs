@@ -21,7 +21,7 @@
 
         [Required]
         [Column(TypeName = "decimal(5, 2)")]
-        [Range(typeof(decimal), "0,01", "999,99")]
+        [Range(typeof(decimal), "0.01", "999.99")]
         public decimal Price { get; set; }
 
         [Required]
