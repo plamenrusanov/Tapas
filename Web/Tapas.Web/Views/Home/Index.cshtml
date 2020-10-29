@@ -151,7 +151,7 @@ else if (DateTime.UtcNow.TimeOfDay.Add(new TimeSpan(3, 0, 0)) < GlobalConstants.
 
 
                         <h2 class="center"><img src="~/Images/food.png" alt="Catering icon"/></h2>
-                        <h5 class="center" style="color:black;">Решения за кетъринг</h5>
+                        <div class="header-5" style="color:black;">Решения за кетъринг</div>
 
                         <p class="light" style="color:black; text-align:justify;">Тук можете да разгледате нашите предложения за вкусната част на вашите събития. Превъзходно оформени плата с вкусни хапки от които вашите гости ще останат възхитени.</p>
 
@@ -159,7 +159,7 @@ else if (DateTime.UtcNow.TimeOfDay.Add(new TimeSpan(3, 0, 0)) < GlobalConstants.
                 </a>
             </div>
 
-            <div class="col s12 m6" style="display:none;">
+            @*<div class="col s12 m6">
                 <a href="/Administration/CateringEquipment/">
                     <div class="icon-block">
                         <h2 class="center brown-text"><i class="material-icons">group</i></h2>
@@ -168,7 +168,7 @@ else if (DateTime.UtcNow.TimeOfDay.Add(new TimeSpan(3, 0, 0)) < GlobalConstants.
                         <p class="light">By utilizing elements and principles of Material Design, we were able to create a framework that incorporates components and animations that provide more feedback to users. Additionally, a single underlying responsive system across all platforms allow for a more unified user experience.</p>
                     </div>
                 </a>
-            </div>
+            </div>*@
 
             @*<div class="col s12 m4">
                 <div class="icon-block">
@@ -188,7 +188,7 @@ else if (DateTime.UtcNow.TimeOfDay.Add(new TimeSpan(3, 0, 0)) < GlobalConstants.
     <div class="section no-pad-bot">
         <div class="container">
             <div class="row center">
-                <h5 class="header col s12 light">Няма по-откровена любов от любовта към храната</h5>
+                <div class="header col s12 light header-5">Няма по-откровена любов от любовта към храната</div>
             </div>
         </div>
     </div>
@@ -225,7 +225,7 @@ else if (DateTime.UtcNow.TimeOfDay.Add(new TimeSpan(3, 0, 0)) < GlobalConstants.
     <div class="container">
         <div class="row">
             <ul class="col l6 s12">
-                <li><h5 class="white-text">Контакти</h5></li>
+                <li><div class="white-text header-5" style="text-align:left;">Контакти</div></li>
                 <li>
                     <div>Телефон за резерваций:&nbsp;&nbsp;<a class="contacts-links" href="tel:+359886582257">0886 58 22 57</a> </div>               
                 </li>
@@ -236,11 +236,10 @@ else if (DateTime.UtcNow.TimeOfDay.Add(new TimeSpan(3, 0, 0)) < GlobalConstants.
                     <div>Телефон за поръчки:&nbsp;&nbsp;<a class="contacts-links" href="tel:+35982520503">082 52 05 03</a></div>
                 </li>
                 <li>
-                    <div>Адрес:&nbsp;&nbsp;<a class="contacts-links" target="_blank" href="https://www.google.com/maps/place/Tapas+Bar/43.8313163,25.9754988,17z/data=!4m5!3m4!1s0x40ae5f2b9e386061:0xe1a28167a14476aa!8m2!3d43.8312593!4d25.9776342">Русе кв.Чародейка-Юг ул. Ганчо Карамаждраков</a></div>
+                    <div>Адрес:&nbsp;&nbsp;<a class="contacts-links" target="_blank" rel="noreferrer" href="https://www.google.com/maps/place/Tapas+Bar/43.8313163,25.9754988,17z/data=!4m5!3m4!1s0x40ae5f2b9e386061:0xe1a28167a14476aa!8m2!3d43.8312593!4d25.9776342">Русе кв.Чародейка-Юг ул. Ганчо Карамаждраков</a></div>
                 </li>
             </ul>
             <div class="col l3 s12">
-                <h5 class="white-text">Settings</h5>
                 <ul>
                     <li><a style="background-color: #4267B2" class="btn btn-social-icon btn-facebook" href="https://www.facebook.com/tapasruse/" target="_blank" rel="noopener"><span class="fa fa-facebook"></span></a></li>
                 </ul>
