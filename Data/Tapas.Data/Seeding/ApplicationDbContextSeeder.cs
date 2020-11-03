@@ -29,7 +29,7 @@
                               new RolesSeeder(),
                               new UsersSeeder(),
                               new UsersToRoleSeeder(),
-                             // new AllergensSeeder(serviceProvider.GetRequiredService<ICloudService>()),
+                              new AllergensSeeder(serviceProvider.GetRequiredService<ICloudService>()),
                               new AddressSeeder(),
                           };
 

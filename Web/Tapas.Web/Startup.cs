@@ -59,6 +59,12 @@
                    options.EnableDetailedErrors = true;
                }).AddMessagePackProtocol();
 
+            //services.AddHttpsRedirection(options =>
+            //{
+            //    options.RedirectStatusCode = StatusCodes.Status308PermanentRedirect;
+            //    options.HttpsPort = 443;
+            //});
+
             services.AddControllersWithViews();
             services.AddRazorPages();
             services.AddSingleton(this.configuration);
@@ -108,17 +114,17 @@
             AutoMapperConfig.RegisterMappings(typeof(ErrorViewModel).GetTypeInfo().Assembly);
 
             // Seed data on application startup
-            using (var serviceScope = app.ApplicationServices.CreateScope())
-            {
-                var dbContext = serviceScope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+            /* using (var serviceScope = app.ApplicationServices.CreateScope())
+             {
+                 var dbContext = serviceScope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
 
-                if (env.IsDevelopment())
-                {
-                    dbContext.Database.Migrate();
-                }
+                 if (env.IsDevelopment())
+                 {
+                     dbContext.Database.Migrate();
+                 }
 
-                new ApplicationDbContextSeeder().SeedAsync(dbContext, serviceScope.ServiceProvider).GetAwaiter().GetResult();
-            }
+                 new ApplicationDbContextSeeder().SeedAsync(dbContext, serviceScope.ServiceProvider).GetAwaiter().GetResult();
+             }*/
 
             if (env.IsDevelopment())
             {
@@ -145,7 +151,7 @@
                     headers.CacheControl = new Microsoft.Net.Http.Headers.CacheControlHeaderValue
                     {
                         Public = true,
-                        MaxAge = TimeSpan.FromDays(30),
+                        MaxAge = TimeSpan.FromDays(180),
                     };
                 },
             });
