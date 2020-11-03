@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Diagnostics;
     using System.Linq;
     using System.Threading.Tasks;
 
@@ -190,7 +191,7 @@
                         },
                     }).ToList(),
                 Status = order.Status,
-                PackagesPrice = order.Bag.CartItems.Sum(x => (decimal)Math.Ceiling(x.Quantity / (double)x.Size.MaxProductsInPackage) * x.Size.Package.Price),
+                PackagesPrice = order.Bag.CartItems.Sum(x => (decimal)Math.Ceiling((double)x.Size.MaxProductsInPackage / x.Quantity) * x.Size.Package.Price),
             };
             model.TotalPrice = model.CartItems.Sum(x => x.ItemPrice) + model.PackagesPrice;
 
@@ -385,7 +386,7 @@
                                   }).ToList(),
                     }).ToList(),
                 Status = order.Status,
-                PackagesPrice = order.Bag.CartItems.Sum(x => (decimal)Math.Ceiling(x.Quantity / (double)x.Size.MaxProductsInPackage) * x.Size.Package.Price),
+                PackagesPrice = order.Bag.CartItems.Sum(x => (decimal)Math.Ceiling((double)x.Size.MaxProductsInPackage / x.Quantity) * x.Size.Package.Price),
             };
 
             model.TotalPrice = model.CartItems.Sum(x => x.ItemPrice) + model.PackagesPrice;
@@ -423,6 +424,9 @@
                 order.CustomerComment = message;
                 this.ordersRepository.Update(order);
                 await this.ordersRepository.SaveChangesAsync();
+
+                Stopwatch s = new Stopwatch();
+                s.Start();
                 foreach (var item in rating)
                 {
                     if (byte.TryParse(item.Rating, out byte result) && int.TryParse(item.ItemId, out int itemId))
@@ -442,6 +446,9 @@
                         await this.itemsRepository.SaveChangesAsync();
                     }
                 }
+
+                s.Stop();
+                Console.WriteLine(s.Elapsed);
             }
         }
 
