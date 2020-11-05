@@ -4,9 +4,9 @@
     var code = document.getElementById(`MistralCode`);
     code.value = co;
     var price = document.getElementById(`Price`);
-    price.value = pr.replace('.', ',');
+    price.value = pr;
     var price = document.getElementById(`Price2`);
-    price.innerText = pr.replace('.', ',');
+    price.innerText = pr;
     var n = document.getElementById(`MistralName`);
     n.value = na;
     var n2 = document.getElementById(`MistralName2`);

@@ -19,7 +19,8 @@
 <div class="col-md-6">
     <div class=" row form-group row-group">
         <h4 class="col-md-6">@Html.Label("Цена")</h4>
-        @Html.EditorFor(x => Model.Price, "", $"Sizes[{Model.Index}].Price", new { htmlAttributes = new { @class = "col-md-6 form-control" } })
+        <div class="col-md-6 form-control" id="Price2@(i)"></div>
+        @Html.EditorFor(x => Model.Price, "", $"Sizes[{Model.Index}].Price", new { htmlAttributes = new { @hidden = true } })
         <span asp-validation-for="@Model.Price" class="text-danger"></span>
     </div>
 </div>

@@ -4,9 +4,9 @@
     var code = document.getElementById(`Sizes_${index}__MistralCode`);
     code.value = co;
     var price = document.getElementById(`Sizes_${index}__Price`);
-    price.value = pr.replace('.', ',');
+    price.value = pr;
     var price2 = document.getElementById(`Price2${index}`);
-    price2.innerText = pr.replace('.', ',');
+    price2.innerText = pr;
     var n = document.getElementById(`Sizes_${index}__MistralName`);
     n.value = na;
     var input = document.getElementById(`getMProduct${index}`);

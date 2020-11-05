@@ -62,7 +62,7 @@
         {
             if (!this.ModelState.IsValid)
             {
-                return this.View(model);
+                return this.View(viewName: "GetCreateModel");
             }
 
             try

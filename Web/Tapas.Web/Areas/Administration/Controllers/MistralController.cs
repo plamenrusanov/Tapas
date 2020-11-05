@@ -20,6 +20,11 @@
 
         public async Task<ICollection<ProductMDto>> GetMProduct(string name)
         {
+            if (name != null)
+            {
+                name.ToUpper();
+            }
+
             var products = await this.mistralService.GetAllData(1, name);
 
             return products;
