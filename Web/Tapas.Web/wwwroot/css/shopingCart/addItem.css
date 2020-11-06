@@ -11,7 +11,7 @@
     font-size: 45px !important;
     padding: 0;
     margin-top: -22px;
-    margin-left: -14px;
+   /* margin-left: -14px;*/
 }
 
 .row {
@@ -106,6 +106,7 @@
     .plus, .minus {
         margin-top: -14px;
         font-size: 35px;
+        margin-left: -6px;
     }
 
     #theInput {
@@ -116,5 +117,15 @@
 
     #plus, #minus {
         width: 35px;
+    }
+}
+
+@media only screen and (max-width: 400px)
+{
+    .container{
+        padding:0;
+    }
+    div.col-md-6{
+        padding:0;
     }
 }

@@ -197,6 +197,12 @@
     <Content Update="wwwroot\css\home\index.css">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Update="wwwroot\css\shared\site.min.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\css\shopingCart\addItem.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Update="wwwroot\Images\depositphotos_35457131-stock-photo-blue-wood-background.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

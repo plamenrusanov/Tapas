@@ -2,7 +2,6 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.IO;
     using System.Threading.Tasks;
 
     using Newtonsoft.Json;
@@ -12,7 +11,7 @@
 
     public class MistralService : IMistralService
     {
-        private const string Url = "http://87.120.246.18:8066";
+        private const string Url = "http://87.120.108.19:8066";
         private const string UserName = "1";
         private readonly string password;
 
