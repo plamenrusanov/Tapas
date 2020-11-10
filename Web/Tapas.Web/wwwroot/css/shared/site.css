@@ -91,12 +91,13 @@ ul li:hover {
 #body {
     /*https: //res.cloudinary.com/duxtyuzpy/image/upload/c_scale,h_900,w_1600,f_auto/v1586767202/k4yosrnrf2mlyw6rfcfe.jpg*/
     margin-bottom: 60px;
-    background-image: url("/Images/depositphotos_35457131-stock-photo-blue-wood-background.jpg");
+   /* background-image: url("/Images/depositphotos_35457131-stock-photo-blue-wood-background.jpg");*/
     height: auto;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
+    background-color: rgb(180, 163, 147);
 }
 
 #main-transperant {

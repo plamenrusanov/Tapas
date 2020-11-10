@@ -197,3 +197,14 @@ div.dropdown-item {
     margin: 1.0933333333rem 0 0.656rem 0;
     font-weight: 400;
 }
+
+.catering-div {
+    width: 50%;
+    margin: 0 auto;
+}
+
+@media only screen and (max-width: 600px){
+    .catering-div{
+        width: 100%;
+    }
+}

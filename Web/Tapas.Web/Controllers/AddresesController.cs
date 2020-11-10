@@ -1,14 +1,11 @@
 ﻿namespace Tapas.Web.Controllers
 {
     using System;
-    using System.Collections.Generic;
     using System.Threading.Tasks;
 
     using Microsoft.AspNetCore.Authorization;
-    using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
-    using Tapas.Common;
     using Tapas.Data.Models;
     using Tapas.Services.Data.Contracts;
     using Tapas.Web.ViewModels.Addreses;

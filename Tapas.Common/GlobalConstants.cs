@@ -48,5 +48,7 @@
         public static TimeSpan CloseTime => new TimeSpan(22, 45, 0);
 
         public static TimeSpan LastOrderTime => new TimeSpan(22, 30, 0);
+
+        public static TimeSpan TimeNow => DateTime.Now.TimeOfDay;
     }
 }

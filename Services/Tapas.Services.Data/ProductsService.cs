@@ -198,8 +198,9 @@
         {
             if (model.Image != null)
             {
-                // model.ImageUrl = await this.cloudService.UploadImageFromForm(model.Image);
-                await this.imageService.SaveImageOnFileSystem(model.Image, model.Name, this.categoriesRepository.All().Where(c => c.Id == model.CategoryId).FirstOrDefault()?.Name);
+                model.ImageUrl = await this.cloudService.UploadImageFromForm(model.Image);
+
+               // await this.imageService.SaveImageOnFileSystem(model.Image, model.Name, this.categoriesRepository.All().Where(c => c.Id == model.CategoryId).FirstOrDefault()?.Name);
             }
 
             var product = this.productsRepo.AllWithDeleted()

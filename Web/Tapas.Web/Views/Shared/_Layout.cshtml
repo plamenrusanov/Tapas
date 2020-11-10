@@ -47,9 +47,9 @@
             </div>
         </nav>
     </header>
-    @if (DateTime.UtcNow.TimeOfDay.Add(new TimeSpan(3, 0, 0)) > GlobalConstants.CloseTime || DateTime.UtcNow.TimeOfDay.Add(new TimeSpan(3, 0, 0)) < GlobalConstants.OpenTime)
+    @if (GlobalConstants.TimeNow > GlobalConstants.CloseTime || GlobalConstants.TimeNow < GlobalConstants.OpenTime)
     {
-        if (DateTime.UtcNow.TimeOfDay.Add(new TimeSpan(3, 0, 0)) > GlobalConstants.CloseTime)
+        if (GlobalConstants.TimeNow > GlobalConstants.CloseTime)
         {
             <div id="alert" class="alert alert-danger " role="alert">
                 <div id="closed">Затворено. Ще приемаме поръчки отново утре в @GlobalConstants.OpenTime.ToString("hh':'mm") часа.</div>
@@ -63,7 +63,7 @@
         }
 
     }
-    else if (DateTime.UtcNow.TimeOfDay.Add(new TimeSpan(3, 0, 0)) < GlobalConstants.CloseTime && DateTime.UtcNow.TimeOfDay.Add(new TimeSpan(3, 0, 0)) > GlobalConstants.LastOrderTime)
+    else if (GlobalConstants.TimeNow < GlobalConstants.CloseTime && GlobalConstants.TimeNow > GlobalConstants.LastOrderTime)
     {
         <div id="alert" class="alert alert-warning " role="alert">
             <div id="closed">Последни поръчки. Затваряме в @GlobalConstants.CloseTime.ToString("hh':'mm") часа.</div>

@@ -1,7 +1,5 @@
 ﻿namespace Tapas.Web.Areas.Administration.Controllers
 {
-    using System.Linq;
-
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using Tapas.Services.Data.Contracts;

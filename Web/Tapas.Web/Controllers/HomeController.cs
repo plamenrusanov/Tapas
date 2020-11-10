@@ -3,23 +3,10 @@
     using System.Diagnostics;
 
     using Microsoft.AspNetCore.Mvc;
-    using Tapas.Services.Contracts;
-    using Tapas.Services.Data.Contracts;
     using Tapas.Web.ViewModels;
 
     public class HomeController : BaseController
     {
-        private readonly IHomeService homeService;
-        private readonly IProductsService productsService;
-        private readonly IGeolocationService geolocationService;
-
-        public HomeController(IHomeService homeService, IProductsService productsService, IGeolocationService geolocationService)
-        {
-            this.homeService = homeService;
-            this.productsService = productsService;
-            this.geolocationService = geolocationService;
-        }
-
         public IActionResult Index()
         {
             return this.View();

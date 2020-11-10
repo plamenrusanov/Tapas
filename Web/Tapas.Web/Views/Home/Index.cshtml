@@ -98,9 +98,9 @@
 
     }
 </div>
-@if (DateTime.UtcNow.TimeOfDay.Add(new TimeSpan(3, 0, 0)) > GlobalConstants.CloseTime || DateTime.UtcNow.TimeOfDay.Add(new TimeSpan(3, 0, 0)) < GlobalConstants.OpenTime)
+@if (GlobalConstants.TimeNow > GlobalConstants.CloseTime || GlobalConstants.TimeNow < GlobalConstants.OpenTime)
 {
-    if (DateTime.UtcNow.TimeOfDay.Add(new TimeSpan(3, 0, 0)) > GlobalConstants.CloseTime)
+    if (GlobalConstants.TimeNow > GlobalConstants.CloseTime)
     {
         <div id="alert" class="alert alert-danger " role="alert">
             <div id="closed" class="center">Затворено. Ще приемаме поръчки отново утре в @GlobalConstants.OpenTime.ToString("hh':'mm") часа.</div>
@@ -114,7 +114,7 @@
     }
 
 }
-else if (DateTime.UtcNow.TimeOfDay.Add(new TimeSpan(3, 0, 0)) < GlobalConstants.CloseTime && DateTime.UtcNow.TimeOfDay.Add(new TimeSpan(3, 0, 0)) > GlobalConstants.LastOrderTime)
+else if (GlobalConstants.TimeNow < GlobalConstants.CloseTime && GlobalConstants.TimeNow > GlobalConstants.LastOrderTime)
 {
     <div id="alert" class="alert alert-danger " role="alert">
         <div id="lastOrder" class="center">Последни поръчки. Затваряме в @GlobalConstants.CloseTime.ToString("hh':'mm") часа.</div>
@@ -135,7 +135,7 @@ else if (DateTime.UtcNow.TimeOfDay.Add(new TimeSpan(3, 0, 0)) < GlobalConstants.
 
         </div>
     </div>
-    <div class="parallax"><img src="~/Images/Кашкавалчета.webp" alt="Кашкавалчета"></div>
+    <div class="parallax"><img src="https://res.cloudinary.com/duxtyuzpy/image/upload/c_scale,f_auto,h_800,q_100,w_1400/v1605008051/_kashkavalcheta.jpg" alt="Кашкавалчета"></div>
 </div>
 
 
@@ -145,7 +145,7 @@ else if (DateTime.UtcNow.TimeOfDay.Add(new TimeSpan(3, 0, 0)) < GlobalConstants.
         <!--   Icon Section   -->
         <div class="row">
 
-            <div style="width: 50%; margin: 0 auto;">
+            <div class="catering-div">
                 <a href="/Administration/CateringFood/">
                     <div class="icon-block">
 
@@ -192,7 +192,7 @@ else if (DateTime.UtcNow.TimeOfDay.Add(new TimeSpan(3, 0, 0)) < GlobalConstants.
             </div>
         </div>
     </div>
-    <div class="parallax"><img src="~/Images/Кошничка.webp" alt="Кошничка"></div>
+    <div class="parallax"><img src="https://res.cloudinary.com/duxtyuzpy/image/upload/c_scale,f_auto,h_800,q_100,w_1400/v1605009725/_koshnichka.jpg" alt="Кошничка"></div>
 </div>
 
 <div class="container">
@@ -220,7 +220,7 @@ else if (DateTime.UtcNow.TimeOfDay.Add(new TimeSpan(3, 0, 0)) < GlobalConstants.
             </div>
         </div>
     </div>
-    <div class="parallax"><img src="~/Images/Торта.webp" alt="Торта"></div>
+    <div class="parallax"><img src="https://res.cloudinary.com/duxtyuzpy/image/upload/c_scale,f_auto,h_800,q_100,w_1400/v1605009430/_torta.jpg" alt="Торта"></div>
 </div>
 
 <footer class="page-footer teal">
