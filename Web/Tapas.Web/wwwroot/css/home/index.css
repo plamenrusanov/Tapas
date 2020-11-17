@@ -208,3 +208,15 @@ div.dropdown-item {
         width: 100%;
     }
 }
+
+.bg-mocca {
+    background-color: rgb(180,163,147);
+}
+
+.c-mocca {
+    color: rgb(180,163,147);
+}
+
+.btn-large:hover {
+    background-color: rgb(180,163,147);
+}

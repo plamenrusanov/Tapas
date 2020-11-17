@@ -34,12 +34,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Remove="Views\Addreses\Add.cshtml" />
+    <Content Remove="Views\Addresses\Add.cshtml" />
     <Content Remove="wwwroot\js\Parallax.js" />
     <Content Remove="wwwroot\js\Waves.js" />
   </ItemGroup>
   <ItemGroup>
     <AdditionalFiles Include="..\..\stylecop.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="wwwroot\.well-known\pki-validation\D49AC03CCA7612E239B32473F092C4B5.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.js" />

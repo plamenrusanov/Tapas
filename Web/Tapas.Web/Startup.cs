@@ -84,7 +84,8 @@
                 this.configuration.GetSection("Mistral:Password").Value));
             services.AddTransient<ITwilioSmsSenderService>(x => new TwilioSmsSenderService(
                 this.configuration.GetSection("Twilio:accountSid").Value,
-                this.configuration.GetSection("Twilio:authToken").Value));
+                this.configuration.GetSection("Twilio:authToken").Value,
+                this.configuration.GetSection("Twilio:twilioNumber").Value));
 
             services.AddTransient<IAllergensService, AllergensService>();
             services.AddTransient<ICategoriesService, CategoriesService>();
@@ -92,7 +93,7 @@
             services.AddTransient<IProductsService, ProductsService>();
             services.AddTransient<IShopingCartService, ShopingCartService>();
             services.AddTransient<IOrdersService, OrdersService>();
-            services.AddTransient<IAddresesService, AddresesService>();
+            services.AddTransient<IAddressesService, AddressesService>();
             services.AddTransient<IPackagesService, PackagesService>();
             services.AddTransient<ISizesService, SizesService>();
             services.AddTransient<ICateringFoodService, CateringFoodService>();

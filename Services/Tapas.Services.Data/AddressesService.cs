@@ -10,14 +10,14 @@
     using Tapas.Data.Models;
     using Tapas.Services.Contracts;
     using Tapas.Services.Data.Contracts;
-    using Tapas.Web.ViewModels.Addreses;
+    using Tapas.Web.ViewModels.Addresses;
 
-    public class AddresesService : IAddresesService
+    public class AddressesService : IAddressesService
     {
         private readonly IDeletableEntityRepository<DeliveryAddress> addressRepository;
         private readonly IGeolocationService geolocationService;
 
-        public AddresesService(
+        public AddressesService(
             IDeletableEntityRepository<DeliveryAddress> addressRepository,
             IGeolocationService geolocationService)
         {
@@ -25,7 +25,7 @@
             this.geolocationService = geolocationService;
         }
 
-        public async Task CreateAddressAsync(ApplicationUser user, AddressInputModel model)
+        public async Task<string> CreateAddressAsync(ApplicationUser user, AddressInputModel model)
         {
             var address = new DeliveryAddress()
             {
@@ -45,6 +45,7 @@
 
             await this.addressRepository.AddAsync(address);
             await this.addressRepository.SaveChangesAsync();
+            return address.Id;
         }
 
         public async Task<AddressInputModel> GetAddressAsync(string latitude, string longitude)

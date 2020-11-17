@@ -12,10 +12,10 @@
                 {
                     if (this.ViewData["Title"].ToString() == item.Name)
                     {
-                        <a asp-area="@GlobalConstants.AreaAdmin" asp-controller="Products" asp-action="GetProductsByCategory" asp-route-categoryId="@item.Id" class="btn btn-default list-group-item"><h3 style="color:#007BFF">@item.Name</h3></a>
+                        <a asp-area="@GlobalConstants.AreaAdmin" asp-controller="Products" asp-action="GetProductsByCategory" asp-route-categoryId="@item.Id" class="btn btn-default bg-light mt-1"><h3 style="color:#007BFF">@item.Name</h3></a>
                         continue;
                     }
-                    <a asp-area="@GlobalConstants.AreaAdmin" asp-controller="Products" asp-action="GetProductsByCategory" asp-route-categoryId="@item.Id" class="btn btn-default list-group-item"><h3>@item.Name</h3></a>
+                    <a asp-area="@GlobalConstants.AreaAdmin" asp-controller="Products" asp-action="GetProductsByCategory" asp-route-categoryId="@item.Id" class="btn btn-default bg-light mt-1"><h3>@item.Name</h3></a>
                 }
             </div>
 

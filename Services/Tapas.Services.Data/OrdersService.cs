@@ -15,7 +15,7 @@
     using Tapas.Services.Contracts;
     using Tapas.Services.Data.Contracts;
     using Tapas.Services.Dto.Mistral;
-    using Tapas.Web.ViewModels.Addreses;
+    using Tapas.Web.ViewModels.Addresses;
     using Tapas.Web.ViewModels.Administration.Sizes;
     using Tapas.Web.ViewModels.Extras;
     using Tapas.Web.ViewModels.Orders;
@@ -237,7 +237,7 @@
         }
 
         // Orders/Create
-        public OrderInpitModel GetOrderInputModel(ApplicationUser user)
+        public OrderInpitModel GetOrderInputModel(ApplicationUser user, string addressId)
         {
             if (user is null)
             {
@@ -250,13 +250,11 @@
                 AddInfo = string.Empty,
                 ApplicationUserId = user.Id,
                 Addresses = user.Addresses
-                    .Select(x => new AddressViewModel()
+                    .Select(x => new SelectListItem()
                     {
-                        Id = x.Id,
-                        AddInfo = x.AddInfo,
-                        Street = x.Street,
-                        StreetNumber = x.StreetNumber,
-                        DisplayName = x.DisplayName,
+                        Text = x.DisplayName,
+                        Value = x.Id,
+                        Selected = addressId == x.Id,
                     }).ToList(),
                 CartItems = this.cartRepository
                     .All()

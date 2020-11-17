@@ -1,4 +1,4 @@
-﻿@model Tapas.Web.ViewModels.Addreses.AddressInputModel
+﻿@model Tapas.Web.ViewModels.Addresses.AddressInputModel
 @{
     ViewData["Title"] = "Create";
 }
@@ -10,7 +10,7 @@
         <div class="col-md-4" id="form-address">
             <h1 class="text-center">Добави адрес</h1>
             <hr />
-            <form asp-area="" asp-controller="Addreses" asp-action="Create">
+            <form asp-area="" asp-controller="Addresses" asp-action="Create">
                 <div class="form-group">@Html.HiddenFor(x => x.Latitude, new { @id = "latitude", @class = "form-control" })</div>
                 <div class="form-group">@Html.HiddenFor(x => x.Longitude, new { @id = "longitude", @class = "form-control" })</div>
                 <div class="form-group">@Html.HiddenFor(x => x.DisplayName, new { @id = "displayName", @class = "form-control" })</div>
@@ -43,17 +43,23 @@
                     <div class="col-md-8">@Html.EditorFor(x => x.Floor, new { htmlAttributes = new { @id = "floor", @class = "form-control" } })</div>
                 </div>
                 <div class="row form-group ">
-                    <label>Допълнителна информация</label>
-                    @Html.TextAreaFor(x => x.AddInfo, 5, 30, new { @id = "addInfo", @class = "form-control" })
+                    <div class="col-md-12">
+                        <label>Допълнителна информация</label>
+                        @Html.TextAreaFor(x => x.AddInfo, 5, 30, new { @id = "addInfo", @class = "form-control" })
+                    </div>
                 </div>
                 <div class="row form-group">
-                    <button type="submit" class="btn btn-primary" value="Create">Добави</button>
+                    <div class="col-md-12 add-btn">
+                        <button type="submit" class="btn btn-primary" value="Create">Добави</button>
+                    </div>
                 </div>
             </form>
         </div>
     </div>
 </div>
-
+@section Style{ 
+    <link href="~/css/addresses/create.css" rel="stylesheet" />
+}
 @section Scripts{
     <script src="~/js/addreses/create.js"></script>
 }

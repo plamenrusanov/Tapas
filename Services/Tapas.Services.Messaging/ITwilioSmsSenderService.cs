@@ -4,6 +4,6 @@
 
     public interface ITwilioSmsSenderService
     {
-        Task SendSms();
+        Task SendSms(string userPhone, int code);
     }
 }

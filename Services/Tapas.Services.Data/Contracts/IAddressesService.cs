@@ -4,14 +4,14 @@
     using System.Threading.Tasks;
 
     using Tapas.Data.Models;
-    using Tapas.Web.ViewModels.Addreses;
+    using Tapas.Web.ViewModels.Addresses;
 
-    public interface IAddresesService
+    public interface IAddressesService
     {
         ICollection<AddressViewModel> GetMyAddreses(ApplicationUser user);
 
         Task<AddressInputModel> GetAddressAsync(string latitude, string longitude);
 
-        Task CreateAddressAsync(ApplicationUser user, AddressInputModel model);
+        Task<string> CreateAddressAsync(ApplicationUser user, AddressInputModel model);
     }
 }

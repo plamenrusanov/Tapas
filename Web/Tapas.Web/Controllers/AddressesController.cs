@@ -8,27 +8,27 @@
     using Microsoft.AspNetCore.Mvc;
     using Tapas.Data.Models;
     using Tapas.Services.Data.Contracts;
-    using Tapas.Web.ViewModels.Addreses;
+    using Tapas.Web.ViewModels.Addresses;
 
     [Authorize]
-    public class AddresesController : BaseController
+    public class AddressesController : BaseController
     {
-        private readonly IAddresesService addresesService;
+        private readonly IAddressesService addressesService;
         private readonly UserManager<ApplicationUser> userManager;
 
-        public AddresesController(
-            IAddresesService addresesService,
+        public AddressesController(
+            IAddressesService addressesService,
             UserManager<ApplicationUser> userManager)
         {
-            this.addresesService = addresesService;
+            this.addressesService = addressesService;
             this.userManager = userManager;
         }
 
-        // GET: Addreses
+        // GET: Addresses
         public async Task<IActionResult> Index()
         {
             var user = await this.userManager.GetUserAsync(this.User);
-            var model = this.addresesService.GetMyAddreses(user);
+            var model = this.addressesService.GetMyAddreses(user);
             return this.View(model);
         }
 
@@ -42,7 +42,7 @@
             AddressInputModel model = new AddressInputModel();
             try
             {
-                model = await this.addresesService.GetAddressAsync(latitude, longitude);
+                model = await this.addressesService.GetAddressAsync(latitude, longitude);
             }
             catch (Exception)
             {
@@ -72,8 +72,8 @@
 
             var user = await this.userManager.GetUserAsync(this.User);
 
-            await this.addresesService.CreateAddressAsync(user, model);
-
+            var addressId = await this.addressesService.CreateAddressAsync(user, model);
+            this.TempData.Add(nameof(addressId), addressId);
             return this.Redirect("/Orders/Create");
         }
     }

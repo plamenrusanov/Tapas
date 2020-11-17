@@ -52,7 +52,7 @@
             {
                 var user = await this.userManager.GetUserAsync(this.User);
 
-                var model = this.ordersService.GetOrderInputModel(user);
+                var model = this.ordersService.GetOrderInputModel(user, this.TempData["addressId"]?.ToString());
                 if (model.OrderPrice < GlobalConstants.OrderPriceMin)
                 {
                     return this.RedirectPermanent("/Administration/Products");

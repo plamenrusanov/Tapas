@@ -3,17 +3,15 @@
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    using System.Linq;
 
     using Microsoft.AspNetCore.Mvc.Rendering;
-    using Tapas.Web.ViewModels.Addreses;
     using Tapas.Web.ViewModels.ShopingCartItems;
 
     public class OrderInpitModel
     {
         public OrderInpitModel()
         {
-            this.Addresses = new List<AddressViewModel>();
+            this.Addresses = new List<SelectListItem>();
             this.Cutlery = this.CreateCutleryList();
         }
 
@@ -34,7 +32,7 @@
 
         public DateTime DelayedDelivery { get; set; }
 
-        public List<AddressViewModel> Addresses { get; set; }
+        public List<SelectListItem> Addresses { get; set; }
 
         public List<ShopingItemsViewModel> CartItems { get; set; }
 

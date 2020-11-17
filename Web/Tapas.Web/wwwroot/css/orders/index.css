@@ -25,6 +25,7 @@
     height: 45px;
     border-radius: 5px;
     margin-top: -12px;
+    padding-top: 8px;
 }
 
     #minus1:hover, #plus1:hover {

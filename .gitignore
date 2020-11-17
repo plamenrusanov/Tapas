@@ -360,3 +360,4 @@ appsettings.json
 *.min.css
 *.min.js
 /Web/Tapas.Web/wwwroot/Images/
+/Web/Tapas.Web/wwwroot/.well-known/pki-validation/D49AC03CCA7612E239B32473F092C4B5.txt

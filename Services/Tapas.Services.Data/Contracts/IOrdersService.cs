@@ -10,7 +10,7 @@
 
     public interface IOrdersService
     {
-        OrderInpitModel GetOrderInputModel(ApplicationUser user);
+        OrderInpitModel GetOrderInputModel(ApplicationUser user, string addressId);
 
         ICollection<OrdersViewModel> GetDailyOrders();
 

@@ -1,6 +1,6 @@
-﻿namespace Tapas.Web.ViewModels.Addreses
+﻿namespace Tapas.Web.ViewModels.Addresses
 {
-    public class AddressInputModel
+    public class AddressViewModel
     {
         public string Id { get; set; }
 
@@ -20,7 +20,7 @@
 
         public string Block { get; set; }
 
-        public string Entry { get; set; }
+        public string Еntry { get; set; }
 
         public string Floor { get; set; }
 
