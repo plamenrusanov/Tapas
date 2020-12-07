@@ -33,7 +33,7 @@
             await this.deliveryTaxRepository.SaveChangesAsync();
         }
 
-        public async Task<ICollection<DeliveryTaxViewModel>> AllAsync(bool isDeleted)
+        public async Task<IEnumerable<DeliveryTaxViewModel>> AllAsync(bool isDeleted)
         {
             return await this.deliveryTaxRepository
                 .AllWithDeleted()

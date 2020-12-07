@@ -65,7 +65,7 @@
             };
         }
 
-        public ICollection<AddressViewModel> GetMyAddreses(ApplicationUser user)
+        public IEnumerable<AddressViewModel> GetMyAddreses(ApplicationUser user)
         {
             return this.addressRepository
                 .All()

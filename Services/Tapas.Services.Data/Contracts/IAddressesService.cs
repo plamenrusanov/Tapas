@@ -8,7 +8,7 @@
 
     public interface IAddressesService
     {
-        ICollection<AddressViewModel> GetMyAddreses(ApplicationUser user);
+        IEnumerable<AddressViewModel> GetMyAddreses(ApplicationUser user);
 
         Task<AddressInputModel> GetAddressAsync(string latitude, string longitude);
 

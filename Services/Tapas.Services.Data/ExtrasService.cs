@@ -27,7 +27,7 @@
             await this.extrasRepository.SaveChangesAsync();
         }
 
-        public ICollection<ExtraCartItemModel> All(bool isDeleted)
+        public IEnumerable<ExtraCartItemModel> All(bool isDeleted)
         {
             return this.extrasRepository
                 .AllWithDeleted()

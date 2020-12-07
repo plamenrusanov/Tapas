@@ -287,7 +287,7 @@
             await this.productsRepo.SaveChangesAsync();
         }
 
-        public ICollection<DetailsProductViewModel> GetAllProducts(bool isDeleted)
+        public IEnumerable<DetailsProductViewModel> GetAllProducts(bool isDeleted)
         {
             return this.productsRepo.AllWithDeleted()
                 .Where(x => x.IsDeleted == isDeleted)
@@ -315,11 +315,13 @@
             {
                 Categories = this.categoriesRepository
                 .AllAsNoTracking()
+                .OrderBy(x => x.Position)
                 .Select(x => new CategoryViewModel()
                 {
                     Id = x.Id,
                     Name = x.Name,
-                }).ToList(),
+                })
+                .ToList(),
             };
 
             if (this.categoriesRepository.All().Any(x => x.Id == categoryId))

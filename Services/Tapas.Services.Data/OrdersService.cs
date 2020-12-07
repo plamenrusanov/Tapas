@@ -8,14 +8,15 @@
 
     using Microsoft.AspNetCore.Mvc.Rendering;
     using Microsoft.EntityFrameworkCore;
+    using Newtonsoft.Json;
     using Tapas.Common;
     using Tapas.Data.Common.Repositories;
     using Tapas.Data.Models;
     using Tapas.Data.Models.Enums;
     using Tapas.Services.Contracts;
     using Tapas.Services.Data.Contracts;
+    using Tapas.Services.Data.Dto;
     using Tapas.Services.Dto.Mistral;
-    using Tapas.Web.ViewModels.Addresses;
     using Tapas.Web.ViewModels.Administration.Sizes;
     using Tapas.Web.ViewModels.Extras;
     using Tapas.Web.ViewModels.Orders;
@@ -88,7 +89,8 @@
                                 }
 
                                 order.ProcessingTime = DateTime.UtcNow;
-                                await this.SendOrderToMistralAsync(order);
+
+                                // await this.SendOrderToMistralAsync(order);
                                 break;
                             case OrderStatus.OnDelivery: order.OnDeliveryTime = DateTime.UtcNow; break;
                             case OrderStatus.Delivered: order.DeliveredTime = DateTime.UtcNow; break;
@@ -115,15 +117,24 @@
         // Post Orders/Create
         public async Task<int> CreateAsync(ApplicationUser user, OrderInpitModel model)
         {
-            if (model.TakeAway)
+            var address = JsonConvert.DeserializeObject<DeliveryAddress>(model.Address);
+            address.ApplicationUserId = user.Id;
+            await this.addressRepository.AddAsync(address);
+            await this.addressRepository.SaveChangesAsync();
+            var cart = JsonConvert.DeserializeObject<List<ShoppingCartItemDto>>(model.Cart);
+            var bag = new ShopingCart()
             {
-                model.AddressId = this.addressRepository.All().Where(a => a.DisplayName == GlobalConstants.TakeAway).FirstOrDefault()?.Id;
-            }
+                ApplicationUserId = user.Id,
+            };
+            await this.cartRepository.AddAsync(bag);
+            await this.cartRepository.SaveChangesAsync();
 
             var order = new Order()
             {
-                AddInfo = model.AddInfo,
-                AddressId = model.AddressId,
+                Name = model.Username,
+                Phone = model.Phone,
+                AddInfo = model.AddInfoOrder,
+                AddressId = address.Id,
                 UserId = user.Id,
                 Status = OrderStatus.Unprocessed,
                 CreatedOn = DateTime.UtcNow,
@@ -131,15 +142,40 @@
                 Cutlery = model.CutleryCount,
             };
 
-            foreach (var item in user.ShopingCart.CartItems)
+            if (model.TakeAway)
             {
-                order.Bag.CartItems.Add(item);
+                order.AddressId = this.addressRepository.All().Where(a => a.DisplayName == GlobalConstants.TakeAway).FirstOrDefault()?.Id;
             }
 
+            foreach (var item in cart)
+            {
+                var i = new ShopingCartItem()
+                {
+                    ShopingCartId = bag.Id,
+                    SizeId = item.SizeId,
+                    ProductId = item.ProductId,
+                    Quantity = item.Quantity,
+                    Description = item.Description,
+                    ExtraItems = new List<ExtraItem>(),
+                };
+
+                foreach (var e in item.Extras)
+                {
+                    i.ExtraItems.Add(new ExtraItem()
+                    {
+                        ShopingCartItemId = i.Id,
+                        ExtraId = e.Id,
+                        Quantity = e.Quantity,
+                    });
+                }
+
+                await this.itemsRepository.AddAsync(i);
+                order.Bag.CartItems.Add(i);
+            }
+
+            await this.itemsRepository.SaveChangesAsync();
             await this.ordersRepository.AddAsync(order);
             await this.ordersRepository.SaveChangesAsync();
-
-            user.ShopingCart.CartItems.Clear();
 
             return order.Id;
         }
@@ -156,12 +192,14 @@
 
             var model = new OrderDetailsViewModel()
             {
+                Latitude = order.Address.Latitude,
+                Longitude = order.Address.Longitude,
                 CreatedOn = order.CreatedOn.ToLocalTime().ToString("dd/MM/yy HH:mm"),
                 OrderId = order.Id,
-                DisplayAddress = order.Address.DisplayName,
+                DisplayAddress = order.Address.ToString(),
                 AddressInfo = order.Address.AddInfo,
-                UserUserName = order.User.UserName,
-                UserPhone = order.User.PhoneNumber,
+                UserUserName = order.Name,
+                UserPhone = order.Phone,
                 AddInfo = order.AddInfo,
                 TakeAway = order.TakeAway,
                 CutleryCount = order.Cutlery,
@@ -224,7 +262,7 @@
         }
 
         // Orders/Index
-        public ICollection<OrdersViewModel> GetDailyOrders()
+        public IEnumerable<OrdersViewModel> GetDailyOrders()
         {
             return this.ordersRepository.All().AsEnumerable()
                 .Where(x => x.CreatedOn.ToLocalTime().Date == DateTime.Now.Date)
@@ -236,68 +274,10 @@
                 }).ToList();
         }
 
-        // Orders/Create
-        public OrderInpitModel GetOrderInputModel(ApplicationUser user, string addressId)
-        {
-            if (user is null)
-            {
-                throw new ArgumentNullException();
-            }
-
-            var model = new OrderInpitModel()
-            {
-                TakeAway = false,
-                AddInfo = string.Empty,
-                ApplicationUserId = user.Id,
-                Addresses = user.Addresses
-                    .Select(x => new SelectListItem()
-                    {
-                        Text = x.DisplayName,
-                        Value = x.Id,
-                        Selected = addressId == x.Id,
-                    }).ToList(),
-                CartItems = this.cartRepository
-                    .All()
-                    .Where(x => x.Id == user.ShopingCart.Id)
-                    .FirstOrDefault()
-                    ?.CartItems
-                    .Select(x => new ShopingItemsViewModel()
-                    {
-                        ProductId = x.ProductId,
-                        ProductName = x.Product.Name,
-                        ProductPrice = x.Size.Price,
-                        Quantity = x.Quantity,
-                        Description = x.Description,
-                        Extras = x.ExtraItems
-                                  ?.Select(e => new ExtraCartItemModel()
-                                  {
-                                      Name = e.Extra.Name,
-                                      Price = e.Extra.Price,
-                                      Quantity = e.Quantity,
-                                  }).ToList(),
-                        Size = new ProductSizeViewModel()
-                        {
-                            SizeName = this.sizeRepository
-                                           .All()
-                                           .Where(s => s.MenuProductId == x.ProductId)
-                                           .Count() > 1 ? x.Size.SizeName : null,
-                        },
-                    }).ToList(),
-                PackegesPrice = this.itemsRepository
-                    .All()
-                    .Where(x => x.ShopingCartId == user.ShopingCart.Id)
-                    .Sum(x => Math.Ceiling((decimal)x.Quantity / x.Size.MaxProductsInPackage) * x.Size.Package.Price),
-            };
-
-            model.OrderPrice = model.CartItems.Sum(x => x.ItemPrice) + model.PackegesPrice + model.DeliveryFee;
-
-            return model;
-        }
-
         public bool IsExists(int id) => this.ordersRepository.All().Any(x => x.Id == id);
 
         // Orders/All
-        public async Task<ICollection<OrderCollectionViewModel>> GetAllAsync()
+        public async Task<IEnumerable<OrderCollectionViewModel>> GetAllAsync()
         {
             return await this.ordersRepository.All()
                 .Select(x => new OrderCollectionViewModel()
@@ -309,7 +289,7 @@
         }
 
         // Orders/All => OrdersByUser
-        public async Task<ICollection<OrdersViewModel>> GetOrdersByUserNameAsync(string userName)
+        public async Task<IEnumerable<OrdersViewModel>> GetOrdersByUserNameAsync(string userName)
         {
             return await this.ordersRepository.All()
                 .Where(x => x.User.UserName == userName)
@@ -321,11 +301,11 @@
         }
 
         // Orders/UserOrders
-        public async Task<ICollection<UserOrderViewModel>> GetMyOrdersAsync(ApplicationUser user)
+        public async Task<IEnumerable<UserOrderViewModel>> GetMyOrdersAsync(ApplicationUser user)
         {
             if (user is null)
             {
-                throw new ArgumentNullException("User is null!");
+                return new List<UserOrderViewModel>();
             }
 
             return await this.ordersRepository.All()
@@ -407,9 +387,9 @@
             return model;
         }
 
-        public async Task SetRatingAsync(List<RatingItemDto> rating, string message)
+        public async Task SetRatingAsync(IEnumerable<RatingItemDto> rating, string message)
         {
-            if (rating.Count > 0)
+            if (rating.ToList().Count > 0)
             {
                 var order = this.ordersRepository
                     .All()

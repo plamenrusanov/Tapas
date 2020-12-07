@@ -5,6 +5,7 @@
     using System.Linq;
     using System.Threading.Tasks;
 
+    using AutoMapper;
     using Tapas.Data.Common.Repositories;
     using Tapas.Data.Models;
     using Tapas.Services.Data.Contracts;
@@ -13,29 +14,35 @@
     public class CategoriesService : ICategoriesService
     {
         private readonly IRepository<Category> categoriesRepository;
+        private readonly IMapper mapper;
 
-        public CategoriesService(IRepository<Category> categoriesRepository)
+        public CategoriesService(IRepository<Category> categoriesRepository, IMapper mapper)
         {
             this.categoriesRepository = categoriesRepository;
+            this.mapper = mapper;
         }
 
         public async Task AddAsync(string name)
         {
-            await this.categoriesRepository
-                .AddAsync(new Category()
-                {
-                    Name = name,
-                });
+            var catg = new Category()
+            {
+                Name = name,
+                Position = this.categoriesRepository.All().ToList().Count + 1,
+            };
+            await this.categoriesRepository.AddAsync(catg);
             await this.categoriesRepository.SaveChangesAsync();
         }
 
-        public ICollection<CategoryViewModel> All()
+        public IEnumerable<CategoryViewModel> All()
         {
-            return this.categoriesRepository.All().Select(x => new CategoryViewModel()
-            {
-                Id = x.Id,
-                Name = x.Name,
-            }).ToList();
+            return this.categoriesRepository.All()
+                .OrderBy(x => x.Position)
+                .Select(x => new CategoryViewModel()
+                {
+                    Id = x.Id,
+                    Name = x.Name,
+                    Position = x.Position,
+                }).ToList();
         }
 
         public void Edit(CategoryViewModel categoryViewModel)
@@ -95,6 +102,13 @@
             var category = this.GetCategoryById(categoryId);
 
             this.categoriesRepository.Delete(category);
+            this.categoriesRepository
+                .All()
+                .Where(x => x.Position > category.Position)
+                .AsEnumerable()
+                .Select(x => x.Position--)
+                .ToList();
+
             this.categoriesRepository.SaveChanges();
         }
 
@@ -109,6 +123,18 @@
                 .Where(x => x.Id == categoryId)
                 .Select(x => x.Name)
                 .FirstOrDefault();
+        }
+
+        public async Task SavePositions(IEnumerable<CategoryViewModel> models)
+        {
+            foreach (var model in models)
+            {
+                var category = this.mapper.Map<Category>(model);
+                this.categoriesRepository
+                    .Update(category);
+            }
+
+            await this.categoriesRepository.SaveChangesAsync();
         }
 
         private Category GetCategoryById(string categoryId)

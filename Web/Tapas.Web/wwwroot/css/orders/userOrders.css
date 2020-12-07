@@ -56,7 +56,15 @@ li.nav-item{
     margin: 0 auto;
 }
 
+#ratingHolder {
+    background-color: cornsilk;
+}
 
+.comment-header {
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-align: center;
+}
 
 
     

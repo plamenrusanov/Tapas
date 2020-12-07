@@ -15,12 +15,14 @@
 
         Task AddAsync(string categoryName);
 
-        ICollection<CategoryViewModel> All();
+        IEnumerable<CategoryViewModel> All();
 
         CategoryViewModel GetCategoryViewModelById(string categoryId);
 
         void Edit(CategoryViewModel categoryViewModel);
 
         void Remove(string categoryId);
+
+        Task SavePositions(IEnumerable<CategoryViewModel> models);
     }
 }

@@ -1,8 +1,10 @@
 ﻿namespace Tapas.Web.Areas.Administration.Controllers
 {
+    using System.Collections.Generic;
     using System.Threading.Tasks;
 
     using Microsoft.AspNetCore.Mvc;
+    using Newtonsoft.Json;
     using Tapas.Services.Data.Contracts;
     using Tapas.Web.ViewModels.Administration.Categories;
 
@@ -146,6 +148,13 @@
             {
                 return this.BadRequest();
             }
+        }
+
+        public async Task<IActionResult> SavePositions(string models)
+        {
+            var m = JsonConvert.DeserializeObject<List<CategoryViewModel>>(models);
+            await this.categoriesService.SavePositions(m);
+            return this.Ok();
         }
     }
 }

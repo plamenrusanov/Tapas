@@ -86,7 +86,7 @@
         }
 
         // Administration/CateringFood/Index
-        public List<IndexCateringFoodViewModel> GetAll()
+        public IEnumerable<IndexCateringFoodViewModel> GetAll()
         {
             return this.cateringRepository.All()
                 .Select(x => new IndexCateringFoodViewModel()
@@ -295,7 +295,7 @@
             await this.cateringRepository.SaveChangesAsync();
         }
 
-        public List<DeletedCateringProducts> GetDeletedProducts()
+        public IEnumerable<DeletedCateringProducts> GetDeletedProducts()
         {
             var model = this.cateringRepository
                 .AllWithDeleted()

@@ -43,6 +43,12 @@
 
         public const string TakeAway = "TakeAway";
 
+        public const string ShoppingCartCookieKey = "_tsck";
+
+        public const string UserIdCookieKey = "_tui";
+
+        public const string Domain = "tapasrestaurant.bg";
+
         public static TimeSpan OpenTime => new TimeSpan(10, 0, 0);
 
         public static TimeSpan CloseTime => new TimeSpan(22, 45, 0);

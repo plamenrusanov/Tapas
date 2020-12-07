@@ -4,6 +4,7 @@
     using System.Threading.Tasks;
 
     using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.SignalR;
@@ -14,7 +15,6 @@
     using Tapas.Web.Hubs;
     using Tapas.Web.ViewModels.Orders;
 
-    [Authorize]
     public class OrdersController : Controller
     {
         private readonly UserManager<ApplicationUser> userManager;
@@ -38,36 +38,15 @@
         }
 
         // Orders/Index
-        [Authorize(Roles = "Operator")]
+        [Authorize(Roles = GlobalConstants.OperatorName)]
         public IActionResult Index()
         {
             var orders = this.ordersService.GetDailyOrders();
             return this.View(orders);
         }
 
-        // Orders/Create
-        public async Task<IActionResult> Create()
-        {
-            try
-            {
-                var user = await this.userManager.GetUserAsync(this.User);
-
-                var model = this.ordersService.GetOrderInputModel(user, this.TempData["addressId"]?.ToString());
-                if (model.OrderPrice < GlobalConstants.OrderPriceMin)
-                {
-                    return this.RedirectPermanent("/Administration/Products");
-                }
-
-                return this.View(model);
-            }
-            catch (Exception e)
-            {
-                this.logger.LogInformation(GlobalConstants.DefaultLogPattern, this.User?.Identity.Name, e.Message, e.StackTrace);
-                return this.NotFound();
-            }
-        }
-
         // Post Orders/Create
+        [AllowAnonymous]
         [HttpPost]
         [AutoValidateAntiforgeryToken]
         public async Task<IActionResult> Create(OrderInpitModel model)
@@ -79,23 +58,38 @@
 
             if (!this.ModelState.IsValid)
             {
-                foreach (var item in this.ModelState)
-                {
-                    Console.WriteLine(item.Key.ToString());
-                    foreach (var error in item.Value.Errors)
-                    {
-                        Console.WriteLine(error.ErrorMessage);
-                    }
-                }
-
-                return this.RedirectToAction("Create");
+                return this.Redirect("ShoppingCart/Index");
             }
 
             try
             {
                 var user = await this.userManager.GetUserAsync(this.User);
+                if (user == null && this.Request.Cookies.ContainsKey(GlobalConstants.UserIdCookieKey))
+                {
+                    user = await this.userManager.FindByIdAsync(this.Request.Cookies[GlobalConstants.UserIdCookieKey]);
+                }
+                else if (user == null)
+                {
+                    user = new ApplicationUser()
+                    {
+                        UserName = model.Username,
+                        PhoneNumber = model.Phone,
+                        Email = $"{this.Request.HttpContext.Connection.RemoteIpAddress}@tapas.bg",
+                    };
+                    await this.userManager.CreateAsync(user);
+                    this.Response.Cookies.Append(GlobalConstants.UserIdCookieKey, user.Id, new CookieOptions()
+                    {
+                        Domain = this.Request.Host.Host,
+                        HttpOnly = true,
+                        Secure = true,
+                        Expires = DateTime.UtcNow.AddYears(2),
+                        Path = GlobalConstants.IndexRoute,
+                    });
+                }
+
                 var id = await this.ordersService.CreateAsync(user, model);
                 await this.hubAdmin.Clients.All.SendAsync("OperatorNewOrder", id);
+                this.TempData["NewOrder"] = true;
                 return this.Redirect("/Orders/UserOrders");
             }
             catch (Exception e)
@@ -106,7 +100,7 @@
         }
 
         // Ajax Orders/Details
-        [Authorize(Roles = "Operator")]
+        [Authorize(Roles = GlobalConstants.OperatorName)]
         public IActionResult Details(string orderId)
         {
             if (string.IsNullOrEmpty(orderId))
@@ -133,7 +127,7 @@
         }
 
         // Orders/All
-        [Authorize(Roles = "Administrator")]
+        [Authorize(Roles = GlobalConstants.AdministratorName)]
         public async Task<IActionResult> All()
         {
             var model = await this.ordersService.GetAllAsync();
@@ -141,7 +135,7 @@
         }
 
         // Orders/All => OrdersByUser
-        [Authorize(Roles = "Administrator")]
+        [Authorize(Roles = GlobalConstants.AdministratorName)]
         public async Task<IActionResult> OrdersByUser(string userName)
         {
             if (string.IsNullOrEmpty(userName))
@@ -163,13 +157,13 @@
         }
 
         // Orders/UserOrders
+        [AllowAnonymous]
         public async Task<IActionResult> UserOrders()
         {
             var user = await this.userManager.GetUserAsync(this.User);
-
-            if (user == null)
+            if (user == null && this.Request.Cookies.ContainsKey(GlobalConstants.UserIdCookieKey))
             {
-                return this.Redirect(GlobalConstants.LoginPageRoute);
+                user = await this.userManager.FindByIdAsync(this.Request.Cookies[GlobalConstants.UserIdCookieKey]);
             }
 
             try
@@ -185,6 +179,7 @@
         }
 
         // Orders/UserOrders/UserOrderDetails
+        [AllowAnonymous]
         public IActionResult UserOrderDetails(string orderId)
         {
             if (string.IsNullOrEmpty(orderId))

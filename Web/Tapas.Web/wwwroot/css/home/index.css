@@ -220,3 +220,24 @@ div.dropdown-item {
 .btn-large:hover {
     background-color: rgb(180,163,147);
 }
+
+.btn-facebook{
+    height: 30px;
+    line-height: 30px;
+    padding: 0 10px;
+}
+
+.btn-facebook::after{
+    margin-left: 10px;
+    content: "fasebook";
+}
+
+@media only screen and (min-width: 992px){
+    .logo-footer {
+        padding-top: 60px;
+    }
+}
+
+.li-contacts{
+    margin-bottom:2px;
+}

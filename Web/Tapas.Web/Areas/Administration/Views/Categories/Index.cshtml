@@ -5,7 +5,10 @@
 }
 
 <div class="row">
-    <div class="col-md-9 text-center">
+    <div class="col-md-3 content-end">
+        <button class="btn btn-primary" onclick="setPosition()">Запази позициите</button>
+    </div>
+    <div class="col-md-6 text-center">
         <h1>@this.ViewData["Title"]</h1>
     </div>
     <div class="col-md-3 justify-content-end">
@@ -17,8 +20,11 @@
     <table class="table">
         <thead>
             <tr class="row">
-                <th class="col-md-6">
+                <th class="col-md-4">
                     @Html.Label("Име")
+                </th>
+                <th class="col-md-2">
+                    @Html.Label("Позиция")
                 </th>
                 <th class="col-md-2">
                     @Html.Label("Редактирай")
@@ -31,27 +37,40 @@
                 </th>
             </tr>
         </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-                <tr class="row">
-                    <td class="col-md-6">
-                        <h3>@item.Name</h3>
-                    </td>
-                    <td class="col-md-2">
-                        <a class="btn btn-primary" asp-area="Administration" asp-controller="Categories"
-                           asp-action="Edit" asp-route-categoryId="@item.Id">Редактирай</a>
-                    </td>
-                    <td class="col-md-2">
-                        <a class="btn btn-primary" asp-area="Administration" asp-controller="Categories"
-                           asp-action="Details" asp-route-categoryId="@item.Id">Детайли</a>
-                    </td>
-                    <td class="col-md-2">
-                        <a class="btn btn-primary" asp-area="Administration" asp-controller="Categories"
-                           asp-action="Delete" asp-route-categoryId="@item.Id">Изтрий</a>
-                    </td>
-                </tr>
-            }
+        <tbody id="tbody">
+                @for (var i = 0; i < Model.Count; i++)
+                {
+                    <tr class="row" id="tr@(i)">
+                        @Html.HiddenFor(x => x[i].Id, new { @id = $"id{i}" })
+                        <td class="col-md-4">
+                            <h3 id="n@(i)">@Model[i].Name</h3>
+                        </td>
+                        <td class="col-md-2">
+                            <div id="plus@(i)" onclick="up(@(i))" class="chevron" style="display:@(i == 0 ? "none" : "flex");"><i class="btn fa fa-chevron-up icon"></i></div>
+                            <input id="p@(i)" type="number" class="form-control" value="@(Model[i].Position)" hidden/>
+                            <div id="minus@(i)" onclick="down(@(i))" class="chevron" style="display:@(i == Model.Count - 1? "none": "flex");"><i class="btn fa fa-chevron-down icon"></i></div>
+                        </td>
+                        <td class="col-md-2">
+                            <a class="btn btn-primary" asp-area="Administration" asp-controller="Categories"
+                               asp-action="Edit" asp-route-categoryId="@Model[i].Id">Редактирай</a>
+                        </td>
+                        <td class="col-md-2">
+                            <a class="btn btn-primary" asp-area="Administration" asp-controller="Categories"
+                               asp-action="Details" asp-route-categoryId="@Model[i].Id">Детайли</a>
+                        </td>
+                        <td class="col-md-2">
+                            <a class="btn btn-primary" asp-area="Administration" asp-controller="Categories"
+                               asp-action="Delete" asp-route-categoryId="@Model[i].Id">Изтрий</a>
+                        </td>
+                    </tr>
+                }
         </tbody>
     </table>
 </div>
+
+@section Style{
+    <link href="~/css/categories/index.css" rel="stylesheet" />
+}
+@section Scripts{
+    <script src="~/js/categories/index.js"></script>
+}

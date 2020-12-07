@@ -32,12 +32,12 @@
             }
         }
     });
-};
+}
 
-$(document).ready(function () {
+function getAddressFromLocation () {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function (position) {
             Send(position.coords.latitude, position.coords.longitude);
         });
     }
-});
+}

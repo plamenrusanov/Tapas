@@ -32,7 +32,7 @@
             await this.packageRepository.SaveChangesAsync();
         }
 
-        public ICollection<PackageViewModel> All()
+        public IEnumerable<PackageViewModel> All()
         {
             return this.packageRepository.All().Select(x => new PackageViewModel()
             {

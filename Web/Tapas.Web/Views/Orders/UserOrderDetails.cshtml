@@ -171,8 +171,10 @@
 </div>
 <div class="mt-3 row">
     <div class="col-md-6" id="ratingHolder">
+
         @if (!hasRating && Model.Status == OrderStatus.Delivered)
         {
+            <div class="comment-header">Оценете поръчката</div>
             @foreach (var item in Model.CartItems)
             {
                 <div class="row" id="rating@(item.Id)">
@@ -200,7 +202,7 @@
                 </div>
             }
             <div class="row">
-                <input type="text" id="clientComment" class="form-control" />
+                <input type="text" id="clientComment" class="form-control" placeholder="Препоръки..." />
             </div>
             <div class="text-center mt-3 row">
                 <button class="btn btn-primary" onclick="getRating()" id="ratingBtn">Добави рейтинг</button>

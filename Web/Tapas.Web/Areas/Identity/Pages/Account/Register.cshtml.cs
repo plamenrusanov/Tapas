@@ -1,5 +1,6 @@
 ﻿namespace Tapas.Web.Areas.Identity.Pages.Account
 {
+    using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.Linq;
@@ -9,6 +10,7 @@
 
     using Microsoft.AspNetCore.Authentication;
     using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -74,6 +76,14 @@
                         this.logger.LogInformation($"{user.UserName} can't seed to role User.");
                     }
 
+                    this.Response.Cookies.Append(GlobalConstants.UserIdCookieKey, user.Id, new CookieOptions()
+                    {
+                        Domain = GlobalConstants.Domain,
+                        HttpOnly = true,
+                        Secure = true,
+                        Expires = DateTime.UtcNow.AddYears(2),
+                        Path = GlobalConstants.IndexRoute,
+                    });
                     var code = await this.userManager.GenerateEmailConfirmationTokenAsync(user);
                     code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
                     var callbackUrl = this.Url.Page(

@@ -1,0 +1,195 @@
+﻿@model Tapas.Web.ViewModels.Orders.OrderInpitModel
+@{
+    ViewData["Title"] = "Количка";
+}
+
+
+<h1 class="text-center">Твоята количка</h1>
+<hr class="hr-tapas" />
+<div id="cartHolder"></div>
+
+@*<div class="row">
+        @if (Model.TotalPrice < GlobalConstants.OrderPriceMin)
+        {
+            <p>&#8270; Минимална сума на поръчка @(GlobalConstants.OrderPriceMin.ToString("F0")) лева.</p>
+        }
+        else if (Model.TotalPrice < GlobalConstants.MOPTCDF)
+        {
+            <p>&#8270; Поръчка под @(GlobalConstants.MOPTCDF.ToString("F0")) лева заплаща доставка!</p>
+        }
+        else if (Model.TotalPrice < GlobalConstants.OrderPriceForBonus)
+        {
+            <p>&#8270; Поръчка над @(GlobalConstants.OrderPriceForBonus.ToString("F0")) лева получава подарък!</p>
+        }
+    </div>*@
+
+<hr class="hr-tapas" />
+<div id="delivery" style="display:none">
+    <div class="row mt-2">
+        <h5 style="width:70%;">Ще ви бъде начислена сума за доставка!</h5>
+        <a class="btn btn-secondary btn-sm" onclick="displayDeliveryTax()" style="color:white; height: fit-content;">Доставка</a>
+        <button hidden data-toggle="modal" data-target="#deliveryTax" id="btnDeliveryTax"></button>
+    </div>
+    <hr class="hr-tapas" />
+</div>
+
+
+
+
+<div class="row">
+    <div class="col-50 text-center">
+        <a class="btn btn-primary btn-lg" href="/Administration/Products/">Към менюто</a>
+    </div>
+    @if (GlobalConstants.TimeNow > GlobalConstants.CloseTime || GlobalConstants.TimeNow < GlobalConstants.OpenTime)
+    {
+        <div class="col-50 text-center">
+            <h3 style="color: #C82333">Затворено</h3>
+        </div>
+    }
+    else
+    {
+        <div class="col-50 text-center" id="prepareOrder">
+            <a class="btn btn-primary btn-lg" href="#accountInfo" onclick="getAccountInfo()">Оформи поръчка</a>
+        </div>
+    }
+</div>
+<div class="row" id="accountInfo" style="display:none">
+    <hr class="hr-tapas" />
+    <div class="col-md-6">
+        <div class="mb-1 divCheckBox">
+            @Html.CheckBoxFor(x => x.TakeAway, new { onchange = "fChange(this)" }) <span class="addressLabel ml-2"> Вземи от ресторанта.</span>
+        </div>
+        <div class="row mb-1">
+            <label class="col-md-4 addressLabel">Име: </label>
+            <input class="col-md-8 form-control" id="username"  maxlength="20" min="3"/>
+        </div>
+        <div class="row mb-1">
+            <label class="col-md-4 addressLabel">Телефон: </label>
+            <input class="col-md-8 form-control" id="phone" />
+        </div>
+        <div class="row mb-1">
+            <label class="col-md-4 addressLabel">Прибори: </label>
+            @Html.DropDownListFor(x => x.Cutlery, Model.Cutlery, new { @class = "form-control col-md-8" })
+        </div>
+        <div class="row mb-1">
+            <label class="addressLabelInfo">Допълнителна информация: </label>
+            <textarea id="addInfoOrder" class="form-control" rows="3" cols="30" placeholder="Час на доставка..."></textarea>
+        </div>
+    </div>
+    <div class="col-md-6" id="addressDiv">
+        <div>
+            <input id="latitude" hidden />
+            <input id="longitude" hidden />
+            <input id="displayName" hidden />
+        </div>
+        <div class="row mb-1">
+            <label class="col-md-4 addressLabel">Град: </label>
+            <input class="col-md-8 form-control" id="city" />
+        </div>
+        <div class="row mb-1">
+            <label class="col-md-4 addressLabel">Квартал: </label>
+            <input class="col-md-8 form-control" id="borough" />
+        </div>
+        <div class="row mb-1">
+            <label class="col-md-4 addressLabel">Улица: </label>
+            <input class="col-md-8 form-control" id="street" />
+        </div>
+        <div class="row mb-1">
+            <label class="col-md-4 addressLabel">Номер: </label>
+            <input class="col-md-8 form-control" id="streetNumber" />
+        </div>
+        <div class="row mb-1">
+            <label class="col-md-4 addressLabel">Блок: </label>
+            <input class="col-md-8 form-control" id="block" />
+        </div>
+        <div class="row mb-1">
+            <label class="col-md-4 addressLabel">Вход: </label>
+            <input class="col-md-8 form-control" id="entry" />
+        </div>
+        <div class="row mb-1">
+            <label class="col-md-4 addressLabel">Етаж: </label>
+            <input class="col-md-8 form-control" id="floor" />
+        </div>
+        <div class="row mb-1">
+            <div class="col-md-12 colAddressInfo">
+                <label class="addressLabelInfo">Допълнителна информация за адреса</label>
+                <textarea id="addInfoAddress" class="form-control" rows="3" cols="30" placeholder="Звънец, заключена врата..."></textarea>
+            </div>
+        </div>
+    </div>
+    <hr class="hr-tapas" />
+    <div class="row mb-1 w-100">
+        <a class="btn btn-primary btn-lg sendBtn" onclick="sendOrder()">Изпрати поръчка</a>
+    </div>
+</div>
+<div hidden>
+    <form action="/Orders/Create" method="post">
+        @Html.AntiForgeryToken()
+        <input name="Cart" id="Cart"/>
+        <input name="Address" id="Address"/>
+        <input name="Username" id="Username"/>
+        <input name="Phone" id="Phone"/>
+        <input name="AddInfoOrder" id="AddInfoOrder"/>
+        <input name="CutleryCount" id="CutleryCount"/>
+        <input name="TakeAway" id="Takeaway"/>
+        <input type="submit" id="form-submit"/>
+    </form>
+</div>
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle" style="color:black"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <span>Добави описание</span>
+                        <div id="sciId" hidden></div>
+                        <textarea class="form-control" id="message-text" maxlength="150"></textarea>
+                        <p id="message"></p>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <a class="btn btn-secondary justify-content-start" data-dismiss="modal" id="closeModal" hidden>Затвори</a>
+                <a class="btn btn-primary align-content-end" onclick="setDescription()">Запази промените</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="deliveryTax" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deliveryModalTitle" style="color:black">Цени за доставка</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                - 1 лев : Чародейка-Юг<br />
+                - 2 лева : за града<br />
+                - 4 лева : Източна Промишлена Зона, Западна Промишлена Зона, Долапи, Средна Кула<br />
+
+            </div>
+            <div class="modal-footer">
+                <a class="btn btn-secondary" data-dismiss="modal" id="closeModal">Затвори</a>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script src="~/js/shopingCart/index.js" type="text/javascript"></script>
+    <script src="~/js/shopingCart/cart.js"></script>
+    <script src="~/js/addreses/create.js"></script>
+}
+@section Style{
+    <link rel="stylesheet" type="text/css" href="~/css/shared/shopingCartTable.css">
+    <link href="~/css/shopingCart/index.css" rel="stylesheet" />
+}

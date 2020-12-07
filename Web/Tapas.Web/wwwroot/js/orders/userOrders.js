@@ -60,7 +60,6 @@ function sendRating(rating, message) {
     connection.invoke("UserSetRating", rating, message);
 };
 
-
 function getRating() {
     var dataRating = [];
     var message;
@@ -83,4 +82,13 @@ function getRating() {
         message = document.getElementById("clientComment").value;
     }
     sendRating(dataRating, message);
+}
+
+var l = document.getElementById('listOrders');
+if (l.children[0]) {
+    l.children[0].click();
+};
+
+if (document.getElementsByClassName('alert alert-success')) {
+    localStorage.setItem('cart', JSON.stringify(new Array()));
 }

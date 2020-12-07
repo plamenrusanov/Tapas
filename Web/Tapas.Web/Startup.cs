@@ -3,6 +3,7 @@
     using System;
     using System.Reflection;
 
+    using AutoMapper;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Http;
@@ -10,7 +11,6 @@
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
-    using Microsoft.Net.Http.Headers;
     using Tapas.Data;
     using Tapas.Data.Common;
     using Tapas.Data.Common.Repositories;
@@ -24,6 +24,7 @@
     using Tapas.Services.Mapping;
     using Tapas.Services.Messaging;
     using Tapas.Web.Hubs;
+    using Tapas.Web.MappingConfig;
     using Tapas.Web.ViewModels;
 
     public class Startup
@@ -50,7 +51,7 @@
                 options =>
                     {
                         options.CheckConsentNeeded = context => true;
-                        options.MinimumSameSitePolicy = Microsoft.AspNetCore.Http.SameSiteMode.None;
+                        options.MinimumSameSitePolicy = SameSiteMode.None;
                     });
 
             services.AddSignalR(
@@ -58,6 +59,14 @@
                {
                    options.EnableDetailedErrors = true;
                }).AddMessagePackProtocol();
+
+            var mapperConfig = new MapperConfiguration(mc =>
+            {
+                mc.AddProfile(new MappingProfile());
+            });
+
+            IMapper mapper = mapperConfig.CreateMapper();
+            services.AddSingleton(mapper);
 
             services.AddControllersWithViews();
             services.AddRazorPages();
@@ -89,7 +98,6 @@
 
             services.AddTransient<IAllergensService, AllergensService>();
             services.AddTransient<ICategoriesService, CategoriesService>();
-            services.AddTransient<IHomeService, HomeService>();
             services.AddTransient<IProductsService, ProductsService>();
             services.AddTransient<IShopingCartService, ShopingCartService>();
             services.AddTransient<IOrdersService, OrdersService>();
@@ -146,7 +154,7 @@
                     headers.CacheControl = new Microsoft.Net.Http.Headers.CacheControlHeaderValue
                     {
                         Public = true,
-                        MaxAge = TimeSpan.FromDays(30),
+                        MaxAge = TimeSpan.FromDays(365),
                     };
                 },
             });

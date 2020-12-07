@@ -28,8 +28,8 @@
             <div class="row">
                 @foreach (var product in Model.Products)
                 {
-                    <a class="carda btn col-lg-4 col-md-6 mb-4" href="~/ShopingCart/AddItem?productId=@product.Id">
-                        <div class="card h-100">
+                    <a class="carda btn col-lg-4 col-md-6 mb-4" href="~/ShoppingCart/AddItem?productId=@product.Id">
+                        <div class="card h-100" id="@product.Name">
                             <img class="card-img-top" src="https://res.cloudinary.com/duxtyuzpy/image/upload/c_scale,h_140,w_200/v1587540778/@(product.ImageUrl)" alt="@product.Name">
                             <div class="card-body">
                                 <h4 class="name-holder text-center"> @product.Name </h4>

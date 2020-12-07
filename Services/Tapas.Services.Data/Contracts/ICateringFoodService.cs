@@ -11,7 +11,7 @@
 
         Task AddCateringFoodAsync(CreateModel model);
 
-        List<IndexCateringFoodViewModel> GetAll();
+        IEnumerable<IndexCateringFoodViewModel> GetAll();
 
         DetailsCateringFoodViewModel GetDetailsById(string id);
 
@@ -21,7 +21,7 @@
 
         Task Delete(string id);
 
-        List<DeletedCateringProducts> GetDeletedProducts();
+        IEnumerable<DeletedCateringProducts> GetDeletedProducts();
 
         Task ActivateAsync(string productId);
     }

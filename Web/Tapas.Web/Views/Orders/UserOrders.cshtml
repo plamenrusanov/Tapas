@@ -1,8 +1,14 @@
 ﻿@model List<Tapas.Web.ViewModels.Orders.UserOrderViewModel>
 @{
     ViewData["Title"] = "Моите поръчки";
+    bool newOrder = this.TempData["NewOrder"]?.ToString().ToLower() == "true";
 }
-
+@if (newOrder)
+{
+    <div class="alert alert-success" role="alert">
+        <strong>Успешна поръчка!</strong> Може да проследите статуса на поръчката и след като достигне статус "Доставена" да дадете своята оценка.
+    </div>
+}
 <h1 class="text-center">Поръчки</h1>
 <hr class="hr-tapas" />
 <div class="row">
@@ -45,6 +51,10 @@
         }
     </ul>
     <div class="col-md-10 bg-white" id="detailSection">
+        @if (Model.Count == 0)
+        {
+            <h4 class="text-center mt-5 mb-5">Нямате поръчки!</h4>
+        }
     </div>
 </div>
 <hr class="hr-tapas" />
@@ -60,5 +70,4 @@
 {
     <link href="~/css/orders/userOrders.css" rel="stylesheet">
     <link href="~/css/shared/shopingCartTable.css" rel="stylesheet">
-    @*<link href="~/css/orders/orderTable.css" rel="stylesheet" />*@
 }

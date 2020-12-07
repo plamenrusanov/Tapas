@@ -51,5 +51,9 @@
 
         [Display(Name = "Коментар: ")]
         public string CustomerComment { get; set; }
+
+        public string Latitude { get; set; }
+
+        public string Longitude { get; set; }
     }
 }

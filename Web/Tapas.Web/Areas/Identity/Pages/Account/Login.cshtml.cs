@@ -1,5 +1,6 @@
 ﻿namespace Tapas.Web.Areas.Identity.Pages.Account
 {
+    using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.Linq;
@@ -7,10 +8,12 @@
 
     using Microsoft.AspNetCore.Authentication;
     using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Mvc.RazorPages;
     using Microsoft.Extensions.Logging;
+    using Tapas.Common;
     using Tapas.Data.Models;
     using Tapas.Web.ViewModels;
 
@@ -69,6 +72,15 @@
                 var result = await this.signInManager.PasswordSignInAsync(this.Input.UserName, this.Input.Password, this.Input.RememberMe, lockoutOnFailure: false);
                 if (result.Succeeded)
                 {
+                    this.Response.Cookies.Append(GlobalConstants.UserIdCookieKey, this.userManager.FindByNameAsync(this.Input.UserName).GetAwaiter().GetResult().Id, new CookieOptions()
+                    {
+                        Domain = GlobalConstants.Domain,
+                        HttpOnly = true,
+                        Secure = true,
+                        Expires = DateTime.UtcNow.AddYears(2),
+                        Path = GlobalConstants.IndexRoute,
+                    });
+
                     this.logger.LogInformation($"{this.Input.UserName} влезе.");
                     return this.LocalRedirect(returnUrl);
                 }

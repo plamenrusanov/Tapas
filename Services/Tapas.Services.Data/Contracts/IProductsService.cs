@@ -19,7 +19,7 @@
 
         Task DeleteProductAsync(string productId);
 
-        ICollection<DetailsProductViewModel> GetAllProducts(bool isDeleted);
+        IEnumerable<DetailsProductViewModel> GetAllProducts(bool isDeleted);
 
         void Activate(string productId);
 

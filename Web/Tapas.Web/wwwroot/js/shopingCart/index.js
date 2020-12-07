@@ -1,34 +1,35 @@
 ﻿
-function SetDescription() {
-    var itemId = document.getElementById("sciId").value;
+function setDescription() {
+    var index = document.getElementById("sciId").value;
+    var cart = JSON.parse(localStorage.getItem('cart'));
+    if (cart === null || cart.length == 0 || index < 0 || index >= cart.length) {
+        return;
+    }
     var message = document.getElementById("message-text").value;
     if (message.length <= 150) {
-        $.ajax({
-            url: `/ShopingCart/SetDescription?id=${itemId}&message=${message}`,
-            success: function (responce) {
-                var el = document.getElementById("closeModal");
-                el.click();
-            }
+        cart[index].Description = message;
+        localStorage.setItem('cart', JSON.stringify(cart));
+        var el = document.getElementById("closeModal");
+        el.click();
 
-        });
     }
 }
 
 
-function GetDescription(itemId) {
-    $.ajax({
-        url: `/ShopingCart/GetDescription?id=${itemId}`,
-        success: function (response) {
-            var el = document.getElementById(`button${itemId}`);
-            el.click();
-            var elem = document.getElementById("message-text");
-            elem.value = response;
-            var productName = document.getElementById(`name${itemId}`).innerText;
-            document.getElementById("exampleModalLongTitle").innerText = productName;
-            var sciId = document.getElementById("sciId");
-            sciId.value = itemId;
-        }
-    });
+function getDescription(index) {
+    index = parseInt(index);
+    var cart = JSON.parse(localStorage.getItem('cart'));
+    if (cart === null || cart.length == 0 || index < 0 || index >= cart.length) {
+        return;
+    }
+    var el = document.getElementById(`button${index}`);
+    el.click();
+    var elem = document.getElementById("message-text");
+    elem.value = cart[index].Description;
+    var productName = document.getElementById(`name${index}`).innerText;
+    document.getElementById("exampleModalLongTitle").innerText = productName;
+    var sciId = document.getElementById("sciId");
+    sciId.value = index;
 }
 
 function displayDeliveryTax() {

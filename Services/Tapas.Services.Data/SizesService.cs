@@ -29,7 +29,7 @@
             this.shopingCartItemRepository = shopingCartItemRepository;
         }
 
-        private List<PackageViewModel> AvailablePackages => this.packageRepository
+        private IEnumerable<PackageViewModel> AvailablePackages => this.packageRepository
           .All().Select(p => new PackageViewModel()
           {
               Id = p.Id,
@@ -69,11 +69,11 @@
             return new ExtraSize()
             {
                 Index = index,
-                AvailablePackages = this.AvailablePackages,
+                AvailablePackages = this.AvailablePackages.ToList(),
             };
         }
 
-        public List<EditSizeModel> GetSizesOfProduct(string productId)
+        public IEnumerable<EditSizeModel> GetSizesOfProduct(string productId)
         {
             var sizes = this.menuRepository
                 .All()
@@ -89,7 +89,7 @@
                 Weight = x.Weight,
                 PackageId = x.PackageId,
                 MaxProductsInPackage = x.MaxProductsInPackage,
-                Packages = this.AvailablePackages,
+                Packages = this.AvailablePackages.ToList(),
             }).ToList();
         }
 

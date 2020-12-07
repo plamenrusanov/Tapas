@@ -9,7 +9,7 @@
     {
         Task AddAsync(PackageInputModel model);
 
-        ICollection<PackageViewModel> All();
+        IEnumerable<PackageViewModel> All();
 
         PackageViewModel GetPackageViewModelById(int packageId);
 

@@ -15,7 +15,7 @@ namespace Tapas.Data.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.2")
+                .HasAnnotation("ProductVersion", "3.1.3")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -284,12 +284,6 @@ namespace Tapas.Data.Migrations
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ShopingCartId")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ShopingCartId1")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("bit");
 
@@ -308,8 +302,6 @@ namespace Tapas.Data.Migrations
                         .IsUnique()
                         .HasName("UserNameIndex")
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
-
-                    b.HasIndex("ShopingCartId1");
 
                     b.ToTable("AspNetUsers");
                 });
@@ -334,6 +326,9 @@ namespace Tapas.Data.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("Position")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("IsDeleted");
@@ -350,7 +345,7 @@ namespace Tapas.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ApplicationUserId")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Block")
                         .HasColumnType("nvarchar(max)");
@@ -395,8 +390,6 @@ namespace Tapas.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ApplicationUserId");
 
                     b.HasIndex("IsDeleted");
 
@@ -559,8 +552,14 @@ namespace Tapas.Data.Migrations
                     b.Property<DateTime?>("ModifiedOn")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("OnDeliveryTime")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("Phone")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("ProcessingTime")
                         .HasColumnType("datetime2");
@@ -932,20 +931,6 @@ namespace Tapas.Data.Migrations
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("Tapas.Data.Models.ApplicationUser", b =>
-                {
-                    b.HasOne("Tapas.Data.Models.ShopingCart", "ShopingCart")
-                        .WithMany()
-                        .HasForeignKey("ShopingCartId1");
-                });
-
-            modelBuilder.Entity("Tapas.Data.Models.DeliveryAddress", b =>
-                {
-                    b.HasOne("Tapas.Data.Models.ApplicationUser", null)
-                        .WithMany("Addresses")
-                        .HasForeignKey("ApplicationUserId");
                 });
 
             modelBuilder.Entity("Tapas.Data.Models.ExtraItem", b =>

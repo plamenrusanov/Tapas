@@ -16,6 +16,8 @@
 
         public string Name { get; set; }
 
+        public int Position { get; set; }
+
         public virtual ICollection<Product> Products { get; set; }
     }
 }

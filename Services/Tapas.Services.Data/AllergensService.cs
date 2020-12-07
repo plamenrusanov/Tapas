@@ -30,7 +30,7 @@
             await this.allergensRepository.SaveChangesAsync();
         }
 
-        public ICollection<AllergenViewModel> All()
+        public IEnumerable<AllergenViewModel> All()
         {
             return this.allergensRepository.All().Select(x => new AllergenViewModel()
             {
@@ -39,7 +39,7 @@
             }).ToList();
         }
 
-        public ICollection<string> AllAsString()
+        public IEnumerable<string> AllAsString()
         {
             return this.allergensRepository.All().Select(x => x.Name).ToList();
         }

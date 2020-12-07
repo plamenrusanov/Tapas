@@ -1,0 +1,30 @@
+﻿.addressLabel{
+    font-size: 1.25rem;
+    font-weight:500;
+}
+.colAddressInfo{
+    padding-right:0;
+}
+.divCheckBox{
+    padding-left:21px;
+}
+#TakeAway {
+    transform: scale(1.5);
+}
+.sendBtn{
+    margin:0 auto;
+}
+
+
+@media only screen and (max-width: 768px) {
+    .addressLabel, .addressLabelInfo {
+        margin-bottom: 0;
+        padding-left: 5px;
+    }
+    .colAddressInfo{
+        padding-left:0;
+    }
+    .divCheckBox {
+        padding-left: 6px;
+    }
+}

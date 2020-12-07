@@ -9,11 +9,11 @@
 
     public interface ICateringEquipmentService
     {
-        ICollection<IndexEquipmentModel> GetAll();
+        IEnumerable<IndexEquipmentModel> GetAll();
 
         Task ActivateAsync(string productId);
 
-        ICollection<Deleted> GetDeletedProducts();
+        IEnumerable<Deleted> GetDeletedProducts();
 
         Task Delete(string id);
 

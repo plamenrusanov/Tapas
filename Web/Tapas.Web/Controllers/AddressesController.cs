@@ -32,6 +32,7 @@
             return this.View(model);
         }
 
+        [AllowAnonymous]
         public async Task<AddressInputModel> GetAddressFromLocation(string latitude, string longitude)
         {
             if (string.IsNullOrEmpty(latitude) || string.IsNullOrEmpty(longitude))
@@ -39,10 +40,13 @@
                 return null;
             }
 
+            var l = double.Parse(latitude);
+            var lat = (l + 0.0002).ToString();
+
             AddressInputModel model = new AddressInputModel();
             try
             {
-                model = await this.addressesService.GetAddressAsync(latitude, longitude);
+                model = await this.addressesService.GetAddressAsync(lat, longitude);
             }
             catch (Exception)
             {

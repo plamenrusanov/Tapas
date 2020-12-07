@@ -6,7 +6,7 @@
 
     public interface ISizesService
     {
-        List<EditSizeModel> GetSizesOfProduct(string productId);
+        IEnumerable<EditSizeModel> GetSizesOfProduct(string productId);
 
         bool ExistById(int sizeId);
 

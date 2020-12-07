@@ -1,0 +1,183 @@
+﻿@model Tapas.Web.ViewModels.ShopingCart.AddItemViewModel
+@{
+    ViewData["Title"] = "Продукт";
+}
+<div class="container">
+    <!--AddedProduct-->
+    <h1 class="text-center">Добави</h1>
+    <hr class="hr-tapas" />
+    <div class="row">
+        <div class="col-md-4">
+            <img class="responsive" src="https://res.cloudinary.com/duxtyuzpy/image/upload/c_scale,h_200,w_300/v1587540009/@(Model.Product.ImageUrl)" alt="@Model.Product.Name" style="border-radius:.25rem;" />
+        </div>
+        <div class="col-md-4 text-center mt-3">
+            <h2 id="productName">@Html.DisplayFor(x => x.Product.Name)</h2>
+            <h5 id="sizeName"></h5>
+            <div>@Html.DisplayFor(x => x.Product.Description)</div>
+        </div>
+        <div class="col-md-4 mt-3">
+            <h5 class="text-center">Алергени</h5>
+
+            @if (Model.Product.Allergens.Count == 0)
+            {
+                <p class="text-center">Липсват данни за наличие<br /> на алергени.</p>
+            }
+            @foreach (var item in Model.Product.Allergens)
+            {
+
+                <div class="ml-5 pl-5">
+                    <img src="https://res.cloudinary.com/duxtyuzpy/image/upload/c_scale,h_35,w_35,f_auto/v1587540009/@(item.ImageUrl)" alt="@item.Name">
+                    <span>@Html.Label(item.Name)</span>
+                </div>
+            }
+        </div>
+    </div>
+    <hr class="hr-tapas" />
+    <div class="container">
+        <div class="form-group">
+            @Html.HiddenFor(x => x.Product.Id, new { @class = "form-control" })
+            @Html.HiddenFor(x => x.ShopingCartId, new { @class = "form-control" })
+        </div>
+        @if (Model.Product.Sizes.Count != 1)
+        {
+            <div class="row">
+                <div class="row w-100" id="chooseSize">
+                    <h4 class="text-center col-md-3">Избери размер</h4>
+                    @foreach (var item in Model.Product.Sizes)
+                    {
+                        <a class="btn btn-info blink ml-3" href="#" id="@item.SizeId" onclick="GetModel(@item.SizeId)">@item.SizeName</a>
+                    }
+                </div>
+                <div id="detailSection">
+                </div>
+
+
+                <div class="col-md-6 pl-0 pr-0" id="desc" style="display:none;">
+                    <div class="row form-group mb-3">
+                        <small>@Html.Label("Уточнения")</small>
+                        @Html.TextArea("Description", "", 2, 20, new { @class = "form-control" })
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+
+                    @if (Model.Product.HasExtras)
+                    {
+                        <section class="form-group" id="sectionExtras" style="display:none;">
+                            <button type="button" id="extraButton" onclick="showExtras()" class="collapsible">Добавки</button>
+                            <div id="content" class="content">
+                                @for (var i = 0; i < Model.Extras.Count; i++)
+                                {
+                                    <div class="flex ePadding">
+                                        <input type="hidden" class="form-control" name="Extras[@i].Id" value="@Model.Extras[i].Id" />
+                                        <span style="width:40%" id="exName@(Model.Extras[i].Id)">@Model.Extras[i].Name</span>
+                                        <span id="price@(Model.Extras[i].Id)" style="width:20%">@Model.Extras[i].Price лв.</span>
+                                        <span style="width:20%"> @Model.Extras[i].Weight гр.</span>
+                                        <div class="flex" style="width:20%; min-width:90px">
+                                            <div onclick="down(@Model.Extras[i].Id)"><i class="btn material-icons down" style="font-size:30px; padding:0; ">chevron_left</i></div>
+                                            <input name="Extras[@i].Quantity" id="quantity@(Model.Extras[i].Id)" type="text" size="3" class="form-control qtyExtra" title="Количество" value="0" min="0" max="5" step="1">
+                                            <div onclick="up(@Model.Extras[i].Id)"><i class="btn material-icons up" style="font-size:30px; padding:0;">chevron_right</i></div>
+                                        </div>
+                                    </div>
+                                }
+
+                            </div>
+                        </section>
+                    }
+                </div>
+            </div>
+            <div id="submitSection" class="row" style="width:100%; display:none">
+                <div class="text-center" style="width:50%;">
+                    <div onclick="goTo();" class="btn btn-primary btn-lg">Меню</div>
+                </div>
+                <div class="form-group text-center" style="width:50%;">
+                    <div onclick="set();" class="btn btn-primary btn-lg">Добави</div>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div id="maxProducts" style="opacity:0">@Model.Product.Sizes[0].MaxProductsInPackage</div>
+            <div class="row">
+
+                <input type="hidden" class="form-control" id="SizeId" name="Product.Sizes[0].SizeId" value="@Model.Product.Sizes[0].SizeId" />
+                <div class="col-md-6">
+                    <div class="row">
+                        <h4 style="width:65%;">@Html.Label("Тегло")</h4>
+                        <h4>@Model.Product.Sizes[0].Weight гр.</h4>
+                    </div>
+                    <div class="row">
+                        <h4 style="width:65%;">@Html.Label("Опаковка")</h4>
+                        <h4 id="packagePrice">@Model.Product.Sizes[0].PackagePrice лв.</h4>
+                    </div>
+                    <div class="row">
+                        <h4 style="width:65%;">@Html.Label("Цена")</h4>
+                        <h4 id="productPrice">@Model.Product.Sizes[0].Price лв.</h4>
+                    </div>
+                    <div class="row form-group ">
+                        <h4 style="width:60%;">@Html.Label("Количество")</h4>
+                        <div class="flex">
+                            <div id="minus" onclick="minus()"><i class="btn material-icons minus">chevron_left</i></div>
+                            <div class="flex"><input name="Quantity" id="theInput" type="text" size="4" class="form-control" title="Количество" value="1" min="1" step="1"></div>
+                            <div id="plus" onclick="plus()"><i class="btn material-icons plus">chevron_right</i></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <h4 style="width:65%;">@Html.Label("Междинна сума")</h4>
+                        <h4 id="subTotal">@Model.Product.Sizes[0].SubTotal лв.</h4>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <small>@Html.Label("Уточнения")</small>
+                        @Html.TextAreaFor(x => x.Description, 2, 20, new { @class = "form-control" })
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+
+                    @if (Model.Product.HasExtras)
+                    {
+                        <section class="form-group">
+                            <button type="button" id="extraButton" onclick="showExtras()" class="collapsible">Добавки</button>
+                            <div id="content" class="content">
+                                @for (var i = 0; i < Model.Extras.Count; i++)
+                                {
+                                    <div class="flex ePadding">
+                                        <input type="hidden" class="form-control" name="Extras[@i].Id" value="@Model.Extras[i].Id" />
+                                        <span style="width:40%" id="exName@(Model.Extras[i].Id)">@Model.Extras[i].Name</span>
+                                        <span id="price@(Model.Extras[i].Id)" style="width:20%">@Model.Extras[i].Price лв.</span>
+                                        <span style="width:20%"> @Model.Extras[i].Weight гр.</span>
+                                        <div class="flex" style="width:20%; min-width:90px">
+                                            <div onclick="down(@Model.Extras[i].Id)"><i class="btn material-icons down" style="font-size:30px; padding:0; ">chevron_left</i></div>
+                                            <input name="Extras[@i].Quantity" id="quantity@(Model.Extras[i].Id)" type="text" size="3" class="form-control qtyExtra" title="Количество" value="0" min="0" max="5" step="1">
+                                            <div onclick="up(@Model.Extras[i].Id)"><i class="btn material-icons up" style="font-size:30px; padding:0;">chevron_right</i></div>
+                                        </div>
+                                    </div>
+                                }
+
+                            </div>
+                        </section>
+                    }
+                </div>
+            </div>
+            <div class="row">
+                <div class="text-center" style="width:50%;">
+                    <div onclick="goTo();" class="btn btn-primary btn-lg">Меню</div>
+                </div>
+                <div class="form-group text-center" style="width:50%;">
+                    <div onclick="set();" class="btn btn-primary btn-lg">Добави</div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@section Style{
+
+    <link rel="stylesheet" type="text/css" href="~/css/shopingCart/addItem.css">
+}
+
+@section Scripts
+{
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="~/js/shopingCart/addItem.js" type="text/javascript"></script>
+    <script src="~/js/shopingCart/browserStorage.js"></script>
+}
+

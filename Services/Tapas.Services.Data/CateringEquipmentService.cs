@@ -64,7 +64,7 @@
             await this.equipmentRepository.SaveChangesAsync();
         }
 
-        public ICollection<IndexEquipmentModel> GetAll()
+        public IEnumerable<IndexEquipmentModel> GetAll()
         {
             var model = this.equipmentRepository
                  .All()
@@ -80,7 +80,7 @@
             return model;
         }
 
-        public ICollection<Deleted> GetDeletedProducts()
+        public IEnumerable<Deleted> GetDeletedProducts()
         {
             var model = this.equipmentRepository
                 .AllWithDeleted()

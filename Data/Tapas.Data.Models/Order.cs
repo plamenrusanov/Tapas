@@ -14,6 +14,10 @@
             this.Bag = new ShopingCart();
         }
 
+        public string Name { get; set; }
+
+        public string Phone { get; set; }
+
         public string AddInfo { get; set; }
 
         public string UserId { get; set; }

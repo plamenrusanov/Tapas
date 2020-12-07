@@ -11,8 +11,8 @@
 
         Task AddAsync(string allergenName, string path);
 
-        ICollection<string> AllAsString();
+        IEnumerable<string> AllAsString();
 
-        ICollection<AllergenViewModel> All();
+        IEnumerable<AllergenViewModel> All();
     }
 }

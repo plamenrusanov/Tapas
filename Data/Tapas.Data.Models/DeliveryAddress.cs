@@ -1,6 +1,7 @@
 ﻿namespace Tapas.Data.Models
 {
     using System;
+    using System.Text;
 
     using Tapas.Data.Common.Models;
 
@@ -34,5 +35,12 @@
         public string AddInfo { get; set; }
 
         public string ApplicationUserId { get; set; }
+
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append($"{this.City}, кв.{this.Borough}, ул.{this.Street} {this.StreetNumber}, бл.{this.Block}, вх.{this.Entry}, ет.{this.Floor}");
+            return sb.ToString();
+        }
     }
 }

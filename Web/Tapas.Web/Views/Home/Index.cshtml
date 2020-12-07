@@ -15,7 +15,7 @@
                 <li><a href="/Administration/Products">Меню</a></li>
                 <li><a href="/Administration/CateringFood/">Кетъринг</a></li>
                 <li><a href="/Orders/UserOrders">Моите поръчки</a></li>
-                <li><a asp-area="" asp-controller="ShopingCart" asp-action="Index" style="font-size:2rem;">🛒</a></li>
+                <li><a href="/ShoppingCart/" style="font-size:2rem;">🛒</a></li>
             </ul>
 
             <ul class="right hide-on-small-and-down">
@@ -66,13 +66,13 @@
         <a href="/Administration/Products">Моите поръчки</a>
     </div>
     <div class="dropdown-item">
-        <a asp-area="" asp-controller="ShopingCart" asp-action="Index" style="font-size:2rem;">🛒</a>
+        <a asp-area="" asp-controller="ShoppingCart" asp-action="Index" style="font-size:2rem;">🛒</a>
     </div>
     @if (this.SignInManager.IsSignedIn(this.User))
     {
         <div class="dropdown-item">
             <a asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage" style="height: 64px; padding-top: 8px;">
-                <img src="https://res.cloudinary.com/duxtyuzpy/image/upload/c_scale,h_48,q_100,w_48/v1590151208/sharp_person_black_48dp.png" />
+                <img src="https://res.cloudinary.com/duxtyuzpy/image/upload/c_scale,h_48,q_100,w_48/v1590151208/sharp_person_black_48dp.png" alt="Account" width="48" height="48" />
             </a>
         </div>
 
@@ -85,8 +85,8 @@
         {
             <div class="dropdown-item">
                 <a asp-area="" asp-controller="Orders" asp-action="Index">Поръчки</a>
-            </div> 
-         }
+            </div>
+        }
         <div class="dropdown-item"><a asp-area="Identity" asp-page="/Account/Logout">Изход</a></div>
 
     }
@@ -120,6 +120,7 @@ else if (GlobalConstants.TimeNow < GlobalConstants.CloseTime && GlobalConstants.
         <div id="lastOrder" class="center">Последни поръчки. Затваряме в @GlobalConstants.CloseTime.ToString("hh':'mm") часа.</div>
     </div>
 }
+<partial name="_CookieConsentPartial" />
 <div id="index-banner" class="parallax-container">
     <div class="section no-pad-bot">
         <div class="container">
@@ -148,11 +149,8 @@ else if (GlobalConstants.TimeNow < GlobalConstants.CloseTime && GlobalConstants.
             <div class="catering-div">
                 <a href="/Administration/CateringFood/">
                     <div class="icon-block">
-
-
                         <h2 class="center"><img src="~/Images/food.png" alt="Catering icon"/></h2>
                         <div class="header-5" style="color:black;">Решения за кетъринг</div>
-
                         <p class="light center-align" style="color:black;">Тук можете да разгледате нашите предложения за вкусната част на вашите събития. Превъзходно оформени плата с вкусни хапки от които вашите гости ще останат възхитени.</p>
 
                     </div>
@@ -160,24 +158,24 @@ else if (GlobalConstants.TimeNow < GlobalConstants.CloseTime && GlobalConstants.
             </div>
 
             @*<div class="col s12 m6">
-                <a href="/Administration/CateringEquipment/">
-                    <div class="icon-block">
-                        <h2 class="center brown-text"><i class="material-icons">group</i></h2>
-                        <h5 class="center">User Experience Focused</h5>
+                    <a href="/Administration/CateringEquipment/">
+                        <div class="icon-block">
+                            <h2 class="center brown-text"><i class="material-icons">group</i></h2>
+                            <h5 class="center">User Experience Focused</h5>
 
-                        <p class="light">By utilizing elements and principles of Material Design, we were able to create a framework that incorporates components and animations that provide more feedback to users. Additionally, a single underlying responsive system across all platforms allow for a more unified user experience.</p>
-                    </div>
-                </a>
-            </div>*@
+                            <p class="light">By utilizing elements and principles of Material Design, we were able to create a framework that incorporates components and animations that provide more feedback to users. Additionally, a single underlying responsive system across all platforms allow for a more unified user experience.</p>
+                        </div>
+                    </a>
+                </div>*@
 
             @*<div class="col s12 m4">
-                <div class="icon-block">
-                    <h2 class="center brown-text"><i class="material-icons">settings</i></h2>
-                    <h5 class="center">Easy to work with</h5>
+                    <div class="icon-block">
+                        <h2 class="center brown-text"><i class="material-icons">settings</i></h2>
+                        <h5 class="center">Easy to work with</h5>
 
-                    <p class="light">We have provided detailed documentation as well as specific code examples to help new users get started. We are also always open to feedback and can answer any questions a user may have about Materialize.</p>
-                </div>
-            </div>*@
+                        <p class="light">We have provided detailed documentation as well as specific code examples to help new users get started. We are also always open to feedback and can answer any questions a user may have about Materialize.</p>
+                    </div>
+                </div>*@
         </div>
 
     </div>
@@ -203,7 +201,7 @@ else if (GlobalConstants.TimeNow < GlobalConstants.CloseTime && GlobalConstants.
                 <h3><i class="mdi-content-send brown-text"></i></h3>
                 <h4>За нас</h4>
                 <p class="center-align light">
-                   В ресторант TAPAS е празник всеки ден. Тази година ние празнуваме 10-ата си годишнина, утвърждавайки се през последното десетилетие като любимо място на стотици наши клиенти, които ни избират за организирането на семейни тържества, кръщенета, сватби, банкети, детски рождени дни или обикновена вечер с приятели. С повод или без повод при нас ще бъдете посрещнати от усмихнат персонал, ще можете да се насладите на вкусна храна и да се забавлявате на нашите тематични партита и вечери с музика на живо.
+                    В ресторант TAPAS е празник всеки ден. Тази година ние празнуваме 10-ата си годишнина, утвърждавайки се през последното десетилетие като любимо място на стотици наши клиенти, които ни избират за организирането на семейни тържества, кръщенета, сватби, банкети, детски рождени дни или обикновена вечер с приятели. С повод или без повод при нас ще бъдете посрещнати от усмихнат персонал, ще можете да се насладите на вкусна храна и да се забавлявате на нашите тематични партита и вечери с музика на живо.
                 </p>
             </div>
         </div>
@@ -228,32 +226,35 @@ else if (GlobalConstants.TimeNow < GlobalConstants.CloseTime && GlobalConstants.
         <div class="row">
             <ul class="col l6 s12">
                 <li><div class="white-text header-5" style="text-align:left;">Контакти</div></li>
-                <li>
-                    <div>Телефон за резерваций:&nbsp;&nbsp;<a class="contacts-links" href="tel:+359886582257">0886 58 22 57</a> </div>               
+                <li class="li-contacts">
+                    <div>Телефон за резерваций:&nbsp;&nbsp;<a class="contacts-links" href="tel:+359886582257">0886 58 22 57</a> </div>
                 </li>
-                <li>
+                <li class="li-contacts">
                     <div>Телефон за поръчки:&nbsp;&nbsp;<a class="contacts-links" href="tel:+359885565621">0885 56 56 21</a></div>
                 </li>
-                <li>
+                <li class="li-contacts">
                     <div>Телефон за поръчки:&nbsp;&nbsp;<a class="contacts-links" href="tel:+35982520503">082 52 05 03</a></div>
                 </li>
-                <li>
+                <li class="li-contacts">
                     <div>Адрес:&nbsp;&nbsp;<a class="contacts-links" target="_blank" rel="noreferrer" href="https://www.google.com/maps/place/Tapas+Bar/43.8313163,25.9754988,17z/data=!4m5!3m4!1s0x40ae5f2b9e386061:0xe1a28167a14476aa!8m2!3d43.8312593!4d25.9776342">Русе кв.Чародейка-Юг ул. Ганчо Карамаждраков</a></div>
+                </li>
+                <li>
+                    <div>Намерете ни в&nbsp;&nbsp;&nbsp;<a style="background-color: #4267B2" class="btn btn-social-icon btn-facebook" href="https://www.facebook.com/tapasruse/" target="_blank" rel="noopener"><span class="fa fa-facebook"></span></a></div>
                 </li>
             </ul>
             <div class="col l3 s12">
                 <ul>
-                    <li><a style="background-color: #4267B2" class="btn btn-social-icon btn-facebook" href="https://www.facebook.com/tapasruse/" target="_blank" rel="noopener"><span class="fa fa-facebook"></span></a></li>
+                    
                 </ul>
             </div>
             <div class="col l3 s12">
-                <div class="mt-3 mb-3" style="width:initial"><img src="~/Images/tapass.png" style="width:250px;" alt="Logo" /></div>
+                <div class="logo-footer" style="width:initial"><img src="~/Images/tapass.png" style="width:250px;" alt="Logo" /></div>
             </div>
         </div>
     </div>
     <div class="footer-copyright">
         <div class="container">
-           
+
         </div>
     </div>
 </footer>

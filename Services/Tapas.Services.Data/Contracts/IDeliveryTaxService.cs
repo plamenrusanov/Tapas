@@ -7,7 +7,7 @@
 
     public interface IDeliveryTaxService
     {
-        Task<ICollection<DeliveryTaxViewModel>> AllAsync(bool isDeleted);
+        Task<IEnumerable<DeliveryTaxViewModel>> AllAsync(bool isDeleted);
 
         Task AddAsync(DeliveryTaxInpitModel inputModel);
 
