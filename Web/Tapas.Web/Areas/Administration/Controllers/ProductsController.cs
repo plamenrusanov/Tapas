@@ -84,7 +84,7 @@
         }
 
         [HttpPost]
-        public async Task<IActionResult> Add([FromForm]ProductInputViewModel inputModel)
+        public async Task<IActionResult> Add(ProductInputViewModel inputModel)
         {
             if (!this.ModelState.IsValid)
             {
@@ -98,7 +98,7 @@
             {
                 await this.productsService.AddAsync(inputModel);
 
-                return this.Redirect("/");
+                return this.RedirectToAction("GetProducts", false);
             }
             catch (Exception e)
             {

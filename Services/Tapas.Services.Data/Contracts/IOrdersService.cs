@@ -9,7 +9,6 @@
 
     public interface IOrdersService
     {
-
         IEnumerable<OrdersViewModel> GetDailyOrders();
 
         Task<int> CreateAsync(ApplicationUser user, OrderInpitModel model);

@@ -8,9 +8,10 @@
 
 @if (showBanner)
 {
-<div id="cookieConsent" class="alert alert-info alert-dismissible fade show" role="alert">
-    Tapasrestourant.bg използва „бисквитки“ и подобни технологии на нашия уеб сайт, за да подобри производителността, функционалността и за целите на анализа.
-    <button type="button" class="accept-policy close" data-dismiss="alert" aria-label="Close" data-cookie-string="@cookieString">
+<div id="cookieConsent" class="alert alert-info alert-dismissible fade show row" role="alert">
+    <p id="cookieParagraf" class="col-md-10" style="margin:0px;"> Tapasrestaurant.bg използва „бисквитки“ и подобни технологии на нашия уеб сайт, за да подобри производителността, функционалността и за целите на анализа.</p>
+   
+    <button id="btnAccept" type="button" class="accept-policy close col-md-2" data-dismiss="alert" aria-label="Close" data-cookie-string="@cookieString">
         <span aria-hidden="true">Съгласен</span>
     </button>
 </div>

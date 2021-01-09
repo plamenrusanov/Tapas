@@ -35,13 +35,13 @@ function displayProducts(result, index) {
 
 function getProduct(i) {
     var input = document.getElementById(`getMProduct${i}`).value;
-
-    $.ajax({
-        url: `/Administration/Mistral/GetMProduct?name=${input}`,
-        success: function (response) {
-            displayProducts(response, i);
-        }
-    });
+//
+// $.ajax({
+//     url: `/Administration/Mistral/GetMProduct?name=${input}`,
+//     success: function (response) {
+//         displayProducts(response, i);
+//     }
+// });
 }
 
 

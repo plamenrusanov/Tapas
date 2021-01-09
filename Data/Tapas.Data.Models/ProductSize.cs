@@ -17,10 +17,10 @@
 
         public int MaxProductsInPackage { get; set; }
 
-        [Required]
+        // [Required]
         public string MistralName { get; set; }
 
-        [Required]
+        // [Required]
         public int MistralCode { get; set; }
 
         public int? PackageId { get; set; }

@@ -241,3 +241,47 @@ div.dropdown-item {
 .li-contacts{
     margin-bottom:2px;
 }
+.alert-info {
+    color: #0c5460;
+    background-color: #d1ecf1;
+    border-color: #bee5eb;
+    padding: 1rem;
+    margin: 0px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.fade {
+    transition: opacity .15s linear;
+}
+#btnAccept {
+    width: 15%;
+    border: none;
+    background-color: transparent;
+    font-weight: 600;
+    font-size:1.2rem;
+    opacity: .5;
+}
+
+#btnAccept:hover{
+    opacity:1;
+}
+
+#cookieParagraf {
+    margin: 0px;
+    width: 85%;
+    padding-left: 2rem;
+    font-size:1.1rem;
+}
+@media only screen and (max-width: 768px) {
+    #cookieParagraf{
+        width:100%;
+        padding-left:0;
+    }
+    #btnAccept {
+        width: 100%;
+        text-align: end;
+        padding-right:10px;
+        padding-top:5px;
+    }
+}

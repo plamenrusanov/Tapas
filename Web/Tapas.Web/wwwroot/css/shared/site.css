@@ -219,3 +219,9 @@ h1 {
 footer {
     background-color: white;
 }
+
+button.accept-policy.close.col-md-2 {
+    font-weight: 900;
+    font-size: initial;
+    position: inherit;
+}

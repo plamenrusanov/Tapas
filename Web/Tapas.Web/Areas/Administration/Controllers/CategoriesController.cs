@@ -150,6 +150,7 @@
             }
         }
 
+        [HttpPost]
         public async Task<IActionResult> SavePositions(string models)
         {
             var m = JsonConvert.DeserializeObject<List<CategoryViewModel>>(models);

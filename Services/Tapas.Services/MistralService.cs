@@ -11,7 +11,7 @@
 
     public class MistralService : IMistralService
     {
-        private const string Url = "http://87.120.108.19:8066";
+        private const string Url = "http://77.78.55.66:8066";
         private const string UserName = "1";
         private readonly string password;
 

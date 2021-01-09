@@ -19,8 +19,9 @@
 <div class="col-md-6">
     <div class=" row form-group row-group">
         <h4 class="col-md-6">@Html.Label("Цена")</h4>
-        <div class="col-md-6 form-control" id="Price2@(i)"></div>
-        @Html.EditorFor(x => Model.Price, "", $"Sizes[{Model.Index}].Price", new { htmlAttributes = new { @hidden = true } })
+        @*<div class="col-md-6 form-control" id="Price2@(i)"></div>
+        @Html.EditorFor(x => Model.Price, "", $"Sizes[{Model.Index}].Price", new { htmlAttributes = new { @hidden = true } })*@
+        @Html.EditorFor(x => Model.Price, $"Sizes[{Model.Index}].Price", $"Sizes[{Model.Index}].Price", new { htmlAttributes = new { @class = "col-md-6 form-control" } })
         <span asp-validation-for="@Model.Price" class="text-danger"></span>
     </div>
 </div>
@@ -51,8 +52,8 @@
     </div>
 </div>
 <div class="col-md-6">
-    <input class="mt-2" id="getMProduct@(i)" />
-    <div class="btn" onclick="getProduct(@i)" style="background-image: url('../../Images/search.png'); width:33px; height:33px;"></div>
+    @*<input class="mt-2" id="getMProduct@(i)" />
+    <div class="btn" onclick="getProduct(@i)" style="background-image: url('../../Images/search.png'); width:33px; height:33px;"></div>*@
     <div onclick="Remove(0, @Model.Index)" class="remove-button">Премахни</div>
 </div>
 <hr class="hr-tapas" />

@@ -1,6 +1,7 @@
 ﻿namespace Tapas.Web.ViewModels.Orders
 {
     using System.Collections.Generic;
+
     using Microsoft.AspNetCore.Mvc.Rendering;
 
     public class OrderInpitModel

@@ -86,7 +86,7 @@
         <li class="row form-row" style="border-bottom:1px, solid, black" id="li@(i)">
             @Html.EditorFor(x => Model.Sizes[i].MistralCode, $"Sizes[{i}].MistralCode", $"Sizes[{i}].MistralCode", new { htmlAttributes = new { @hidden = true } })
             @Html.EditorFor(x => Model.Sizes[i].MistralName, $"Sizes[{i}].MistralName", $"Sizes[{i}].MistralName", new { htmlAttributes = new { @hidden = true } })
-            @Html.EditorFor(x => Model.Sizes[i].Price, $"Sizes[{i}].Price", $"Sizes[{i}].Price", new { htmlAttributes = new { @hidden = true } })
+            @*@Html.EditorFor(x => Model.Sizes[i].Price, $"Sizes[{i}].Price", $"Sizes[{i}].Price", new { htmlAttributes = new { @hidden = true } })*@
             <div><span asp-validation-for="@Model.Sizes[i].MistralCode" class="text-danger"></span></div>
             <div><span asp-validation-for="@Model.Sizes[i].MistralName" class="text-danger"></span></div>
             @Html.HiddenFor(x => Model.Sizes[i].SizeId, new { id = $"Sizes[{i}].SizeId" })
@@ -100,7 +100,7 @@
             <div class="col-md-6">
                 <div class=" row form-group row-group">
                     <h4 class="col-md-6">@Html.LabelFor(x => Model.Sizes[i].Price, "Цена", new { @class = "control-label" })</h4>
-                    <div class = "col-md-6 form-control" id="Price2@(i)">@Model.Sizes[i].Price</div>
+                    @Html.EditorFor(x => Model.Sizes[i].Price, $"Model.Sizes[{i}].Price", $"Sizes[{i}].Price", new { htmlAttributes = new { @class = "col-md-6 form-control" } })
                     <span asp-validation-for="@Model.Sizes[i].Price" class="text-danger"></span>
                 </div>
             </div>
@@ -131,8 +131,8 @@
                 </div>
             </div>
             <div class="col-md-6 justify-content-center">
-                <input class="mt-2" id="getMProduct@(i)" />
-                <div class="btn" onclick="getProduct(@i)" style="background-image: url('../../Images/search.png'); width:33px; height:33px;"></div>
+                @*<input class="mt-2" id="getMProduct@(i)" />
+                <div class="btn" onclick="getProduct(@i)" style="background-image: url('../../Images/search.png'); width:33px; height:33px;"></div>*@
                 <div onclick="Remove(@Model.Sizes[i].SizeId, @i)" class="remove-button">Премахни</div>
             </div>
             <hr class="hr-tapas" />

@@ -105,11 +105,10 @@ function down(i) {
 
 function setPosition() {
     var m = JSON.stringify(models);
-    $.ajax({
-        type: 'GET',
-        url: `/Administration/Categories/SavePositions?models=${m}`,
-        success: function () {
+    $.post(`/Administration/Categories/SavePositions`,
+        {
+            models: m
+        }, function () {
             alert('Успешно запазихте подредбата!');
-        }
-    }); 
+        }); 
 }
