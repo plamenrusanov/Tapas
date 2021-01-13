@@ -229,7 +229,7 @@ div.dropdown-item {
 
 .btn-facebook::after{
     margin-left: 10px;
-    content: "fasebook";
+    content: "facebook";
 }
 
 @media only screen and (min-width: 992px){
@@ -238,8 +238,9 @@ div.dropdown-item {
     }
 }
 
-.li-contacts{
-    margin-bottom:2px;
+.li-contacts {
+    margin-bottom: 2px;
+    font-size: 1.1rem;
 }
 .alert-info {
     color: #0c5460;
@@ -284,4 +285,8 @@ div.dropdown-item {
         padding-right:10px;
         padding-top:5px;
     }
+}
+
+p.light.center-align {
+    font-size: 1.1rem;
 }

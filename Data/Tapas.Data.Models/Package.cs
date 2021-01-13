@@ -13,10 +13,10 @@
         [Column(TypeName = "decimal(5, 2)")]
         public decimal Price { get; set; }
 
-        [Required]
+        // [Required]
         public int MistralCode { get; set; }
 
-        [Required]
+        // [Required]
         public string MistralName { get; set; }
 
         public virtual ICollection<Product> Products { get; set; }

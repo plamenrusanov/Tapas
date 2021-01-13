@@ -57,7 +57,7 @@
 
                 return this.RedirectToAction("Index");
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 return this.NotFound();
             }

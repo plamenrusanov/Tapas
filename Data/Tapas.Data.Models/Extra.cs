@@ -16,10 +16,10 @@
 
         public int Weight { get; set; }
 
-        [Required]
+        // [Required]
         public int MistralCode { get; set; }
 
-        [Required]
+        // [Required]
         public string MistralName { get; set; }
 
         public virtual ICollection<ExtraItem> ExtraItems { get; set; }

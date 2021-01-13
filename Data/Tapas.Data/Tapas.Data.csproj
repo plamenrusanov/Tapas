@@ -13,6 +13,8 @@
   <ItemGroup>
     <Compile Remove="Migrations\20201129161715_DeleteUserCart.cs" />
     <Compile Remove="Migrations\20201129161715_DeleteUserCart.Designer.cs" />
+    <Compile Remove="Migrations\20210112181623_RevertToIntMaxProducts.cs" />
+    <Compile Remove="Migrations\20210112181623_RevertToIntMaxProducts.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
