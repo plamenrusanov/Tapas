@@ -119,22 +119,10 @@
     </div>
     <hr class="hr-tapas" />
     <div class="row mb-1 w-100">
-        <a class="btn btn-primary btn-lg sendBtn" onclick="sendOrder()">Изпрати поръчка</a>
+        <button class="btn btn-primary btn-lg sendBtn" type="submit" onclick="sendOrder()">Изпрати поръчка</button>
     </div>
 </div>
-<div hidden>
-    <form action="/Orders/Create" method="post">
-        @Html.AntiForgeryToken()
-        <input name="Cart" id="Cart"/>
-        <input name="Address" id="Address"/>
-        <input name="Username" id="Username"/>
-        <input name="Phone" id="Phone"/>
-        <input name="AddInfoOrder" id="AddInfoOrder"/>
-        <input name="CutleryCount" id="CutleryCount"/>
-        <input name="TakeAway" id="Takeaway"/>
-        <input type="submit" id="form-submit"/>
-    </form>
-</div>
+
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">

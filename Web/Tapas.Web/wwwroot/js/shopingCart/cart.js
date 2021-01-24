@@ -39,7 +39,7 @@ function getCart() {
 function getExtras(exArr) {
     var exHtml = "";
     for (var i = 0; i < exArr.length; i++) {
-        exHtml +=`<tda class="row ml-0">
+        exHtml += `<tda class="row ml-0">
             <div>${exArr[i].qty} бр. ${exArr[i].name}</div>
         </tda>`;
     }
@@ -63,10 +63,10 @@ function display() {
         var extras = getExtras(item.Extras);
         grandTotal += parseFloat(item.SubTotal.replace(',', '.'));
         var scItem =
-        `<td class="col-md-1" width="45">
+            `<td class="col-md-1" width="45">
             <tda>${i}</tda>
         </td>
-        <td class="col-md-3" id="name${i -1}">
+        <td class="col-md-3" id="name${i - 1}">
             <h5><tda>${item.PName}</tda></h5>
                 <tda>${item.SName}</tda>
         </td>
@@ -156,35 +156,36 @@ function fChange(elm) {
 }
 
 function sendOrder() {
+    var username, phone, cutlery, addInfoOrder, takeAway;
     if (document.getElementById('username')) {
-        var el = document.getElementById('username');
-        if (checkUsername(el.value)) {
-            localStorage.setItem('username', el.value);
-            document.getElementById('Username').value = el.value;
+        var username = document.getElementById('username');
+        if (checkUsername(username.value)) {
+            localStorage.setItem('username', username.value);
+            document.getElementById('Username').value = username.value;
         } else {
             alert('Името трябва да дълго между 3 и 20 символа!');
             return;
         }
-        
+
     }
     if (document.getElementById('phone')) {
-        var el = document.getElementById('phone');
-        if (checkPhoneNumber(el.value)) {
-            localStorage.setItem('phone', el.value);
-            document.getElementById('Phone').value = el.value;
+        var phone = document.getElementById('phone');
+        if (checkPhoneNumber(phone.value)) {
+            localStorage.setItem('phone', phone.value);
+            document.getElementById('Phone').value = phone.value;
         } else {
             alert('Телефония номер е задължителен!');
             return;
         }
-       
+
     }
     if (document.getElementById('Cutlery')) {
-        var el = document.getElementById('Cutlery');
-        document.getElementById('CutleryCount').value = el.value;
+        var cutlery = document.getElementById('Cutlery');
+        document.getElementById('CutleryCount').value = cutlery.value;
     }
     if (document.getElementById('addInfoOrder')) {
-        var el = document.getElementById('addInfoOrder');
-        document.getElementById('AddInfoOrder').value = el.value;
+        var addInfoOrder = document.getElementById('addInfoOrder');
+        document.getElementById('AddInfoOrder').value = addInfoOrder.value;
     }
     var address = collectAddress();
     localStorage.setItem('address', address);
@@ -194,13 +195,29 @@ function sendOrder() {
     document.getElementById('Cart').value = cart;
 
     if (document.getElementById('TakeAway')) {
-        var el = document.getElementById('TakeAway');
-        document.getElementById('Takeaway').value = el.checked;
+        var takeAway = document.getElementById('TakeAway');
+        document.getElementById('Takeaway').value = takeAway.checked;
     }
-
-    var btn = document.getElementById('form-submit');
-    btn.click();
-    
+    $.ajax({
+        type: "POST",
+        url: "./../Orders/Create",
+        data:{
+            Cart: cart,
+            Address: address,
+            Username: username.value,
+            Phone: phone.value,
+            AddInfoOrder: addInfoOrder.value,
+            CutleryCount: cutlery.value,
+            TakeAway: takeAway.checked,
+        },
+        success: function (data, status) {
+            localStorage.setItem('cart', JSON.stringify(new Array()));
+            window.location.href = "/Orders/UserOrders";
+        },
+        error: function (e) {
+            alert("Получи се грешка!");
+        },
+    });
 }
 
 function collectAddress() {

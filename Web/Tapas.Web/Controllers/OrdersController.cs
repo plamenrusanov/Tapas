@@ -48,7 +48,6 @@
         // Post Orders/Create
         [AllowAnonymous]
         [HttpPost]
-        [AutoValidateAntiforgeryToken]
         public async Task<IActionResult> Create(OrderInpitModel model)
         {
             if (DateTime.Now.TimeOfDay > GlobalConstants.CloseTime || DateTime.Now.TimeOfDay < GlobalConstants.OpenTime)
@@ -90,7 +89,7 @@
                 var id = await this.ordersService.CreateAsync(user, model);
                 await this.hubAdmin.Clients.All.SendAsync("OperatorNewOrder", id);
                 this.TempData["NewOrder"] = true;
-                return this.Redirect("/Orders/UserOrders");
+                return this.Ok();
             }
             catch (Exception e)
             {
