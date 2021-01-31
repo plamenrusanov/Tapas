@@ -32,10 +32,10 @@ function getDescription(index) {
     sciId.value = index;
 }
 
-function displayDeliveryTax() {
-    var el = document.getElementById(`btnDeliveryTax`);
-    el.click();
-}
+//function displayDeliveryTax() {
+//    var el = document.getElementById(`btnDeliveryTax`);
+//    el.click();
+//}
 
 var area = document.getElementById("message-text");
 var message = document.getElementById("message");

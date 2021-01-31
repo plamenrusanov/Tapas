@@ -1,6 +1,7 @@
 ﻿namespace Tapas.Services.Data
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq;
 
     using Tapas.Common;
@@ -15,17 +16,20 @@
     public class ShopingCartService : IShopingCartService
     {
         private readonly IDeletableEntityRepository<MenuProduct> productRepository;
+        private readonly IDeletableEntityRepository<ProductSize> sizeRepository;
         private readonly IExtrasService extrasService;
 
         public ShopingCartService(
             IDeletableEntityRepository<MenuProduct> productRepository,
+            IDeletableEntityRepository<ProductSize> sizeRepository,
             IExtrasService extrasService)
         {
             this.productRepository = productRepository;
+            this.sizeRepository = sizeRepository;
             this.extrasService = extrasService;
         }
 
-        public AddItemViewModel GetShopingModel(string productId)
+        public AddItemViewModel GetShopingModel(string productId, int? sizeId = null)
         {
             if (string.IsNullOrEmpty(productId))
             {
@@ -41,6 +45,14 @@
                 throw new Exception();
             }
 
+            ProductSize size = null;
+            if (sizeId.HasValue)
+            {
+                size = this.sizeRepository.All()
+                    .Where(x => x.Id == sizeId)
+                    .FirstOrDefault();
+            }
+
             var model = new AddItemViewModel()
             {
                 Product = new DetailsProductAddItemVM()
@@ -50,6 +62,7 @@
                     Description = product.Description,
                     ImageUrl = product.ImageUrl != null ? product.ImageUrl : GlobalConstants.DefaultProductImage,
                     HasExtras = product.HasExtras,
+                    CategoryId = product.CategoryId,
                     Allergens = product.Allergens
                             .Select(c => new DetailsAllergenViewModel()
                             {
@@ -57,7 +70,7 @@
                                 Name = c.Allergen.Name,
                                 ImageUrl = c.Allergen.ImageUrl,
                             }).ToList(),
-                    Sizes = product.Sizes
+                    Sizes = size == null ? product.Sizes
                             .Select(c => new ProductSizeViewModel()
                             {
                                 SizeId = c.Id,
@@ -66,7 +79,19 @@
                                 Weight = c.Weight,
                                 MaxProductsInPackage = c.MaxProductsInPackage,
                                 PackagePrice = c.Package.Price,
-                            }).ToList(),
+                            }).ToList()
+                            : new List<ProductSizeViewModel>()
+                            {
+                                new ProductSizeViewModel()
+                                    {
+                                        SizeId = size.Id,
+                                        SizeName = size.SizeName,
+                                        Price = size.Price,
+                                        Weight = size.Weight,
+                                        MaxProductsInPackage = size.MaxProductsInPackage,
+                                        PackagePrice = size.Package.Price,
+                                    },
+                            },
                 },
             };
 

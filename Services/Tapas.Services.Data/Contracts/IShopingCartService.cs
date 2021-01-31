@@ -4,6 +4,6 @@
 
     public interface IShopingCartService
     {
-        AddItemViewModel GetShopingModel(string productId);
+        AddItemViewModel GetShopingModel(string productId, int? sizeId = null);
     }
 }

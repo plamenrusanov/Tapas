@@ -24,6 +24,8 @@
 
         public bool HasExtras { get; set; }
 
+        public string CategoryId { get; set; }
+
         public List<DetailsAllergenViewModel> Allergens { get; set; }
 
         public List<ProductSizeViewModel> Sizes { get; set; }

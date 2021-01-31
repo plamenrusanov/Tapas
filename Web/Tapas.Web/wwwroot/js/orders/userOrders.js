@@ -88,7 +88,3 @@ var l = document.getElementById('listOrders');
 if (l.children[0]) {
     l.children[0].click();
 };
-
-if (document.getElementsByClassName('alert alert-success')) {
-    localStorage.setItem('cart', JSON.stringify(new Array()));
-}

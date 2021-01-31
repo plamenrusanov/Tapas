@@ -28,11 +28,11 @@
         }
 
         // GET
-        public ActionResult AddItem(string productId)
+        public ActionResult AddItem(string productId, int? sizeId = null)
         {
             try
             {
-                var model = this.cartService.GetShopingModel(productId);
+                var model = this.cartService.GetShopingModel(productId, sizeId);
                 return this.View(model);
             }
             catch (Exception e)

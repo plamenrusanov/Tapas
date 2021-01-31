@@ -229,7 +229,7 @@
                         },
                     }).ToList(),
                 Status = order.Status,
-                PackagesPrice = order.Bag.CartItems.Sum(x => (decimal)Math.Ceiling((double)x.Size.MaxProductsInPackage / x.Quantity) * x.Size.Package.Price),
+                PackagesPrice = order.Bag.CartItems.Sum(x => (decimal)Math.Ceiling(x.Quantity / (double)x.Size.MaxProductsInPackage) * x.Size.Package.Price),
             };
             model.TotalPrice = model.CartItems.Sum(x => x.ItemPrice) + model.PackagesPrice;
 
@@ -364,7 +364,7 @@
                                   }).ToList(),
                     }).ToList(),
                 Status = order.Status,
-                PackagesPrice = order.Bag.CartItems.Sum(x => (decimal)Math.Ceiling((double)x.Size.MaxProductsInPackage / x.Quantity) * x.Size.Package.Price),
+                PackagesPrice = order.Bag.CartItems.Sum(x => (decimal)Math.Ceiling(x.Quantity / (double)x.Size.MaxProductsInPackage) * x.Size.Package.Price),
             };
 
             model.TotalPrice = model.CartItems.Sum(x => x.ItemPrice) + model.PackagesPrice;

@@ -30,7 +30,7 @@
                 {
                     <a class="carda btn col-lg-4 col-md-6 mb-4" href="~/ShoppingCart/AddItem?productId=@product.Id">
                         <div class="card h-100" id="@product.Name">
-                            <img class="card-img-top" src="https://res.cloudinary.com/duxtyuzpy/image/upload/c_scale,h_140,w_200/v1587540778/@(product.ImageUrl)" alt="@product.Name">
+                            <img class="card-img-top" src="https://res.cloudinary.com/duxtyuzpy/image/upload/c_scale,h_280,w_400/v1587540778/@(product.ImageUrl)" alt="@product.Name">
                             <div class="card-body">
                                 <h4 class="name-holder text-center"> @product.Name </h4>
                                 @if (product.IsOneSize)
@@ -41,7 +41,7 @@
                                 {
                                     foreach (var size in product.Sizes)
                                     {
-                                        <div class="h6">@size.SizeName - @size.Price лв.</div>
+                                        <div class="h6">@size.Weight гр. - @size.Price лв.</div>
                                     }
                                 }
                             </div>

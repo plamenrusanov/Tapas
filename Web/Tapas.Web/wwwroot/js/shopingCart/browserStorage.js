@@ -39,7 +39,7 @@ function colectProduct() {
 }
 
 function goTo() {
-    window.location.href = document.referrer + `#${document.getElementById('productName').innerText}`;
+    window.location.href = "/ShoppingCart/Index";
 }
 
 function set(){

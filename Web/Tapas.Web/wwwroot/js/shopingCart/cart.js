@@ -18,7 +18,7 @@
                         Цена
                     </th>
                     <th class="col-md-2">
-                        Изискване
+                        Уточнение
                     </th>
                     <th class="col-md-2">
                         Изтрий
@@ -47,12 +47,19 @@ function getExtras(exArr) {
 }
 
 function display() {
+    var gT, d, mOM, accountInfo;
+    accountInfo = document.getElementById('accountInfo');
+    mOM = document.getElementById('minOrderMessage');
+    d = document.getElementById('delivery');
     var holder = document.getElementById('cartHolder');
     var cart = getCart();
     if (cart === null || cart.length == 0) {
         holder.innerHTML = '<h4 class="text-center mt-5 mb-5">Количката е празна.</h4>';
         var p = document.getElementById('prepareOrder');
         p.style.display = 'none';
+        d.style.display = 'none';
+        mOM.style.display = 'none';
+        accountInfo.style.display = 'none';
         return;
     }
     holder.innerHTML = table.trim();
@@ -81,7 +88,7 @@ function display() {
         </td>
         <td class="col-md-2">
             <tda>
-                <a class="btn btn-primary btn-sm" onclick="getDescription(${i - 1})" style="color:white">Изискване</a>
+                <a class="btn btn-primary btn-sm" onclick="getDescription(${i - 1})" style="color:white">Редакция</a>
                 <button hidden data-toggle="modal" data-target="#exampleModalCenter" id="button${i - 1}"></button>
             </tda>
         </td>
@@ -96,14 +103,15 @@ function display() {
 
     }
 
-    var gT = document.getElementById('grandTotal');
+
+    
+    gT = document.getElementById('grandTotal');
     gT.innerText = grandTotal.toFixed(2) + ' лв.';
     if (grandTotal < 15 && grandTotal >= 10) {
-        var d = document.getElementById('delivery');
         d.style.display = 'block';
     } else if (grandTotal < 10) {
-        var p = document.getElementById('prepareOrder');
-        p.style.display = 'none';
+        mOM.style.display = 'block';
+        d.style.display = 'none';
     }
 }
 
@@ -138,7 +146,7 @@ function getAccountInfo() {
         a = JSON.parse(a);
         displayAddress(a);
     } else {
-        getAddressFromLocation();
+        // getAddressFromLocation();
     }
 }
 
@@ -161,7 +169,6 @@ function sendOrder() {
         var username = document.getElementById('username');
         if (checkUsername(username.value)) {
             localStorage.setItem('username', username.value);
-            document.getElementById('Username').value = username.value;
         } else {
             alert('Името трябва да дълго между 3 и 20 символа!');
             return;
@@ -172,7 +179,6 @@ function sendOrder() {
         var phone = document.getElementById('phone');
         if (checkPhoneNumber(phone.value)) {
             localStorage.setItem('phone', phone.value);
-            document.getElementById('Phone').value = phone.value;
         } else {
             alert('Телефония номер е задължителен!');
             return;
@@ -181,27 +187,22 @@ function sendOrder() {
     }
     if (document.getElementById('Cutlery')) {
         var cutlery = document.getElementById('Cutlery');
-        document.getElementById('CutleryCount').value = cutlery.value;
     }
     if (document.getElementById('addInfoOrder')) {
         var addInfoOrder = document.getElementById('addInfoOrder');
-        document.getElementById('AddInfoOrder').value = addInfoOrder.value;
     }
     var address = collectAddress();
     localStorage.setItem('address', address);
-    document.getElementById('Address').value = address;
 
     var cart = localStorage.getItem('cart');
-    document.getElementById('Cart').value = cart;
 
     if (document.getElementById('TakeAway')) {
         var takeAway = document.getElementById('TakeAway');
-        document.getElementById('Takeaway').value = takeAway.checked;
     }
     $.ajax({
         type: "POST",
         url: "./../Orders/Create",
-        data:{
+        data: {
             Cart: cart,
             Address: address,
             Username: username.value,
@@ -281,7 +282,7 @@ function checkUsername(u) {
 }
 
 function checkPhoneNumber(number) {
-    if (number.length >= 10 && number.match(/\d/g)) {
+    if (number.length >= 9 && number.match(/\d/g)) {
         return true;
     }
     return false;

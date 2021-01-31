@@ -1,9 +1,7 @@
 ﻿namespace Tapas.Services.Data
 {
     using System;
-    using System.Collections;
     using System.Collections.Generic;
-    using System.Diagnostics;
     using System.Linq;
     using System.Threading.Tasks;
 
@@ -337,7 +335,7 @@
                       IsOneSize = x.Sizes.Count == 1,
                       Sizes = x.Sizes.Select(s => new ProductSizeViewModel()
                       {
-                          SizeName = s.SizeName,
+                          Weight = s.Weight,
                           Price = s.Price,
                       }).ToList(),
                       Weight = x.Sizes.Count == 1 ? x.Sizes.FirstOrDefault().Weight : default,
@@ -368,7 +366,7 @@
                     IsOneSize = x.Sizes.Count == 1,
                     Sizes = x.Sizes.Select(s => new ProductSizeViewModel()
                     {
-                        SizeName = s.SizeName,
+                        Weight = s.Weight,
                         Price = s.Price,
                     }).ToList(),
                     Weight = x.Sizes.Count == 1 ? x.Sizes.FirstOrDefault().Weight : default,

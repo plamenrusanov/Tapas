@@ -45,7 +45,7 @@
                     <h4 class="text-center col-md-3">Избери размер</h4>
                     @foreach (var item in Model.Product.Sizes)
                     {
-                        <a class="btn btn-info blink ml-3" href="#" id="@item.SizeId" onclick="GetModel(@item.SizeId)">@item.SizeName</a>
+                        <a class="btn btn-info blink ml-3" href="/ShoppingCart/AddItem?productId=@(Model.Product.Id)&sizeId=@(item.SizeId)" @*id="@item.SizeId" onclick="GetModel(@item.SizeId)"*@>@item.Weight гр.</a>
                     }
                 </div>
                 <div id="detailSection">
@@ -86,7 +86,7 @@
             </div>
             <div id="submitSection" class="row" style="width:100%; display:none">
                 <div class="text-center" style="width:50%;">
-                    <div onclick="goTo();" class="btn btn-primary btn-lg">Меню</div>
+                    <a href="./../Administration/Products/GetProductsByCategory?categoryId=@(Model.Product.CategoryId)" class="btn btn-primary btn-lg">Меню</a>
                 </div>
                 <div class="form-group text-center" style="width:50%;">
                     <div onclick="set();" class="btn btn-primary btn-lg">Добави</div>
@@ -159,7 +159,7 @@
             </div>
             <div class="row">
                 <div class="text-center" style="width:50%;">
-                    <div onclick="goTo();" class="btn btn-primary btn-lg">Меню</div>
+                    <a href="./../Administration/Products/GetProductsByCategory?categoryId=@(Model.Product.CategoryId)" class="btn btn-primary btn-lg">Меню</a>
                 </div>
                 <div class="form-group text-center" style="width:50%;">
                     <div onclick="set();" class="btn btn-primary btn-lg">Добави</div>
