@@ -88,12 +88,12 @@ function display() {
         </td>
         <td class="col-md-2">
             <tda>
-                <a class="btn btn-primary btn-sm" onclick="getDescription(${i - 1})" style="color:white">Редакция</a>
+                <button class="btn btn-primary btn-sm" onclick="getDescription(${i - 1})" style="color:white">Редакция</button>
                 <button hidden data-toggle="modal" data-target="#exampleModalCenter" id="button${i - 1}"></button>
             </tda>
         </td>
         <td class="col-md-2">
-            <tda><a class="btn btn-danger btn-sm" onclick="deleteItem(${i - 1})">Изтрий</a></tda>
+            <tda><button class="btn btn-danger btn-sm" onclick="deleteItem(${i - 1})">Изтрий</button></tda>
         </td>`;
         var tr = document.createElement('tr');
         tr.className = 'row';
@@ -121,12 +121,23 @@ function deleteItem(index) {
     var cart = getCart();
     cart.splice(index, 1);
     localStorage.setItem('cart', JSON.stringify(cart));
+    var elements = document.querySelectorAll("span.bad");
+    for (var i = 0; i < elements.length; i++) {
+        elements[i].innerHTML = cart.length;
+    }
     display();
 }
 
 function getAccountInfo() {
+
+
     var d = document.getElementById('accountInfo');
     d.style.display = "flex";
+
+    $('html, body').animate({
+        scrollTop: $('#accountInfo').offset().top - 55
+    }, 500);
+
     if (localStorage.getItem('username')) {
         var u = localStorage.getItem('username');
         if (document.getElementById('username')) {
@@ -199,6 +210,23 @@ function sendOrder() {
     if (document.getElementById('TakeAway')) {
         var takeAway = document.getElementById('TakeAway');
     }
+    var cartArray = JSON.parse(cart);
+    var sum = 0;
+    for (var i = 0; i < cartArray.length; i++) {
+        sum += parseFloat(cartArray[i].SubTotal); 
+    }
+
+    if (!takeAway.checked && sum < 10) {
+        var button = document.getElementById("btntakeAwayModal");
+        button.click();
+        $('html, body').animate({
+            scrollTop: $('#accountInfo').offset().top - 55
+        }, 500);
+        var labelTA = document.querySelector("span.addressLabel.ml-2");
+        labelTA.style.color = "red";
+        return;
+    }
+
     $.ajax({
         type: "POST",
         url: "./../Orders/Create",

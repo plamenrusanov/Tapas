@@ -48,15 +48,15 @@
     </div>
     @if (GlobalConstants.TimeNow > GlobalConstants.CloseTime || GlobalConstants.TimeNow < GlobalConstants.OpenTime)
     {
-        <div class="col-50 text-center">
-            <h3 style="color: #C82333">Затворено</h3>
-        </div>
+    <div class="col-50 text-center">
+        <h3 style="color: #C82333">Затворено</h3>
+    </div>
     }
     else
     {
-        <div class="col-50 text-center" id="prepareOrder">
-            <a class="btn btn-primary btn-lg" href="#accountInfo" onclick="getAccountInfo()">Оформи поръчка</a>
-        </div>
+    <div class="col-50 text-center" id="prepareOrder">
+        <button class="btn btn-primary btn-lg" onclick="getAccountInfo()">Оформи поръчка</button>
+    </div>
     }
 </div>
 <div class="row" id="accountInfo" style="display:none">
@@ -67,7 +67,7 @@
         </div>
         <div class="row mb-1">
             <label class="col-md-4 addressLabel">Име: </label>
-            <input class="col-md-8 form-control" id="username"  maxlength="20" min="3"/>
+            <input class="col-md-8 form-control" id="username" maxlength="20" min="3" />
         </div>
         <div class="row mb-1">
             <label class="col-md-4 addressLabel">Телефон: </label>
@@ -169,6 +169,28 @@
                 - 1 лев : Чародейка-Юг<br />
                 - 2 лева : за града<br />
                 - 4 лева : Източна Промишлена Зона, Западна Промишлена Зона, Долапи, Средна Кула<br />
+            </div>
+            <div class="modal-footer">
+                <a class="btn btn-secondary" data-dismiss="modal" id="closeModal">Затвори</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<button class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#takeAwayModal" id="btntakeAwayModal" hidden>Доставка</button>
+
+<div class="modal fade" id="takeAwayModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deliveryModalTitle" style="color:black">Вземи от ресторанта</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                На поръчки под 10 лева не се прави доставка. За да поръчате трябва да маркирате "Вземи от ресторанта".
             </div>
             <div class="modal-footer">
                 <a class="btn btn-secondary" data-dismiss="modal" id="closeModal">Затвори</a>

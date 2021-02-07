@@ -20,9 +20,11 @@
 </head>
 <body id="body">
     <header>
-        <nav class="navbar navbar-expand-md navbar-light bg-light-transperant box-shadow p-0">
+        <nav class="navbar navbar-expand-md navbar-light bg-light-transperant box-shadow p-0 nav-pills">
             <div class="container" style="padding-left: 0;">
                 <a class="navbar-brand brand-logo" asp-area="" asp-controller="Home" asp-action="Index"></a>
+                <a class="mobile" href="tel:+359885565621"><img class="phone-logo" src="~/Images/phone-logo-CA0ABEDEEB-seeklogo.com (1).png" /></a>
+                <a class="mobile" asp-area="" asp-controller="ShoppingCart" asp-action="Index" style="font-size:40px;margin-left:3px;">🛒<span class="bad bad-dropdown"></span></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -38,7 +40,7 @@
                         <a class="nav-link text-dark" href="/Orders/UserOrders">Моите поръчки</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" asp-area="" asp-controller="ShoppingCart" asp-action="Index" style="font-size:2rem;">🛒</a>
+                        <a class="nav-link" asp-area="" asp-controller="ShoppingCart" asp-action="Index" style="font-size: 35px; padding: 6px 16px;">🛒<span class="bad"></span></a>
                     </li>
                 </ul>
                 <div class="navbar-collapse collapse d-md-inline-flex flex-md-row-reverse">
@@ -83,7 +85,6 @@
         </div>
     </footer>
     <environment names="Development">
-        <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" asp-append-version="true" />
         @*<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">*@
         <script src="https://kit.fontawesome.com/dcaf786647.js" crossorigin="anonymous" SameSite="none Secure"></script>
         <script src="~/lib/jquery/dist/jquery.min.js" asp-append-version="true"></script>

@@ -127,6 +127,9 @@ a.dropdown-btn {
     background-color: white;
     width: 100%;
     margin-top: auto;
+    position: fixed;
+    top: 56px;
+    z-index:100;
 }
 
 div.dropdown-item {
@@ -184,6 +187,7 @@ div.dropdown-item {
 .contacts-links {
     color: white;
     font-size: 1.2rem;
+    display:inline;
 }
 
     .contacts-links:hover {
@@ -239,7 +243,7 @@ div.dropdown-item {
 }
 
 .li-contacts {
-    margin-bottom: 2px;
+    margin-bottom: 4px;
     font-size: 1.1rem;
 }
 .alert-info {
@@ -289,4 +293,51 @@ div.dropdown-item {
 
 p.light.center-align {
     font-size: 1.1rem;
+}
+.moccaShadow {
+    text-shadow: 5px 5px 10px saddlebrown;
+}
+.phone {
+    margin-bottom: -3px;
+    margin-right: 7px;
+}
+.bad {
+    border-radius: 50%;
+    background-color: #fff;
+    color: #000;
+    display: inline-block;
+    line-height: 15px;
+    font-size: 16px;
+    padding: 0 4px 2px 3px;
+    margin-left: -32px;
+    position: absolute;
+    margin-top: 15px;
+    font-weight: 600;
+}
+.bad-dropdown {
+    margin-left: -38px;
+    margin-top: 11px;
+}
+.mobile{
+    opacity:0;
+    padding: 0 8px;
+}
+
+
+@media only screen and (max-width : 768px) {
+    .mobile{
+        opacity:1;
+    }
+    nav {
+        position: fixed;
+        top: 0;
+        z-index:100;
+    }
+    main {
+        margin-top: 56px;
+    }
+    .phone-logo {
+        margin-bottom: -5px;
+        margin-left: 5px;
+    }
 }

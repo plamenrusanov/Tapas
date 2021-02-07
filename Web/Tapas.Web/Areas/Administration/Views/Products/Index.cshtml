@@ -25,7 +25,7 @@
             <div class="row table-food" style="margin:0;">
                 <img class="responsive" src="~/Images/tapas-masa s hrana.jpg" height="350" alt="Маса с храна">
             </div>
-            <div class="row">
+            <div class="row" id="products">
                 @foreach (var product in Model.Products)
                 {
                     <a class="carda btn col-lg-4 col-md-6 mb-4" href="~/ShoppingCart/AddItem?productId=@product.Id">

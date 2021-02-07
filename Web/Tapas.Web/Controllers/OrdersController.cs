@@ -2,7 +2,6 @@
 {
     using System;
     using System.Threading.Tasks;
-
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Identity;
@@ -62,29 +61,7 @@
 
             try
             {
-                var user = await this.userManager.GetUserAsync(this.User);
-                if (user == null && this.Request.Cookies.ContainsKey(GlobalConstants.UserIdCookieKey))
-                {
-                    user = await this.userManager.FindByIdAsync(this.Request.Cookies[GlobalConstants.UserIdCookieKey]);
-                }
-                else if (user == null)
-                {
-                    user = new ApplicationUser()
-                    {
-                        UserName = model.Username,
-                        PhoneNumber = model.Phone,
-                        Email = $"{this.Request.HttpContext.Connection.RemoteIpAddress}@tapas.bg",
-                    };
-                    await this.userManager.CreateAsync(user);
-                    this.Response.Cookies.Append(GlobalConstants.UserIdCookieKey, user.Id, new CookieOptions()
-                    {
-                        Domain = this.Request.Host.Host,
-                        HttpOnly = true,
-                        Secure = true,
-                        Expires = DateTime.UtcNow.AddYears(2),
-                        Path = GlobalConstants.IndexRoute,
-                    });
-                }
+                ApplicationUser user = await this.GetUser(model);
 
                 var id = await this.ordersService.CreateAsync(user, model);
                 await this.hubAdmin.Clients.All.SendAsync("OperatorNewOrder", id);
@@ -96,6 +73,36 @@
                 this.logger.LogInformation(GlobalConstants.DefaultLogPattern, this.User?.Identity.Name, e.Message, e.StackTrace);
                 return this.BadRequest();
             }
+        }
+
+        private async Task<ApplicationUser> GetUser(OrderInpitModel model)
+        {
+            var user = await this.userManager.GetUserAsync(this.User);
+            if (user == null && this.Request.Cookies.ContainsKey(GlobalConstants.UserIdCookieKey))
+            {
+                user = await this.userManager.FindByIdAsync(this.Request.Cookies[GlobalConstants.UserIdCookieKey]);
+            }
+
+            if (user == null)
+            {
+                user = new ApplicationUser()
+                {
+                    UserName = model.Username,
+                    PhoneNumber = model.Phone,
+                    Email = $"{this.Request.HttpContext.Connection.RemoteIpAddress}@tapas.bg{DateTime.Now}",
+                };
+                var result = await this.userManager.CreateAsync(user);
+                this.Response.Cookies.Append(GlobalConstants.UserIdCookieKey, user.Id, new CookieOptions()
+                {
+                    Domain = this.Request.Host.Host,
+                    HttpOnly = true,
+                    Secure = true,
+                    Expires = DateTime.UtcNow.AddYears(2),
+                    Path = GlobalConstants.IndexRoute,
+                });
+            }
+
+            return user;
         }
 
         // Ajax Orders/Details

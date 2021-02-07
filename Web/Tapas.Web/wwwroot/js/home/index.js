@@ -12,3 +12,19 @@ for (i = 0; i < dropdown.length; i++) {
         }
     });
 }
+
+//$(window).on('storage', message_receive);
+//function message_receive(ev) {
+//    if (ev.originalEvent.key != 'cart') return;
+//    var cart = JSON.parse(localStorage.getItem(ev.originalEvent.key));
+//    var elements = document.querySelectorAll("span.bad");
+//    for (var i = 0; i < elements.length; i++) {
+//        elements[i].innerHTML = cart.length;
+//    }
+//}
+
+var cart = JSON.parse(localStorage.getItem("cart"));
+var elements = document.querySelectorAll("span.bad");
+for (var i = 0; i < elements.length; i++) {
+    elements[i].innerHTML = cart.length;
+}
