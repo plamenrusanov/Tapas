@@ -1,0 +1,110 @@
+﻿body {
+    margin: 0;
+}
+
+main{
+    margin-top: 56px;
+}
+
+.navTop {
+    background-color: white;
+    height: 56px;
+    box-shadow: inset 0px 0px 5px 1px grey;
+}
+
+.layoutUl {
+    display: inline-flex;
+    margin: 0;
+    height: 56px;
+    padding-inline-start: 0;
+    width: 100%;
+}
+
+.layoutUlLiFull {
+    display: block;
+    padding: 5px 10px;
+    font-size: x-large;
+}
+
+    .layoutUlLiFull:hover {
+        background-color: rgba(0, 0, 0, 0.1);
+    }
+/*Mobile Icon*/
+.layoutUlLiMobile {
+    display: none;
+}
+
+    .layoutUlLiMobile:hover {
+        background-color: rgba(0, 0, 0, 0.1);
+    }
+
+.logoMobile {/*
+    width: 40px;
+    height: 40px;*/
+    margin: 8px auto;
+    border-radius: 10%;
+}
+.menuMobile{/*
+    content: url("/menu.png");
+    width: 40px;*/
+    margin: 8px auto;
+}
+.cartMobile {
+    font-size: 36px;
+    margin: 2px auto;
+}
+.phoneMobile {/*
+    content: url("/phone.png");
+    width: 40px;*/
+    margin: 8px auto;
+}
+.list {/*
+    content: url("/list.jpg");
+    width: 40px;*/
+    margin: 8px auto;
+}
+.mobileDropdown {
+    display: none;
+    background-color: white;
+    margin: 56px 0 0 0;
+    box-sizing: border-box;
+    padding-inline-start: 0;
+}
+.layoutUlLiDrop {
+    list-style: none;
+    box-shadow: inset 0px 0px 5px 1px grey;
+    height: 56px;
+}
+.dropLinks {
+    color: black;
+    font-size: 25px;
+    padding: 14px 10px 0px 25px;
+    display: block;
+    height: 42px;
+}
+@media only screen and (max-width: 768px) {
+    .layoutUl {
+        justify-content: space-around;
+        position: fixed;
+        top: 0;
+    }
+
+    .layoutUlLiFull {
+        display: none;
+    }
+
+    .layoutUlLiMobile {
+        display: block;
+    }
+
+    .navTop {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1;
+    }
+}
+
+a {
+    text-decoration: none; 
+}

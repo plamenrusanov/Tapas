@@ -1,6 +1,10 @@
 ﻿@model Tapas.Web.ViewModels.Orders.OrderInpitModel
 @{
     ViewData["Title"] = "Количка";
+
+    bool prepOrder = GlobalConstants.TimeNow > GlobalConstants.CloseTime || GlobalConstants.TimeNow < GlobalConstants.OpenTime;
+    string displayOrd = prepOrder ? "none" : "block";
+    string displayClose = prepOrder ? "block" : "none";
 }
 
 
@@ -33,7 +37,6 @@
 <div id="delivery" style="display:none">
     <div class="row mt-2">
         <h5 style="width:70%;">Ще ви бъде начислена сума за доставка!</h5>
-        @*<a class="btn btn-secondary btn-sm" onclick="displayDeliveryTax()" style="color:white; height: fit-content;">Доставка</a>*@
         <button class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#deliveryTax" id="btnDeliveryTax">Доставка</button>
     </div>
     <hr class="hr-tapas" />
@@ -43,21 +46,16 @@
 
 
 <div class="row">
-    <div class="col-50 text-center">
+    <div class="col-50 text-center" style="margin-bottom: 20px;">
         <a class="btn btn-primary btn-lg" href="/Administration/Products/">Към менюто</a>
     </div>
-    @if (GlobalConstants.TimeNow > GlobalConstants.CloseTime || GlobalConstants.TimeNow < GlobalConstants.OpenTime)
-    {
-    <div class="col-50 text-center">
+    <div class="col-50 text-center" style ='display:@(displayClose)' >
         <h3 style="color: #C82333">Затворено</h3>
     </div>
-    }
-    else
-    {
-    <div class="col-50 text-center" id="prepareOrder">
+
+    <div class="col-50 text-center" id="prepareOrder" style="display:@(displayOrd)">
         <button class="btn btn-primary btn-lg" onclick="getAccountInfo()">Оформи поръчка</button>
     </div>
-    }
 </div>
 <div class="row" id="accountInfo" style="display:none">
     <hr class="hr-tapas" />
@@ -201,7 +199,6 @@
 @section Scripts{
     <script src="~/js/shopingCart/index.js" type="text/javascript"></script>
     <script src="~/js/shopingCart/cart.js"></script>
-    @*<script src="~/js/addreses/create.js"></script>*@
 }
 @section Style{
     <link rel="stylesheet" type="text/css" href="~/css/shared/shopingCartTable.css">

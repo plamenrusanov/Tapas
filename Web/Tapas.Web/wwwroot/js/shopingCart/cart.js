@@ -137,6 +137,9 @@ function getAccountInfo() {
     $('html, body').animate({
         scrollTop: $('#accountInfo').offset().top - 55
     }, 500);
+    //document.querySelector('#prepareOrder').scrollIntoView({
+    //    behavior: 'smooth'
+    //});
 
     if (localStorage.getItem('username')) {
         var u = localStorage.getItem('username');

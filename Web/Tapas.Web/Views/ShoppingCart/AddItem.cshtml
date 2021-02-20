@@ -33,7 +33,7 @@
         </div>
     </div>
     <hr class="hr-tapas" />
-    <div class="container">
+    <div class="container" id="form-conatainer">
         <div class="form-group">
             @Html.HiddenFor(x => x.Product.Id, new { @class = "form-control" })
             @Html.HiddenFor(x => x.ShopingCartId, new { @class = "form-control" })
@@ -45,7 +45,7 @@
                     <h4 class="text-center col-md-3">Избери размер</h4>
                     @foreach (var item in Model.Product.Sizes)
                     {
-                        <a class="btn btn-info blink ml-3" href="/ShoppingCart/AddItem?productId=@(Model.Product.Id)&sizeId=@(item.SizeId)" @*id="@item.SizeId" onclick="GetModel(@item.SizeId)"*@>@item.Weight гр.</a>
+                        <a class="btn btn-info blink ml-3" href="/ShoppingCart/AddItem?productId=@(Model.Product.Id)&sizeId=@(item.SizeId)" style="margin-bottom:25px">@item.Weight гр.</a>
                     }
                 </div>
                 <div id="detailSection">

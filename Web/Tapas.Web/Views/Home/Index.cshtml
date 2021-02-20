@@ -6,58 +6,54 @@
     Layout = "_IndexLayout";
 }
 
-<nav class="white" role="navigation">
+<nav>
+    <a href="/" class="b-l">@*<img src="https://res.cloudinary.com/duxtyuzpy/image/upload/c_scale,h_40,w_40,f_auto/v1587384461/logo.jpg" width="40" height="40" />*@</a>
+    <a class="mobile" asp-area="Administration" asp-controller="Products" asp-action="Index"><img class="menuMobile" src="/menu.png" width="40" height="40" /></a>
+    <a class="mobile" asp-area="" asp-controller="ShoppingCart" asp-action="Index" style="font-size:40px;">🛒<span class="bad bad-dropdown"></span></a>
+    <a class="mobile" href="tel:+359885565621"><img class="phone-logo" src="~/Images/phone-logo-CA0ABEDEEB-seeklogo.com (1).png" /></a>
+    <a href="#" data-target="nav-mobile" class="dropdown-btn right"> <img class="list" src="~/list.jpg" width="40" height="40" /></a>
+    <ul class=" hide-on-small-and-down">
+        <li class="li-item"><a href="/Administration/Products">Меню</a></li>
+        <li class="li-item"><a href="/Administration/CateringFood/">Кетъринг</a></li>
+        <li class="li-item"><a href="/Orders/UserOrders">Моите поръчки</a></li>
+        <li class="li-item"><a href="/ShoppingCart/" style="font-size:35px;">🛒<span class="bad"></span></a></li>
+    </ul>
 
-    <div class="nav-wrapper">
-        <div class=" container-custom">
-            <ul class="left"><li><a href="/" class="b-l"></a></li></ul>
-            <ul class="left hide-on-small-and-down">
-                <li><a href="/Administration/Products">Меню</a></li>
-                <li><a href="/Administration/CateringFood/">Кетъринг</a></li>
-                <li><a href="/Orders/UserOrders">Моите поръчки</a></li>
-                <li><a href="/ShoppingCart/" style="font-size:35px;">🛒<span class="bad"></span></a></li>
-            </ul>
+    <ul class="hide-on-small-and-down" style="position:absolute; right:10%; display:flex">
+        @if (this.SignInManager.IsSignedIn(this.User))
+        {
+            <li class="li-item">
+                <a class="nav-link" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage" style="height: 64px; padding-top: 8px;">
+                    <img src="https://res.cloudinary.com/duxtyuzpy/image/upload/c_scale,h_48,q_100,w_48/v1590151208/sharp_person_black_48dp.png" />
+                </a>
+            </li>
+            if (this.User.IsInRole(GlobalConstants.AdministratorName))
+            {
+                <li class="li-item">
+                    <a class="nav-link text-dark" asp-area="Administration" asp-controller="Dashboard" asp-action="Index" title="Admin">Admin</a>
+                </li>
+            }
+            else if (this.User.IsInRole(GlobalConstants.OperatorName))
+            {
+                <li class="li-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Orders" asp-action="Index" title="Orders">Поръчки</a>
+                </li>
 
-            <ul class="right hide-on-small-and-down">
-                @if (this.SignInManager.IsSignedIn(this.User))
-                {
-                    <li class="nav-item">
-                        <a class="nav-link" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage" style="height: 64px; padding-top: 8px;">
-                            <img src="https://res.cloudinary.com/duxtyuzpy/image/upload/c_scale,h_48,q_100,w_48/v1590151208/sharp_person_black_48dp.png" />
-                        </a>
-                    </li>
-                    if (this.User.IsInRole(GlobalConstants.AdministratorName))
-                    {
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="Administration" asp-controller="Dashboard" asp-action="Index" title="Admin">Admin</a>
-                        </li>
-                    }
-                    else if (this.User.IsInRole(GlobalConstants.OperatorName))
-                    {
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Orders" asp-action="Index" title="Orders">Поръчки</a>
-                        </li>
-
-                    }
-                    <li class="nav-item">
-                        <a asp-area="Identity" asp-page="/Account/Logout" class="nav-link text-dark">Изход</a>
-                    </li>
-                }
-                else
-                {
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Регистрация</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Вход</a>
-                    </li>
-                }
-            </ul>
-            <a class="mobile" href="tel:+359885565621"><img class="phone-logo" src="~/Images/phone-logo-CA0ABEDEEB-seeklogo.com (1).png"/></a>
-            <a class="mobile" asp-area="" asp-controller="ShoppingCart" asp-action="Index" style="font-size:40px;">🛒<span class="bad bad-dropdown"></span></a>
-            <a href="#" data-target="nav-mobile" class="dropdown-btn right"><i id="menu-icon" class="material-icons">menu</i></a>
-        </div>
-    </div>
+            }
+            <li class="li-item">
+                <a asp-area="Identity" asp-page="/Account/Logout" class="nav-link text-dark">Изход</a>
+            </li>
+        }
+        else
+        {
+            <li class="li-item right">
+                <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Регистрация</a>
+            </li>
+            <li class="li-item right">
+                <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Вход</a>
+            </li>
+        }
+    </ul>
 </nav>
 <div class="dropdown-container">
     <div class="dropdown-item"> <a href="/Administration/Products">Меню</a></div>
@@ -65,7 +61,7 @@
         <a href="/Administration/CateringFood/">Кетъринг</a>
     </div>
     <div class="dropdown-item">
-        <a href="/Administration/Products">Моите поръчки</a>
+        <a href="/Orders/UserOrders">Моите поръчки</a>
     </div>
     <div class="dropdown-item">
         <a asp-area="" asp-controller="ShoppingCart" asp-action="Index" style="font-size:2rem;">🛒<span class="bad" style="margin-top: 5px; margin-left: -30px;">3</span></a>

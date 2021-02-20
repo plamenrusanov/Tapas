@@ -13,18 +13,38 @@ for (i = 0; i < dropdown.length; i++) {
     });
 }
 
-//$(window).on('storage', message_receive);
-//function message_receive(ev) {
-//    if (ev.originalEvent.key != 'cart') return;
-//    var cart = JSON.parse(localStorage.getItem(ev.originalEvent.key));
-//    var elements = document.querySelectorAll("span.bad");
-//    for (var i = 0; i < elements.length; i++) {
-//        elements[i].innerHTML = cart.length;
-//    }
-//}
-
 var cart = JSON.parse(localStorage.getItem("cart"));
 var elements = document.querySelectorAll("span.bad");
-for (var i = 0; i < elements.length; i++) {
-    elements[i].innerHTML = cart.length;
-}
+if (cart && elements) {
+    for (var i = 0; i < elements.length; i++) {
+        elements[i].innerHTML = cart.length;
+    }
+} else {
+    for (var i = 0; i < elements.length; i++) {
+        elements[i].innerHTML = 0;
+    }
+};
+
+
+var lastScrollTop = 0;
+var position = 0;
+window.addEventListener("touchmove", function () {
+    var st = window.pageYOffset || document.documentElement.scrollTop;
+    st = parseInt(st);
+    var n = document.querySelector("nav");
+    if (st > lastScrollTop) {
+        if (position > -56) {
+            position += (lastScrollTop - st);
+            position = position < -56 ? -56 : position;
+            n.style.top = `${position}px`;
+        }
+
+    } else {
+        if (position < 0) {
+            position += (lastScrollTop - st);
+            position = position > 0 ? 0 : position;
+            n.style.top = `${position}px`;
+        }
+    }
+    lastScrollTop = st <= 0 ? 0 : st;
+}, false);

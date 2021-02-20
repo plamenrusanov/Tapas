@@ -118,15 +118,9 @@ function showExtras() {
     }
 }
 
-//window.onhashchange = function () {
-//    var referer = window.document.referrer;
-//    var winloc = window.location.href;
-//    if (winloc.indexOf('#') < 0) {
-//        location.href = winloc.substring(0, winloc - 2);
-//        var d = document.getElementById("detailSection");
-//        d.style.display = "none";
-//        var e = document.getElementById("chooseSize");
-//        e.style.display = "block";
-//    }
+//if (window.screen.width < 992 ) {
+//    $('html, body').animate({
+//        scrollTop: $('#form-conatainer').offset().top - 50
+//    }, 500);
 //}
 

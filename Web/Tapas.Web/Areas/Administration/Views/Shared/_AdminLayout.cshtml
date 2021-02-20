@@ -32,8 +32,7 @@
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <partial name="_LoginPartial" />
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse bg-light">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="Administration" asp-controller="Products" asp-action="Index">Меню</a>
@@ -45,9 +44,10 @@
                             <a class="nav-link text-dark" href="/Orders/UserOrders">Моите поръчки</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="ShopingCart" asp-action="Index" style="font-size:2rem;">🛒</a>
+                            <a class="nav-link" asp-area="" asp-controller="ShoppingCart" asp-action="Index" style="font-size:2rem;">🛒<span class="bad"></span></a>
                         </li>
                     </ul>
+                    <partial name="_LoginPartial" />
                 </div>
             </div>
         </nav>
