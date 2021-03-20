@@ -47,6 +47,9 @@ function orderDetails(orderId) {
         cache: false,
         success: function (response) {
             document.getElementById("detailSection").innerHTML = response;
+            $('html, body').animate({
+                scrollTop: $('#detailSection').offset().top
+            }, 500);
         }
     });
 }

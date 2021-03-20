@@ -97,7 +97,10 @@
     }
 </div>
 <main>
-    @if (GlobalConstants.TimeNow > GlobalConstants.CloseTime || GlobalConstants.TimeNow < GlobalConstants.OpenTime)
+    <div id="alert" class="alert alert-info" role="alert">
+        <div style=" font-size: 30px; margin: 0 auto;">Сайта не приема поръчки!</div>
+    </div>
+    @*@if (GlobalConstants.TimeNow > GlobalConstants.CloseTime || GlobalConstants.TimeNow < GlobalConstants.OpenTime)
     {
         if (GlobalConstants.TimeNow > GlobalConstants.CloseTime)
         {
@@ -118,7 +121,7 @@
         <div id="alert" class="alert alert-danger " role="alert">
             <div id="lastOrder" class="center">Последни поръчки. Затваряме в @GlobalConstants.CloseTime.ToString("hh':'mm") часа.</div>
         </div>
-    }
+    }*@
     <partial name="_CookieConsentPartial" />
     <div id="index-banner" class="parallax-container">
         <div class="section no-pad-bot">

@@ -49,7 +49,10 @@
     </nav>
 
     <main role="main" id="main-transperant">
-        @if (GlobalConstants.TimeNow > GlobalConstants.CloseTime || GlobalConstants.TimeNow < GlobalConstants.OpenTime)
+        <div id="alert" class="alert alert-info" role="alert" style=" margin: 0 -15px;">
+            <div style=" font-size: 30px; margin: 0 auto;">Сайта не приема поръчки!</div>
+        </div>
+        @*@if (GlobalConstants.TimeNow > GlobalConstants.CloseTime || GlobalConstants.TimeNow < GlobalConstants.OpenTime)
             {
                 if (GlobalConstants.TimeNow > GlobalConstants.CloseTime)
                 {
@@ -70,7 +73,7 @@
         <div id="alert" class="alert alert-warning " role="alert">
             <div id="closed">Последни поръчки. Затваряме в @GlobalConstants.CloseTime.ToString("hh':'mm") часа.</div>
         </div>
-            }
+            }*@
         <partial name="_CookieConsentPartial" />
         @this.RenderBody()
         <button onclick="topFunction()" id="topBtn" title="Go to top"><i class="fa fa-chevron-up c-mocca" aria-hidden="true"></i></button>

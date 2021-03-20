@@ -213,7 +213,7 @@ div.dropdown-item {
     }
 }
 
-.bg-mocca {
+.bg-mocca, .btn-large:focus {
     background-color: rgb(180,163,147);
 }
 

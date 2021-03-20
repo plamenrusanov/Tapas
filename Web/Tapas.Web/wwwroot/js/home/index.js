@@ -32,19 +32,32 @@ window.addEventListener("touchmove", function () {
     var st = window.pageYOffset || document.documentElement.scrollTop;
     st = parseInt(st);
     var n = document.querySelector("nav");
-    if (st > lastScrollTop) {
-        if (position > -56) {
-            position += (lastScrollTop - st);
+    if (st > (lastScrollTop + 5) && st > 50) {
+        var id = null;
+        clearInterval(id);
+        id = this.setInterval(frameHide, 5);
+        function frameHide() {
+            position--;
             position = position < -56 ? -56 : position;
-            n.style.top = `${position}px`;
+            n.style.top = `${position}px`
+            if (position <= -56) {
+                clearInterval(id);
+            }
         }
-
-    } else {
-        if (position < 0) {
-            position += (lastScrollTop - st);
+        lastScrollTop = st <= 0 ? 0 : st;
+    } else if (st < (lastScrollTop - 5)) {
+        var id = null;
+        clearInterval(id);
+        id = this.setInterval(frameHide, 5);
+        function frameHide() {
+            position++;
             position = position > 0 ? 0 : position;
-            n.style.top = `${position}px`;
+            n.style.top = `${position}px`
+            if (position >= 0) {
+                clearInterval(id);
+            }
         }
+        lastScrollTop = st <= 0 ? 0 : st;
     }
-    lastScrollTop = st <= 0 ? 0 : st;
+    
 }, false);

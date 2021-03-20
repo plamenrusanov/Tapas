@@ -1,10 +1,6 @@
 ﻿namespace Tapas.Services
 {
-    using System;
-    using System.Drawing;
-    using System.Drawing.Imaging;
     using System.IO;
-    using System.Linq;
     using System.Threading.Tasks;
 
     using Microsoft.AspNetCore.Hosting;
@@ -13,11 +9,27 @@
 
     public class ImageService : IImageService
     {
-        private readonly IHostingEnvironment hostingEnvironment;
-
-        public ImageService(IHostingEnvironment hostingEnvironment)
+        public async Task<string> AddImage(IFormFile image, string directory)
         {
-            this.hostingEnvironment = hostingEnvironment;
+            if (image.Length > 0)
+            {
+                var dir = Path.Combine("/", "Images", directory);
+                var filePath = Path.Combine(dir, image.FileName);
+
+                if (!Directory.Exists(dir))
+                {
+                    Directory.CreateDirectory(dir);
+                }
+
+                using (var fileStream = new FileStream(filePath, FileMode.Create))
+                {
+                    await image.CopyToAsync(fileStream);
+                }
+
+                return filePath;
+            }
+
+            return null;
         }
 
         public async Task SaveImageOnFileSystem(IFormFile image, string name, string directory)

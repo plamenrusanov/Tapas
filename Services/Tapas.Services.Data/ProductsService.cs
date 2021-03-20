@@ -108,7 +108,7 @@
             {
                 product.ImageUrl = await this.cloudService.UploadImageFromForm(model.Image);
 
-               // await this.imageService.SaveImageOnFileSystem(model.Image, model.Name, this.categoriesRepository.All().Where(c => c.Id == model.CategoryId).FirstOrDefault()?.Name);
+                //await this.imageService.AddImage(model.Image, this.categoriesRepository.All().Where(c => c.Id == model.CategoryId).FirstOrDefault()?.Name);
             }
 
             await this.productsRepo.AddAsync(product);
