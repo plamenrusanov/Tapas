@@ -7,16 +7,19 @@
     using Microsoft.AspNetCore.Mvc;
     using Tapas.Common;
     using Tapas.Services.Data.Contracts;
+    using Tapas.Web.Log;
     using Tapas.Web.ViewModels.Administration.Packages;
 
     [Authorize(Roles = GlobalConstants.AdministratorName)]
     public class PackagesController : AdministrationController
     {
         private readonly IPackagesService packagesService;
+        private readonly Logger logger;
 
         public PackagesController(IPackagesService packagesService)
         {
             this.packagesService = packagesService;
+            this.logger = new Logger();
         }
 
         public IActionResult Index()
@@ -59,6 +62,8 @@
             }
             catch (Exception e)
             {
+                await this.logger.WriteObject(typeof(PackageInputModel), inputModel);
+                await this.logger.WriteException(e);
                 return this.NotFound();
             }
         }
@@ -89,8 +94,10 @@
                 await this.packagesService.EditAsync(viewModel);
                 return this.RedirectToAction("Index");
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                await this.logger.WriteObject(typeof(PackageViewModel), viewModel);
+                await this.logger.WriteException(e);
                 return this.NotFound();
             }
         }

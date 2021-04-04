@@ -82,9 +82,19 @@
     <div class="col-md-6">
         <div class="row"><h4 style="width:50%;">Телефон: </h4><h4 id="phone"><a href="tel:@(Model.UserPhone)">@Model.UserPhone</a></h4></div>
     </div>
-    <div class="col-md-6">
-        <a class="btn" href="https://www.google.com/maps/@@@(Model.Latitude),@(Model.Longitude),19z" target="_blank" rel="noopener"><h4>Адрес: <span id="address">@Model.DisplayAddress</span></h4></a>
-    </div>
+    @if (Model.TakeAway)
+    {
+        <div class="col-md-6">
+            <div class="row"><h4 style="width:50%;">Адрес: </h4><h4 id="address">От ресторанта</h4></div>
+        </div>
+    }
+    else
+    {
+        <div class="col-md-6">
+            <a class="btn" href="https://www.google.com/maps/@@@(Model.Latitude),@(Model.Longitude),19z" target="_blank" rel="noopener"><h4>Адрес: <span id="address">@Model.DisplayAddress</span></h4></a>
+        </div>
+    }
+
     <div class="col-md-6">
         <div>
             <span>Допълнителна информация за адреса.</span><br />

@@ -247,11 +247,10 @@ function sendOrder() {
             window.location.href = "/Orders/UserOrders";
         },
         error: function (e) {
-            alert("Получи се грешка!");
+            alert("Получи се грешка, но може да поръчате по телефона");           
         },
     });
 }
-
 function collectAddress() {
     var a = {
         'latitude': document.getElementById('latitude').value,

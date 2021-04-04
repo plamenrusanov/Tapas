@@ -11,6 +11,7 @@
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
+    using Newtonsoft.Json;
     using Tapas.Data;
     using Tapas.Data.Common;
     using Tapas.Data.Common.Repositories;
@@ -68,7 +69,8 @@
             IMapper mapper = mapperConfig.CreateMapper();
             services.AddSingleton(mapper);
 
-            services.AddControllersWithViews();
+            services.AddControllersWithViews().AddNewtonsoftJson(options =>
+                options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
             services.AddRazorPages();
             services.AddSingleton(this.configuration);
             services.AddResponseCompression();
@@ -129,7 +131,7 @@
                 new ApplicationDbContextSeeder().SeedAsync(dbContext, serviceScope.ServiceProvider).GetAwaiter().GetResult();
             }
 
-            if (env.IsDevelopment())
+            if (!env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
                 app.UseDatabaseErrorPage();

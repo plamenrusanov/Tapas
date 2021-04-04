@@ -7,7 +7,7 @@
     @*<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" asp-append-version="true" />*@
     <link href="~/css/shared/site.min.css" rel="stylesheet" asp-append-version="true" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="~/css/shared/layout.css" rel="stylesheet" />
+    <link href="~/css/shared/layout.css" rel="stylesheet" asp-append-version="true"/>
     @await RenderSectionAsync("Style", required: false)
 </head>
 <body>
@@ -70,7 +70,7 @@
     @*<script src="~/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.js" asp-append-version="true"></script>*@
     @*<script src="~/lib/bootstrap/dist/js/bootstrap.min.js" asp-append-version="true"></script>*@
     <script src="~/js/shared/site.js" asp-append-version="true"></script>
-    <script src="~/js/shared/layout.js"></script>
+    <script src="~/js/shared/layout.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

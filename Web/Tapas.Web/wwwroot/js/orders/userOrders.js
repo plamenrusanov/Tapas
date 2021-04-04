@@ -66,9 +66,9 @@ function sendRating(rating, message) {
 function getRating() {
     var dataRating = [];
     var message;
-    var holder = document.getElementById("ratingHolder");
-    for (var i = 0; i < holder.childElementCount; i++) {
-        var productItemId = holder.children[i].firstElementChild.innerHTML;
+    var holder = document.querySelectorAll("div.row.ratingRow");
+    for (var i = 0; i < holder.length; i++) {
+        var productItemId = holder[i].id;
         if (document.querySelector(`input[name="rating-input-${productItemId}"]:checked`)) {
             var rating = document.querySelector(`input[name="rating-input-${productItemId}"]:checked`).value;
             dataRating.push({ itemId: productItemId, rating: rating })

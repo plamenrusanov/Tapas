@@ -118,16 +118,8 @@
         public async Task<int> CreateAsync(ApplicationUser user, OrderInpitModel model)
         {
             var address = JsonConvert.DeserializeObject<DeliveryAddress>(model.Address);
-            address.ApplicationUserId = user.Id;
-            await this.addressRepository.AddAsync(address);
-            await this.addressRepository.SaveChangesAsync();
+
             var cart = JsonConvert.DeserializeObject<List<ShoppingCartItemDto>>(model.Cart);
-            var bag = new ShopingCart()
-            {
-                ApplicationUserId = user.Id,
-            };
-            await this.cartRepository.AddAsync(bag);
-            await this.cartRepository.SaveChangesAsync();
 
             var order = new Order()
             {
@@ -135,45 +127,36 @@
                 Phone = model.Phone,
                 AddInfo = model.AddInfoOrder,
                 AddressId = address.Id,
+                Address = address,
+                User = user,
                 UserId = user.Id,
                 Status = OrderStatus.Unprocessed,
-                CreatedOn = DateTime.UtcNow,
+                CreatedOn = DateTime.Now,
                 TakeAway = model.TakeAway,
                 Cutlery = model.CutleryCount,
+                Bag = new ShopingCart()
+                {
+                    CartItems = cart.Select(x => new ShopingCartItem()
+                    {
+                        SizeId = x.SizeId,
+                        ProductId = x.ProductId,
+                        Quantity = x.Quantity,
+                        Description = x.Description,
+                        ExtraItems = x.Extras.Select(e => new ExtraItem()
+                        {
+                            ExtraId = e.Id,
+                            Quantity = e.Quantity,
+                        }).ToList(),
+                    }).ToList(),
+                },
             };
 
             if (model.TakeAway)
             {
-                order.AddressId = this.addressRepository.All().Where(a => a.DisplayName == GlobalConstants.TakeAway).FirstOrDefault()?.Id;
+                order.Address = this.addressRepository.All().Where(a => a.DisplayName == GlobalConstants.TakeAway).FirstOrDefault();
+                order.AddressId = order.Address.Id;
             }
 
-            foreach (var item in cart)
-            {
-                var i = new ShopingCartItem()
-                {
-                    ShopingCartId = bag.Id,
-                    SizeId = item.SizeId,
-                    ProductId = item.ProductId,
-                    Quantity = item.Quantity,
-                    Description = item.Description,
-                    ExtraItems = new List<ExtraItem>(),
-                };
-
-                foreach (var e in item.Extras)
-                {
-                    i.ExtraItems.Add(new ExtraItem()
-                    {
-                        ShopingCartItemId = i.Id,
-                        ExtraId = e.Id,
-                        Quantity = e.Quantity,
-                    });
-                }
-
-                await this.itemsRepository.AddAsync(i);
-                order.Bag.CartItems.Add(i);
-            }
-
-            await this.itemsRepository.SaveChangesAsync();
             await this.ordersRepository.AddAsync(order);
             await this.ordersRepository.SaveChangesAsync();
 
@@ -194,7 +177,7 @@
             {
                 Latitude = order.Address.Latitude,
                 Longitude = order.Address.Longitude,
-                CreatedOn = order.CreatedOn.ToLocalTime().ToString("dd/MM/yy HH:mm"),
+                CreatedOn = order.CreatedOn.ToString("dd/MM/yy HH:mm"),
                 OrderId = order.Id,
                 DisplayAddress = order.Address.ToString(),
                 AddressInfo = order.Address.AddInfo,
@@ -316,7 +299,7 @@
                     OrderId = x.Id,
                     Status = x.Status.ToString(),
                     ArriveTime = x.ProcessingTime.ToLocalTime().AddMinutes((double)x.MinutesForDelivery).ToString("dd/MM/yyyy HH:mm"),
-                    CreatedOn = x.CreatedOn.ToLocalTime().ToString("dd/MM/yyyy HH:mm"),
+                    CreatedOn = x.CreatedOn.ToString("dd/MM/yyyy HH:mm"),
                     TakeAway = x.TakeAway,
                 }).Take(10).ToListAsync();
         }
@@ -333,7 +316,7 @@
 
             var model = new UserOrderDetailsViewModel()
             {
-                CreatedOn = order.CreatedOn.ToLocalTime().ToString("dd/MM/yyyy HH:mm"),
+                CreatedOn = order.CreatedOn.ToString("dd/MM/yyyy HH:mm"),
                 OrderId = order.Id,
                 TakeAway = order.TakeAway,
                 CutleryCount = order.Cutlery,

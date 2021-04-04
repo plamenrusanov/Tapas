@@ -61,7 +61,7 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-    <script src="~/js/deliveryTax/add.js"></script>
+    <script src="~/js/deliveryTax/add.js" asp-append-version="true"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function (event) {
             var price = document.getElementById("Price");

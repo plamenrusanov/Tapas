@@ -1,0 +1,487 @@
+28.3.2021 г. 16:41:38--Exception message--   at Tapas.Web.Controllers.HomeController.Index() in C:\Users\user\source\repos\Tapas\Web\Tapas.Web\Controllers\HomeController.cs:line 25
+28.3.2021 г. 16:46:02--Exception message--   at Tapas.Web.Controllers.HomeController.Index() in C:\Users\user\source\repos\Tapas\Web\Tapas.Web\Controllers\HomeController.cs:line 25
+28.3.2021 г. 16:48:05--Exception message--   at Tapas.Web.Controllers.HomeController.Index() in C:\Users\user\source\repos\Tapas\Web\Tapas.Web\Controllers\HomeController.cs:line 25
+28.3.2021 г. 16:48:53--Exception message--   at Tapas.Web.Controllers.HomeController.Index() in C:\Users\user\source\repos\Tapas\Web\Tapas.Web\Controllers\HomeController.cs:line 25
+28.3.2021 г. 16:49:17--Exception message--   at Tapas.Web.Controllers.HomeController.Index() in C:\Users\user\source\repos\Tapas\Web\Tapas.Web\Controllers\HomeController.cs:line 25
+28.3.2021 г. 16:53:27--Exception message--   at Tapas.Web.Controllers.HomeController.Index() in C:\Users\user\source\repos\Tapas\Web\Tapas.Web\Controllers\HomeController.cs:line 25
+28.3.2021 г. 16:54:53--Exception message--   at Tapas.Web.Controllers.HomeController.Index() in C:\Users\user\source\repos\Tapas\Web\Tapas.Web\Controllers\HomeController.cs:line 25
+28.3.2021 г. 16:55:16--Exception message--   at Tapas.Web.Controllers.HomeController.Index() in C:\Users\user\source\repos\Tapas\Web\Tapas.Web\Controllers\HomeController.cs:line 25
+28.3.2021 г. 16:55:44--Exception message--   at Tapas.Web.Controllers.HomeController.Index() in C:\Users\user\source\repos\Tapas\Web\Tapas.Web\Controllers\HomeController.cs:line 25
+28.3.2021 г. 17:02:17--Exception message--   at Tapas.Web.Controllers.HomeController.Index() in C:\Users\user\source\repos\Tapas\Web\Tapas.Web\Controllers\HomeController.cs:line 25
+28.3.2021 г. 17:02:35--Exception message--   at Tapas.Web.Controllers.HomeController.Index() in C:\Users\user\source\repos\Tapas\Web\Tapas.Web\Controllers\HomeController.cs:line 25
+28.3.2021 г. 17:02:44--Exception message--   at Tapas.Web.Controllers.HomeController.Index() in C:\Users\user\source\repos\Tapas\Web\Tapas.Web\Controllers\HomeController.cs:line 25
+28.3.2021 г. 17:03:22--Exception message--   at Tapas.Web.Controllers.HomeController.Index() in C:\Users\user\source\repos\Tapas\Web\Tapas.Web\Controllers\HomeController.cs:line 25
+28.3.2021 г. 17:07:53--Exception message--   at Tapas.Web.Controllers.HomeController.Index() in C:\Users\user\source\repos\Tapas\Web\Tapas.Web\Controllers\HomeController.cs:line 25
+28.3.2021 г. 17:23:18--Exception message--   at Tapas.Web.Controllers.HomeController.Index() in C:\Users\user\source\repos\Tapas\Web\Tapas.Web\Controllers\HomeController.cs:line 25
+2745
+28.3.2021 г. 17:23:44--Exception message--   at Tapas.Web.Controllers.HomeController.Index() in C:\Users\user\source\repos\Tapas\Web\Tapas.Web\Controllers\HomeController.cs:line 25
+2934
+28.3.2021 г. 17:58:19--Exception message--   at Tapas.Web.Controllers.HomeController.Index() in C:\Users\user\source\repos\Tapas\Web\Tapas.Web\Controllers\HomeController.cs:line 25
+3123
+28.3.2021 г. 18:01:56--Exception message--   at Tapas.Web.Controllers.HomeController.Index() in C:\Users\user\source\repos\Tapas\Web\Tapas.Web\Controllers\HomeController.cs:line 25
+3312
+28.3.2021 г. 18:09:59--Exception message--   at Tapas.Web.Controllers.HomeController.Index() in C:\Users\user\source\repos\Tapas\Web\Tapas.Web\Controllers\HomeController.cs:line 25
+3501
+28.3.2021 г. 18:45:37--Exception message--   at Tapas.Web.Controllers.HomeController.Index() in C:\Users\user\source\repos\Tapas\Web\Tapas.Web\Controllers\HomeController.cs:line 25
+3690
+28.3.2021 г. 19:01:05--Exception message--   at Tapas.Web.Controllers.HomeController.Index() in C:\Users\user\source\repos\Tapas\Web\Tapas.Web\Controllers\HomeController.cs:line 25
+3879
+28.3.2021 г. 19:02:12--Exception message--   at Tapas.Web.Controllers.HomeController.Index() in C:\Users\user\source\repos\Tapas\Web\Tapas.Web\Controllers\HomeController.cs:line 25
+4068
+28.3.2021 г. 19:12:09--Exception message--   at Tapas.Web.Controllers.HomeController.Index() in C:\Users\user\source\repos\Tapas\Web\Tapas.Web\Controllers\HomeController.cs:line 25
+4257
+28.3.2021 г. 19:14:43--Exception message--   at Tapas.Web.Controllers.HomeController.Index() in C:\Users\user\source\repos\Tapas\Web\Tapas.Web\Controllers\HomeController.cs:line 25
+4446
+28.3.2021 г. 19:26:12--Exception message--   at Tapas.Web.Controllers.HomeController.Index() in C:\Users\user\source\repos\Tapas\Web\Tapas.Web\Controllers\HomeController.cs:line 25
+4635
+28.3.2021 г. 22:24:06--Exception message--   at Tapas.Web.Controllers.HomeController.Index() in C:\Users\user\source\repos\Tapas\Web\Tapas.Web\Controllers\HomeController.cs:line 25
+
+30.3.2021 г. 20:36:06--Exception of type 'System.Exception' was thrown.--   at Tapas.Web.Controllers.OrdersController.Create(OrderInpitModel model) in C:\Users\user\source\repos\Tapas\Web\Tapas.Web\Controllers\OrdersController.cs:line 75
+
+ AddInfoOrder-  Address-{"latitude":"43.8474511","longitude":"25.9790337230634","displayName":"бл.34, 4, Алея Момина сълза, жк. Здравец-север 1, жк. Здравец, Русе, 7005, България","city":"Русе","borough":"жк. Здравец","street":"Алея Момина сълза","streetNumber":"4","block":"бл.34","entry":"А","floor":"2","addInfo":"звънец 6"}  Username-Георги Стоянов  Phone-0987654443  TakeAway-False  Cart-[{"SubTotal":"8.30","ProductPrice":"7.90","PackagePrice":"0.40","MaxProducts":"1","PName":"Пилешки крилца на скара","SName":"","PId":"074e977a-2236-477a-b41b-f9d47586561b","SId":"104","SCId":"","Qty":"1","Description":"","Extras":[]},{"SubTotal":"10.40","ProductPrice":"9.80","PackagePrice":"0.60","MaxProducts":"1","PName":"Фънки","SName":"","PId":"007fc739-e399-4620-9162-4850bf545834","SId":"20","SCId":"","Qty":"1","Description":"","Extras":[]},{"SubTotal":"6.90","ProductPrice":"6.50","PackagePrice":"0.40","MaxProducts":"1","PName":"Гръцка салата","SName":"","PId":"157dd9f0-9317-41f8-8200-02818b80dcd0","SId":"45","SCId":"","Qty":"1","Description":"","Extras":[]},{"SubTotal":"10.40","ProductPrice":"9.80","PackagePrice":"0.60","MaxProducts":"1","PName":"Фънки","SName":"","PId":"007fc739-e399-4620-9162-4850bf545834","SId":"20","SCId":"","Qty":"1","Description":"","Extras":[]}]  CutleryCount-0  Cutlery-System.Collections.Generic.List`1[Microsoft.AspNetCore.Mvc.Rendering.SelectListItem] 30.3.2021 г. 20:37:13--Exception of type 'System.Exception' was thrown.--   at Tapas.Web.Controllers.OrdersController.Create(OrderInpitModel model) in C:\Users\user\source\repos\Tapas\Web\Tapas.Web\Controllers\OrdersController.cs:line 75
+
+ AddInfoOrder-  Address-{"latitude":"43.8474511","longitude":"25.9790337230634","displayName":"бл.34, 4, Алея Момина сълза, жк. Здравец-север 1, жк. Здравец, Русе, 7005, България","city":"Русе","borough":"жк. Здравец","street":"Алея Момина сълза","streetNumber":"4","block":"бл.34","entry":"А","floor":"2","addInfo":"звънец 6"}  Username-Георги Стоянов  Phone-0987654443  TakeAway-False  Cart-[{"SubTotal":"8.30","ProductPrice":"7.90","PackagePrice":"0.40","MaxProducts":"1","PName":"Пилешки крилца на скара","SName":"","PId":"074e977a-2236-477a-b41b-f9d47586561b","SId":"104","SCId":"","Qty":"1","Description":"","Extras":[]},{"SubTotal":"10.40","ProductPrice":"9.80","PackagePrice":"0.60","MaxProducts":"1","PName":"Фънки","SName":"","PId":"007fc739-e399-4620-9162-4850bf545834","SId":"20","SCId":"","Qty":"1","Description":"","Extras":[]},{"SubTotal":"6.90","ProductPrice":"6.50","PackagePrice":"0.40","MaxProducts":"1","PName":"Гръцка салата","SName":"","PId":"157dd9f0-9317-41f8-8200-02818b80dcd0","SId":"45","SCId":"","Qty":"1","Description":"","Extras":[]},{"SubTotal":"10.40","ProductPrice":"9.80","PackagePrice":"0.60","MaxProducts":"1","PName":"Фънки","SName":"","PId":"007fc739-e399-4620-9162-4850bf545834","SId":"20","SCId":"","Qty":"1","Description":"","Extras":[]}]  CutleryCount-0  Cutlery-System.Collections.Generic.List`1[Microsoft.AspNetCore.Mvc.Rendering.SelectListItem] 30.3.2021 г. 21:07:54--Exception message--   at Tapas.Web.Controllers.OrdersController.Create(OrderInpitModel model) in C:\Users\user\source\repos\Tapas\Web\Tapas.Web\Controllers\OrdersController.cs:line 74
+
+ AddInfoOrder-  Address-{"latitude":"43.8474511","longitude":"25.9790337230634","displayName":"бл.34, 4, Алея Момина сълза, жк. Здравец-север 1, жк. Здравец, Русе, 7005, България","city":"Русе","borough":"жк. Здравец","street":"Алея Момина сълза","streetNumber":"4","block":"бл.34","entry":"А","floor":"2","addInfo":"звънец 6"}  Username-Георги Стоянов  Phone-0987654443  TakeAway-False  Cart-[{"SubTotal":"8.30","ProductPrice":"7.90","PackagePrice":"0.40","MaxProducts":"1","PName":"Пилешки крилца на скара","SName":"","PId":"074e977a-2236-477a-b41b-f9d47586561b","SId":"104","SCId":"","Qty":"1","Description":"","Extras":[]},{"SubTotal":"10.40","ProductPrice":"9.80","PackagePrice":"0.60","MaxProducts":"1","PName":"Фънки","SName":"","PId":"007fc739-e399-4620-9162-4850bf545834","SId":"20","SCId":"","Qty":"1","Description":"","Extras":[]},{"SubTotal":"6.90","ProductPrice":"6.50","PackagePrice":"0.40","MaxProducts":"1","PName":"Гръцка салата","SName":"","PId":"157dd9f0-9317-41f8-8200-02818b80dcd0","SId":"45","SCId":"","Qty":"1","Description":"","Extras":[]},{"SubTotal":"10.40","ProductPrice":"9.80","PackagePrice":"0.60","MaxProducts":"1","PName":"Фънки","SName":"","PId":"007fc739-e399-4620-9162-4850bf545834","SId":"20","SCId":"","Qty":"1","Description":"","Extras":[]}]  CutleryCount-0  Cutlery-System.Collections.Generic.List`1[Microsoft.AspNetCore.Mvc.Rendering.SelectListItem] 30.3.2021 г. 21:12:23--Exception message--   at Tapas.Web.Controllers.OrdersController.Create(OrderInpitModel model) in C:\Users\user\source\repos\Tapas\Web\Tapas.Web\Controllers\OrdersController.cs:line 74
+
+ AddInfoOrder-  Address-{"latitude":"43.8474511","longitude":"25.9790337230634","displayName":"бл.34, 4, Алея Момина сълза, жк. Здравец-север 1, жк. Здравец, Русе, 7005, България","city":"Русе","borough":"жк. Здравец","street":"Алея Момина сълза","streetNumber":"4","block":"бл.34","entry":"А","floor":"2","addInfo":"звънец 6"}  Username-Георги Стоянов  Phone-0987654443  TakeAway-False  Cart-[{"SubTotal":"8.30","ProductPrice":"7.90","PackagePrice":"0.40","MaxProducts":"1","PName":"Пилешки крилца на скара","SName":"","PId":"074e977a-2236-477a-b41b-f9d47586561b","SId":"104","SCId":"","Qty":"1","Description":"","Extras":[]},{"SubTotal":"10.40","ProductPrice":"9.80","PackagePrice":"0.60","MaxProducts":"1","PName":"Фънки","SName":"","PId":"007fc739-e399-4620-9162-4850bf545834","SId":"20","SCId":"","Qty":"1","Description":"","Extras":[]},{"SubTotal":"6.90","ProductPrice":"6.50","PackagePrice":"0.40","MaxProducts":"1","PName":"Гръцка салата","SName":"","PId":"157dd9f0-9317-41f8-8200-02818b80dcd0","SId":"45","SCId":"","Qty":"1","Description":"","Extras":[]},{"SubTotal":"10.40","ProductPrice":"9.80","PackagePrice":"0.60","MaxProducts":"1","PName":"Фънки","SName":"","PId":"007fc739-e399-4620-9162-4850bf545834","SId":"20","SCId":"","Qty":"1","Description":"","Extras":[]}]  CutleryCount-0  Cutlery-System.Collections.Generic.List`1[Microsoft.AspNetCore.Mvc.Rendering.SelectListItem] 30.3.2021 г. 21:12:56--Exception message--   at Tapas.Web.Controllers.OrdersController.Create(OrderInpitModel model) in C:\Users\user\source\repos\Tapas\Web\Tapas.Web\Controllers\OrdersController.cs:line 74
+
+ AddInfoOrder-  Address-{"latitude":"43.8474511","longitude":"25.9790337230634","displayName":"бл.34, 4, Алея Момина сълза, жк. Здравец-север 1, жк. Здравец, Русе, 7005, България","city":"Русе","borough":"жк. Здравец","street":"Алея Момина сълза","streetNumber":"4","block":"бл.34","entry":"А","floor":"2","addInfo":"звънец 6"}  Username-Георги Стоянов  Phone-0987654443  TakeAway-False  Cart-[{"SubTotal":"8.30","ProductPrice":"7.90","PackagePrice":"0.40","MaxProducts":"1","PName":"Пилешки крилца на скара","SName":"","PId":"074e977a-2236-477a-b41b-f9d47586561b","SId":"104","SCId":"","Qty":"1","Description":"","Extras":[]},{"SubTotal":"10.40","ProductPrice":"9.80","PackagePrice":"0.60","MaxProducts":"1","PName":"Фънки","SName":"","PId":"007fc739-e399-4620-9162-4850bf545834","SId":"20","SCId":"","Qty":"1","Description":"","Extras":[]},{"SubTotal":"6.90","ProductPrice":"6.50","PackagePrice":"0.40","MaxProducts":"1","PName":"Гръцка салата","SName":"","PId":"157dd9f0-9317-41f8-8200-02818b80dcd0","SId":"45","SCId":"","Qty":"1","Description":"","Extras":[]},{"SubTotal":"10.40","ProductPrice":"9.80","PackagePrice":"0.60","MaxProducts":"1","PName":"Фънки","SName":"","PId":"007fc739-e399-4620-9162-4850bf545834","SId":"20","SCId":"","Qty":"1","Description":"","Extras":[]}]  CutleryCount-0  Cutlery-System.Collections.Generic.List`1[Microsoft.AspNetCore.Mvc.Rendering.SelectListItem] 30.3.2021 г. 21:14:55--Exception message--   at Tapas.Web.Controllers.OrdersController.Create(OrderInpitModel model) in C:\Users\user\source\repos\Tapas\Web\Tapas.Web\Controllers\OrdersController.cs:line 74
+
+ AddInfoOrder-  Address-{"latitude":"43.8474511","longitude":"25.9790337230634","displayName":"бл.34, 4, Алея Момина сълза, жк. Здравец-север 1, жк. Здравец, Русе, 7005, България","city":"Русе","borough":"жк. Здравец","street":"Алея Момина сълза","streetNumber":"4","block":"бл.34","entry":"А","floor":"2","addInfo":"звънец 6"}  Username-Георги Стоянов  Phone-0987654443  TakeAway-False  Cart-[{"SubTotal":"8.30","ProductPrice":"7.90","PackagePrice":"0.40","MaxProducts":"1","PName":"Пилешки крилца на скара","SName":"","PId":"074e977a-2236-477a-b41b-f9d47586561b","SId":"104","SCId":"","Qty":"1","Description":"","Extras":[]},{"SubTotal":"10.40","ProductPrice":"9.80","PackagePrice":"0.60","MaxProducts":"1","PName":"Фънки","SName":"","PId":"007fc739-e399-4620-9162-4850bf545834","SId":"20","SCId":"","Qty":"1","Description":"","Extras":[]},{"SubTotal":"6.90","ProductPrice":"6.50","PackagePrice":"0.40","MaxProducts":"1","PName":"Гръцка салата","SName":"","PId":"157dd9f0-9317-41f8-8200-02818b80dcd0","SId":"45","SCId":"","Qty":"1","Description":"","Extras":[]},{"SubTotal":"10.40","ProductPrice":"9.80","PackagePrice":"0.60","MaxProducts":"1","PName":"Фънки","SName":"","PId":"007fc739-e399-4620-9162-4850bf545834","SId":"20","SCId":"","Qty":"1","Description":"","Extras":[]}]  CutleryCount-3  Cutlery-System.Collections.Generic.List`1[Microsoft.AspNetCore.Mvc.Rendering.SelectListItem] 30.3.2021 г. 21:19:18--Exception message--   at Tapas.Web.Controllers.OrdersController.Create(OrderInpitModel model) in C:\Users\user\source\repos\Tapas\Web\Tapas.Web\Controllers\OrdersController.cs:line 74
+
+ AddInfoOrder- 
+ Address-{"latitude":"43.8474511","longitude":"25.9790337230634","displayName":"бл.34, 4, Алея Момина сълза, жк. Здравец-север 1, жк. Здравец, Русе, 7005, България","city":"Русе","borough":"жк. Здравец","street":"Алея Момина сълза","streetNumber":"4","block":"бл.34","entry":"А","floor":"2","addInfo":"звънец 6"} 
+ Username-Георги Стоянов 
+ Phone-0987654443 
+ TakeAway-False 
+ Cart-[{"SubTotal":"8.30","ProductPrice":"7.90","PackagePrice":"0.40","MaxProducts":"1","PName":"Пилешки крилца на скара","SName":"","PId":"074e977a-2236-477a-b41b-f9d47586561b","SId":"104","SCId":"","Qty":"1","Description":"","Extras":[]},{"SubTotal":"10.40","ProductPrice":"9.80","PackagePrice":"0.60","MaxProducts":"1","PName":"Фънки","SName":"","PId":"007fc739-e399-4620-9162-4850bf545834","SId":"20","SCId":"","Qty":"1","Description":"","Extras":[]},{"SubTotal":"6.90","ProductPrice":"6.50","PackagePrice":"0.40","MaxProducts":"1","PName":"Гръцка салата","SName":"","PId":"157dd9f0-9317-41f8-8200-02818b80dcd0","SId":"45","SCId":"","Qty":"1","Description":"","Extras":[]},{"SubTotal":"10.40","ProductPrice":"9.80","PackagePrice":"0.60","MaxProducts":"1","PName":"Фънки","SName":"","PId":"007fc739-e399-4620-9162-4850bf545834","SId":"20","SCId":"","Qty":"1","Description":"","Extras":[]}] 
+ CutleryCount-0 
+ Cutlery-System.Collections.Generic.List`1[Microsoft.AspNetCore.Mvc.Rendering.SelectListItem] 
+30.3.2021 г. 21:26:25--Exception message--   at Tapas.Web.Controllers.OrdersController.Create(OrderInpitModel model) in C:\Users\user\source\repos\Tapas\Web\Tapas.Web\Controllers\OrdersController.cs:line 74
+ AddInfoOrder- 
+ Address-{"latitude":"43.8474511","longitude":"25.9790337230634","displayName":"бл.34, 4, Алея Момина сълза, жк. Здравец-север 1, жк. Здравец, Русе, 7005, България","city":"Русе","borough":"жк. Здравец","street":"Алея Момина сълза","streetNumber":"4","block":"бл.34","entry":"А","floor":"2","addInfo":"звънец 6"} 
+ Username-Георги Стоянов 
+ Phone-0987654443 
+ TakeAway-False 
+ Cart-[{"SubTotal":"8.30","ProductPrice":"7.90","PackagePrice":"0.40","MaxProducts":"1","PName":"Пилешки крилца на скара","SName":"","PId":"074e977a-2236-477a-b41b-f9d47586561b","SId":"104","SCId":"","Qty":"1","Description":"","Extras":[]},{"SubTotal":"10.40","ProductPrice":"9.80","PackagePrice":"0.60","MaxProducts":"1","PName":"Фънки","SName":"","PId":"007fc739-e399-4620-9162-4850bf545834","SId":"20","SCId":"","Qty":"1","Description":"","Extras":[]},{"SubTotal":"6.90","ProductPrice":"6.50","PackagePrice":"0.40","MaxProducts":"1","PName":"Гръцка салата","SName":"","PId":"157dd9f0-9317-41f8-8200-02818b80dcd0","SId":"45","SCId":"","Qty":"1","Description":"","Extras":[]},{"SubTotal":"10.40","ProductPrice":"9.80","PackagePrice":"0.60","MaxProducts":"1","PName":"Фънки","SName":"","PId":"007fc739-e399-4620-9162-4850bf545834","SId":"20","SCId":"","Qty":"1","Description":"","Extras":[]}] 
+ CutleryCount-0 
+ Cutlery-System.Collections.Generic.List`1[Microsoft.AspNetCore.Mvc.Rendering.SelectListItem] 
+30.3.2021 г. 21:29:32--Exception message--   at Tapas.Web.Controllers.OrdersController.Create(OrderInpitModel model) in C:\Users\user\source\repos\Tapas\Web\Tapas.Web\Controllers\OrdersController.cs:line 74
+ AddInfoOrder- 
+ Address-{"latitude":"43.8474511","longitude":"25.9790337230634","displayName":"бл.34, 4, Алея Момина сълза, жк. Здравец-север 1, жк. Здравец, Русе, 7005, България","city":"Русе","borough":"жк. Здравец","street":"Алея Момина сълза","streetNumber":"4","block":"бл.34","entry":"А","floor":"2","addInfo":"звънец 6"} 
+ Username-Георги Стоянов 
+ Phone-0987654443 
+ TakeAway-False 
+ Cart-[{"SubTotal":"8.30","ProductPrice":"7.90","PackagePrice":"0.40","MaxProducts":"1","PName":"Пилешки крилца на скара","SName":"","PId":"074e977a-2236-477a-b41b-f9d47586561b","SId":"104","SCId":"","Qty":"1","Description":"","Extras":[]},{"SubTotal":"10.40","ProductPrice":"9.80","PackagePrice":"0.60","MaxProducts":"1","PName":"Фънки","SName":"","PId":"007fc739-e399-4620-9162-4850bf545834","SId":"20","SCId":"","Qty":"1","Description":"","Extras":[]},{"SubTotal":"6.90","ProductPrice":"6.50","PackagePrice":"0.40","MaxProducts":"1","PName":"Гръцка салата","SName":"","PId":"157dd9f0-9317-41f8-8200-02818b80dcd0","SId":"45","SCId":"","Qty":"1","Description":"","Extras":[]},{"SubTotal":"10.40","ProductPrice":"9.80","PackagePrice":"0.60","MaxProducts":"1","PName":"Фънки","SName":"","PId":"007fc739-e399-4620-9162-4850bf545834","SId":"20","SCId":"","Qty":"1","Description":"","Extras":[]}] 
+ CutleryCount-0 
+ Cutlery-System.Collections.Generic.List`1[Microsoft.AspNetCore.Mvc.Rendering.SelectListItem] 
+30.3.2021 г. 21:31:22--Exception message--   at Tapas.Web.Controllers.OrdersController.Create(OrderInpitModel model) in C:\Users\user\source\repos\Tapas\Web\Tapas.Web\Controllers\OrdersController.cs:line 74
+ AddInfoOrder- 
+ Address-{"latitude":"43.8474511","longitude":"25.9790337230634","displayName":"бл.34, 4, Алея Момина сълза, жк. Здравец-север 1, жк. Здравец, Русе, 7005, България","city":"Русе","borough":"жк. Здравец","street":"Алея Момина сълза","streetNumber":"4","block":"бл.34","entry":"А","floor":"2","addInfo":"звънец 6"} 
+ Username-Георги Стоянов 
+ Phone-0987654443 
+ TakeAway-False 
+ Cart-[{"SubTotal":"8.30","ProductPrice":"7.90","PackagePrice":"0.40","MaxProducts":"1","PName":"Пилешки крилца на скара","SName":"","PId":"074e977a-2236-477a-b41b-f9d47586561b","SId":"104","SCId":"","Qty":"1","Description":"","Extras":[]},{"SubTotal":"10.40","ProductPrice":"9.80","PackagePrice":"0.60","MaxProducts":"1","PName":"Фънки","SName":"","PId":"007fc739-e399-4620-9162-4850bf545834","SId":"20","SCId":"","Qty":"1","Description":"","Extras":[]},{"SubTotal":"6.90","ProductPrice":"6.50","PackagePrice":"0.40","MaxProducts":"1","PName":"Гръцка салата","SName":"","PId":"157dd9f0-9317-41f8-8200-02818b80dcd0","SId":"45","SCId":"","Qty":"1","Description":"","Extras":[]},{"SubTotal":"10.40","ProductPrice":"9.80","PackagePrice":"0.60","MaxProducts":"1","PName":"Фънки","SName":"","PId":"007fc739-e399-4620-9162-4850bf545834","SId":"20","SCId":"","Qty":"1","Description":"","Extras":[]}] 
+ CutleryCount-0 
+ Cutlery-System.Collections.Generic.List`1[Microsoft.AspNetCore.Mvc.Rendering.SelectListItem] 
+ AddInfoOrder- 
+ Address-{"latitude":"","longitude":"","displayName":"","city":"","borough":"","street":"","streetNumber":"","block":"","entry":"","floor":"","addInfo":""} 
+ Username-Пламен 
+ Phone-0890321780 
+ TakeAway-True 
+ Cart-[{"SubTotal":"6.90","ProductPrice":"6.50","PackagePrice":"0.40","MaxProducts":"1","PName":"Гръцка салата","SName":"","PId":"157dd9f0-9317-41f8-8200-02818b80dcd0","SId":"45","SCId":"","Qty":"1","Description":"","Extras":[]}] 
+ CutleryCount-0 
+ Cutlery-System.Collections.Generic.List`1[Microsoft.AspNetCore.Mvc.Rendering.SelectListItem] 
+3.4.2021 г. 13:17:16--An error occurred while updating the entries. See the inner exception for details.--   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(DbContext _, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Tapas.Services.Data.OrdersService.CreateAsync(ApplicationUser user, OrderInpitModel model) in C:\Users\user\source\repos\Tapas\Services\Tapas.Services.Data\OrdersService.cs:line 178
+   at Tapas.Web.Controllers.OrdersController.Create(OrderInpitModel model) in C:\Users\user\source\repos\Tapas\Web\Tapas.Web\Controllers\OrdersController.cs:line 70
+3.4.2021 г. 13:17:16--The INSERT statement conflicted with the FOREIGN KEY constraint "FK_Orders_AspNetUsers_UserId". The conflict occurred in database "plamenru_tapas", table "plamenru_tapas.AspNetUsers", column 'Id'.
+The statement has been terminated.--   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__164_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.<>c.<.cctor>b__274_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ AddInfoOrder- 
+ Address-{"latitude":"","longitude":"","displayName":"","city":"","borough":"","street":"","streetNumber":"","block":"","entry":"","floor":"","addInfo":""} 
+ Username-Пламен 
+ Phone-0890321780 
+ TakeAway-True 
+ Cart-[{"SubTotal":"6.90","ProductPrice":"6.50","PackagePrice":"0.40","MaxProducts":"1","PName":"Гръцка салата","SName":"","PId":"157dd9f0-9317-41f8-8200-02818b80dcd0","SId":"45","SCId":"","Qty":"1","Description":"","Extras":[]}] 
+ CutleryCount-0 
+ Cutlery-System.Collections.Generic.List`1[Microsoft.AspNetCore.Mvc.Rendering.SelectListItem] 
+ AddInfoOrder- 
+ Address-{"latitude":"","longitude":"","displayName":"","city":"","borough":"","street":"","streetNumber":"","block":"","entry":"","floor":"","addInfo":""} 
+ Username-Пламен 
+ Phone-0890321780 
+ TakeAway-True 
+ Cart-[{"SubTotal":"6.90","ProductPrice":"6.50","PackagePrice":"0.40","MaxProducts":"1","PName":"Гръцка салата","SName":"","PId":"157dd9f0-9317-41f8-8200-02818b80dcd0","SId":"45","SCId":"","Qty":"1","Description":"","Extras":[]}] 
+ CutleryCount-0 
+ Cutlery-System.Collections.Generic.List`1[Microsoft.AspNetCore.Mvc.Rendering.SelectListItem] 
+3.4.2021 г. 13:18:13--An error occurred while updating the entries. See the inner exception for details.--   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(DbContext _, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Tapas.Services.Data.OrdersService.CreateAsync(ApplicationUser user, OrderInpitModel model) in C:\Users\user\source\repos\Tapas\Services\Tapas.Services.Data\OrdersService.cs:line 178
+   at Tapas.Web.Controllers.OrdersController.Create(OrderInpitModel model) in C:\Users\user\source\repos\Tapas\Web\Tapas.Web\Controllers\OrdersController.cs:line 70
+3.4.2021 г. 13:18:13--The INSERT statement conflicted with the FOREIGN KEY constraint "FK_Orders_AspNetUsers_UserId". The conflict occurred in database "plamenru_tapas", table "plamenru_tapas.AspNetUsers", column 'Id'.
+The statement has been terminated.--   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__164_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.<>c.<.cctor>b__274_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ AddInfoOrder- 
+ Address-{"latitude":"","longitude":"","displayName":"","city":"","borough":"","street":"","streetNumber":"","block":"","entry":"","floor":"","addInfo":""} 
+ Username-Пламен 
+ Phone-0890321780 
+ TakeAway-True 
+ Cart-[{"SubTotal":"6.90","ProductPrice":"6.50","PackagePrice":"0.40","MaxProducts":"1","PName":"Гръцка салата","SName":"","PId":"157dd9f0-9317-41f8-8200-02818b80dcd0","SId":"45","SCId":"","Qty":"1","Description":"","Extras":[]}] 
+ CutleryCount-0 
+ Cutlery-System.Collections.Generic.List`1[Microsoft.AspNetCore.Mvc.Rendering.SelectListItem] 
+ AddInfoOrder- 
+ Address-{"latitude":"","longitude":"","displayName":"","city":"","borough":"","street":"","streetNumber":"","block":"","entry":"","floor":"","addInfo":""} 
+ Username-Пламен 
+ Phone-0890321780 
+ TakeAway-True 
+ Cart-[{"SubTotal":"6.90","ProductPrice":"6.50","PackagePrice":"0.40","MaxProducts":"1","PName":"Гръцка салата","SName":"","PId":"157dd9f0-9317-41f8-8200-02818b80dcd0","SId":"45","SCId":"","Qty":"1","Description":"","Extras":[]}] 
+ CutleryCount-0 
+ Cutlery-System.Collections.Generic.List`1[Microsoft.AspNetCore.Mvc.Rendering.SelectListItem] 
+3.4.2021 г. 13:19:01--An error occurred while updating the entries. See the inner exception for details.--   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(DbContext _, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Tapas.Services.Data.OrdersService.CreateAsync(ApplicationUser user, OrderInpitModel model) in C:\Users\user\source\repos\Tapas\Services\Tapas.Services.Data\OrdersService.cs:line 178
+   at Tapas.Web.Controllers.OrdersController.Create(OrderInpitModel model) in C:\Users\user\source\repos\Tapas\Web\Tapas.Web\Controllers\OrdersController.cs:line 70
+3.4.2021 г. 13:19:01--The INSERT statement conflicted with the FOREIGN KEY constraint "FK_Orders_AspNetUsers_UserId". The conflict occurred in database "plamenru_tapas", table "plamenru_tapas.AspNetUsers", column 'Id'.
+The statement has been terminated.--   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__164_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.<>c.<.cctor>b__274_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ AddInfoOrder- 
+ Address-{"latitude":"","longitude":"","displayName":"","city":"","borough":"","street":"","streetNumber":"","block":"","entry":"","floor":"","addInfo":""} 
+ Username-Пламен 
+ Phone-0890321780 
+ TakeAway-True 
+ Cart-[{"SubTotal":"6.90","ProductPrice":"6.50","PackagePrice":"0.40","MaxProducts":"1","PName":"Гръцка салата","SName":"","PId":"157dd9f0-9317-41f8-8200-02818b80dcd0","SId":"45","SCId":"","Qty":"1","Description":"","Extras":[]}] 
+ CutleryCount-0 
+ Cutlery-System.Collections.Generic.List`1[Microsoft.AspNetCore.Mvc.Rendering.SelectListItem] 
+ AddInfoOrder- 
+ Address-{"latitude":"","longitude":"","displayName":"","city":"","borough":"","street":"","streetNumber":"","block":"","entry":"","floor":"","addInfo":""} 
+ Username-Пламен 
+ Phone-0890321780 
+ TakeAway-True 
+ Cart-[{"SubTotal":"6.90","ProductPrice":"6.50","PackagePrice":"0.40","MaxProducts":"1","PName":"Гръцка салата","SName":"","PId":"157dd9f0-9317-41f8-8200-02818b80dcd0","SId":"45","SCId":"","Qty":"1","Description":"","Extras":[]}] 
+ CutleryCount-0 
+ Cutlery-System.Collections.Generic.List`1[Microsoft.AspNetCore.Mvc.Rendering.SelectListItem] 
+3.4.2021 г. 13:20:11--An error occurred while updating the entries. See the inner exception for details.--   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(DbContext _, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Tapas.Services.Data.OrdersService.CreateAsync(ApplicationUser user, OrderInpitModel model) in C:\Users\user\source\repos\Tapas\Services\Tapas.Services.Data\OrdersService.cs:line 178
+   at Tapas.Web.Controllers.OrdersController.Create(OrderInpitModel model) in C:\Users\user\source\repos\Tapas\Web\Tapas.Web\Controllers\OrdersController.cs:line 70
+3.4.2021 г. 13:20:11--The INSERT statement conflicted with the FOREIGN KEY constraint "FK_Orders_AspNetUsers_UserId". The conflict occurred in database "plamenru_tapas", table "plamenru_tapas.AspNetUsers", column 'Id'.
+The statement has been terminated.--   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__164_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ AddInfoOrder- 
+ Address-{"latitude":"","longitude":"","displayName":"","city":"","borough":"","street":"","streetNumber":"","block":"","entry":"","floor":"","addInfo":""} 
+ Username-Пламен 
+ Phone-0890321780 
+ TakeAway-True 
+ Cart-[{"SubTotal":"6.90","ProductPrice":"6.50","PackagePrice":"0.40","MaxProducts":"1","PName":"Гръцка салата","SName":"","PId":"157dd9f0-9317-41f8-8200-02818b80dcd0","SId":"45","SCId":"","Qty":"1","Description":"","Extras":[]}] 
+ CutleryCount-0 
+ Cutlery-System.Collections.Generic.List`1[Microsoft.AspNetCore.Mvc.Rendering.SelectListItem] 
+ AddInfoOrder- 
+ Address-{"latitude":"","longitude":"","displayName":"","city":"","borough":"","street":"","streetNumber":"","block":"","entry":"","floor":"","addInfo":""} 
+ Username-Пламен 
+ Phone-0890321780 
+ TakeAway-True 
+ Cart-[{"SubTotal":"6.90","ProductPrice":"6.50","PackagePrice":"0.40","MaxProducts":"1","PName":"Гръцка салата","SName":"","PId":"157dd9f0-9317-41f8-8200-02818b80dcd0","SId":"45","SCId":"","Qty":"1","Description":"","Extras":[]}] 
+ CutleryCount-0 
+ Cutlery-System.Collections.Generic.List`1[Microsoft.AspNetCore.Mvc.Rendering.SelectListItem] 
+3.4.2021 г. 13:20:47--An error occurred while updating the entries. See the inner exception for details.--   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(DbContext _, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Tapas.Services.Data.OrdersService.CreateAsync(ApplicationUser user, OrderInpitModel model) in C:\Users\user\source\repos\Tapas\Services\Tapas.Services.Data\OrdersService.cs:line 178
+   at Tapas.Web.Controllers.OrdersController.Create(OrderInpitModel model) in C:\Users\user\source\repos\Tapas\Web\Tapas.Web\Controllers\OrdersController.cs:line 70
+3.4.2021 г. 13:20:47--The INSERT statement conflicted with the FOREIGN KEY constraint "FK_Orders_AspNetUsers_UserId". The conflict occurred in database "plamenru_tapas", table "plamenru_tapas.AspNetUsers", column 'Id'.
+The statement has been terminated.--   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__164_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ AddInfoOrder- 
+ Address-{"latitude":"","longitude":"","displayName":"","city":"","borough":"","street":"","streetNumber":"","block":"","entry":"","floor":"","addInfo":""} 
+ Username-Пламен 
+ Phone-0890321780 
+ TakeAway-True 
+ Cart-[{"SubTotal":"6.90","ProductPrice":"6.50","PackagePrice":"0.40","MaxProducts":"1","PName":"Гръцка салата","SName":"","PId":"157dd9f0-9317-41f8-8200-02818b80dcd0","SId":"45","SCId":"","Qty":"1","Description":"","Extras":[]}] 
+ CutleryCount-0 
+ Cutlery-System.Collections.Generic.List`1[Microsoft.AspNetCore.Mvc.Rendering.SelectListItem] 
+ AddInfoOrder- 
+ Address-{"latitude":"","longitude":"","displayName":"","city":"","borough":"","street":"","streetNumber":"","block":"","entry":"","floor":"","addInfo":""} 
+ Username-Пламен 
+ Phone-0890321780 
+ TakeAway-True 
+ Cart-[{"SubTotal":"6.90","ProductPrice":"6.50","PackagePrice":"0.40","MaxProducts":"1","PName":"Гръцка салата","SName":"","PId":"157dd9f0-9317-41f8-8200-02818b80dcd0","SId":"45","SCId":"","Qty":"1","Description":"","Extras":[]}] 
+ CutleryCount-0 
+ Cutlery-System.Collections.Generic.List`1[Microsoft.AspNetCore.Mvc.Rendering.SelectListItem] 
+3.4.2021 г. 13:26:21--An error occurred while updating the entries. See the inner exception for details.--   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(DbContext _, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Tapas.Services.Data.OrdersService.CreateAsync(ApplicationUser user, OrderInpitModel model) in C:\Users\user\source\repos\Tapas\Services\Tapas.Services.Data\OrdersService.cs:line 178
+   at Tapas.Web.Controllers.OrdersController.Create(OrderInpitModel model) in C:\Users\user\source\repos\Tapas\Web\Tapas.Web\Controllers\OrdersController.cs:line 70
+3.4.2021 г. 13:26:21--The INSERT statement conflicted with the FOREIGN KEY constraint "FK_Orders_AspNetUsers_UserId". The conflict occurred in database "plamenru_tapas", table "plamenru_tapas.AspNetUsers", column 'Id'.
+The statement has been terminated.--   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__164_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ AddInfoOrder- 
+ Address-{"latitude":"","longitude":"","displayName":"","city":"","borough":"","street":"","streetNumber":"","block":"","entry":"","floor":"","addInfo":""} 
+ Username-Пламен 
+ Phone-0890321780 
+ TakeAway-True 
+ Cart-[{"SubTotal":"6.90","ProductPrice":"6.50","PackagePrice":"0.40","MaxProducts":"1","PName":"Гръцка салата","SName":"","PId":"157dd9f0-9317-41f8-8200-02818b80dcd0","SId":"45","SCId":"","Qty":"1","Description":"","Extras":[]}] 
+ CutleryCount-0 
+ Cutlery-System.Collections.Generic.List`1[Microsoft.AspNetCore.Mvc.Rendering.SelectListItem] 
+ AddInfoOrder- 
+ Address-{"latitude":"","longitude":"","displayName":"","city":"","borough":"","street":"","streetNumber":"","block":"","entry":"","floor":"","addInfo":""} 
+ Username-Пламен 
+ Phone-0890321780 
+ TakeAway-True 
+ Cart-[{"SubTotal":"6.90","ProductPrice":"6.50","PackagePrice":"0.40","MaxProducts":"1","PName":"Гръцка салата","SName":"","PId":"157dd9f0-9317-41f8-8200-02818b80dcd0","SId":"45","SCId":"","Qty":"1","Description":"","Extras":[]}] 
+ CutleryCount-0 
+ Cutlery-System.Collections.Generic.List`1[Microsoft.AspNetCore.Mvc.Rendering.SelectListItem] 
+3.4.2021 г. 13:27:26--An error occurred while updating the entries. See the inner exception for details.--   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(DbContext _, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Tapas.Services.Data.OrdersService.CreateAsync(ApplicationUser user, OrderInpitModel model) in C:\Users\user\source\repos\Tapas\Services\Tapas.Services.Data\OrdersService.cs:line 178
+   at Tapas.Web.Controllers.OrdersController.Create(OrderInpitModel model) in C:\Users\user\source\repos\Tapas\Web\Tapas.Web\Controllers\OrdersController.cs:line 70
+3.4.2021 г. 13:27:26--The INSERT statement conflicted with the FOREIGN KEY constraint "FK_Orders_AspNetUsers_UserId". The conflict occurred in database "plamenru_tapas", table "plamenru_tapas.AspNetUsers", column 'Id'.
+The statement has been terminated.--   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__164_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ AddInfoOrder- 
+ Address-{"latitude":"","longitude":"","displayName":"","city":"","borough":"","street":"","streetNumber":"","block":"","entry":"","floor":"","addInfo":""} 
+ Username-Пламен 
+ Phone-0890321780 
+ TakeAway-True 
+ Cart-[{"SubTotal":"6.90","ProductPrice":"6.50","PackagePrice":"0.40","MaxProducts":"1","PName":"Гръцка салата","SName":"","PId":"157dd9f0-9317-41f8-8200-02818b80dcd0","SId":"45","SCId":"","Qty":"1","Description":"","Extras":[]}] 
+ CutleryCount-0 
+ Cutlery-System.Collections.Generic.List`1[Microsoft.AspNetCore.Mvc.Rendering.SelectListItem] 
+ AddInfoOrder- 
+ Address-{"latitude":"","longitude":"","displayName":"","city":"","borough":"","street":"","streetNumber":"","block":"","entry":"","floor":"","addInfo":""} 
+ Username-Пламен 
+ Phone-0890321780 
+ TakeAway-True 
+ Cart-[{"SubTotal":"6.90","ProductPrice":"6.50","PackagePrice":"0.40","MaxProducts":"1","PName":"Гръцка салата","SName":"","PId":"157dd9f0-9317-41f8-8200-02818b80dcd0","SId":"45","SCId":"","Qty":"1","Description":"","Extras":[]}] 
+ CutleryCount-0 
+ Cutlery-System.Collections.Generic.List`1[Microsoft.AspNetCore.Mvc.Rendering.SelectListItem] 
+3.4.2021 г. 13:27:36--An error occurred while updating the entries. See the inner exception for details.--   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(DbContext _, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Tapas.Services.Data.OrdersService.CreateAsync(ApplicationUser user, OrderInpitModel model) in C:\Users\user\source\repos\Tapas\Services\Tapas.Services.Data\OrdersService.cs:line 178
+   at Tapas.Web.Controllers.OrdersController.Create(OrderInpitModel model) in C:\Users\user\source\repos\Tapas\Web\Tapas.Web\Controllers\OrdersController.cs:line 70
+3.4.2021 г. 13:27:36--The INSERT statement conflicted with the FOREIGN KEY constraint "FK_Orders_AspNetUsers_UserId". The conflict occurred in database "plamenru_tapas", table "plamenru_tapas.AspNetUsers", column 'Id'.
+The statement has been terminated.--   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__164_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ AddInfoOrder- 
+ Address-{"latitude":"","longitude":"","displayName":"","city":"","borough":"","street":"","streetNumber":"","block":"","entry":"","floor":"","addInfo":""} 
+ Username-Пламен 
+ Phone-0890321780 
+ TakeAway-True 
+ Cart-[{"SubTotal":"6.90","ProductPrice":"6.50","PackagePrice":"0.40","MaxProducts":"1","PName":"Гръцка салата","SName":"","PId":"157dd9f0-9317-41f8-8200-02818b80dcd0","SId":"45","SCId":"","Qty":"1","Description":"","Extras":[]}] 
+ CutleryCount-0 
+ Cutlery-System.Collections.Generic.List`1[Microsoft.AspNetCore.Mvc.Rendering.SelectListItem] 
+ AddInfoOrder- 
+ Address-{"latitude":"","longitude":"","displayName":"","city":"","borough":"","street":"","streetNumber":"","block":"","entry":"","floor":"","addInfo":""} 
+ Username-Пламен 
+ Phone-0890321780 
+ TakeAway-True 
+ Cart-[{"SubTotal":"6.90","ProductPrice":"6.50","PackagePrice":"0.40","MaxProducts":"1","PName":"Гръцка салата","SName":"","PId":"157dd9f0-9317-41f8-8200-02818b80dcd0","SId":"45","SCId":"","Qty":"1","Description":"","Extras":[]}] 
+ CutleryCount-0 
+ Cutlery-System.Collections.Generic.List`1[Microsoft.AspNetCore.Mvc.Rendering.SelectListItem] 
+3.4.2021 г. 13:29:24--An error occurred while updating the entries. See the inner exception for details.--   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(DbContext _, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Tapas.Services.Data.OrdersService.CreateAsync(ApplicationUser user, OrderInpitModel model) in C:\Users\user\source\repos\Tapas\Services\Tapas.Services.Data\OrdersService.cs:line 178
+   at Tapas.Web.Controllers.OrdersController.Create(OrderInpitModel model) in C:\Users\user\source\repos\Tapas\Web\Tapas.Web\Controllers\OrdersController.cs:line 70
+3.4.2021 г. 13:29:24--The INSERT statement conflicted with the FOREIGN KEY constraint "FK_Orders_AspNetUsers_UserId". The conflict occurred in database "plamenru_tapas", table "plamenru_tapas.AspNetUsers", column 'Id'.
+The statement has been terminated.--   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__164_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ AddInfoOrder- 
+ Address-{"latitude":"","longitude":"","displayName":"","city":"","borough":"","street":"","streetNumber":"","block":"","entry":"","floor":"","addInfo":""} 
+ Username-Пламен 
+ Phone-0890321780 
+ TakeAway-True 
+ Cart-[{"SubTotal":"6.90","ProductPrice":"6.50","PackagePrice":"0.40","MaxProducts":"1","PName":"Гръцка салата","SName":"","PId":"157dd9f0-9317-41f8-8200-02818b80dcd0","SId":"45","SCId":"","Qty":"1","Description":"","Extras":[]}] 
+ CutleryCount-0 
+ Cutlery-System.Collections.Generic.List`1[Microsoft.AspNetCore.Mvc.Rendering.SelectListItem] 
+ AddInfoOrder- 
+ Address-{"latitude":"","longitude":"","displayName":"","city":"","borough":"","street":"","streetNumber":"","block":"","entry":"","floor":"","addInfo":""} 
+ Username-Пламен 
+ Phone-0890321780 
+ TakeAway-True 
+ Cart-[{"SubTotal":"6.90","ProductPrice":"6.50","PackagePrice":"0.40","MaxProducts":"1","PName":"Гръцка салата","SName":"","PId":"157dd9f0-9317-41f8-8200-02818b80dcd0","SId":"45","SCId":"","Qty":"1","Description":"","Extras":[]}] 
+ CutleryCount-0 
+ Cutlery-System.Collections.Generic.List`1[Microsoft.AspNetCore.Mvc.Rendering.SelectListItem] 
+3.4.2021 г. 13:29:33--An error occurred while updating the entries. See the inner exception for details.--   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(DbContext _, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Tapas.Services.Data.OrdersService.CreateAsync(ApplicationUser user, OrderInpitModel model) in C:\Users\user\source\repos\Tapas\Services\Tapas.Services.Data\OrdersService.cs:line 178
+   at Tapas.Web.Controllers.OrdersController.Create(OrderInpitModel model) in C:\Users\user\source\repos\Tapas\Web\Tapas.Web\Controllers\OrdersController.cs:line 70
+3.4.2021 г. 13:29:33--The INSERT statement conflicted with the FOREIGN KEY constraint "FK_Orders_AspNetUsers_UserId". The conflict occurred in database "plamenru_tapas", table "plamenru_tapas.AspNetUsers", column 'Id'.
+The statement has been terminated.--   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__164_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ AddInfoOrder- 
+ Address-{"latitude":"","longitude":"","displayName":"","city":"","borough":"","street":"","streetNumber":"","block":"","entry":"","floor":"","addInfo":""} 
+ Username-Пламен 
+ Phone-0890321780 
+ TakeAway-True 
+ Cart-[{"SubTotal":"6.90","ProductPrice":"6.50","PackagePrice":"0.40","MaxProducts":"1","PName":"Гръцка салата","SName":"","PId":"157dd9f0-9317-41f8-8200-02818b80dcd0","SId":"45","SCId":"","Qty":"1","Description":"","Extras":[]}] 
+ CutleryCount-0 
+ Cutlery-System.Collections.Generic.List`1[Microsoft.AspNetCore.Mvc.Rendering.SelectListItem] 
+ AddInfoOrder- 
+ Address-{"latitude":"","longitude":"","displayName":"","city":"","borough":"","street":"","streetNumber":"","block":"","entry":"","floor":"","addInfo":""} 
+ Username-Пламен 
+ Phone-0890321780 
+ TakeAway-True 
+ Cart-[{"SubTotal":"6.90","ProductPrice":"6.50","PackagePrice":"0.40","MaxProducts":"1","PName":"Гръцка салата","SName":"","PId":"157dd9f0-9317-41f8-8200-02818b80dcd0","SId":"45","SCId":"","Qty":"1","Description":"","Extras":[]}] 
+ CutleryCount-0 
+ Cutlery-System.Collections.Generic.List`1[Microsoft.AspNetCore.Mvc.Rendering.SelectListItem] 
+3.4.2021 г. 13:32:44--An error occurred while updating the entries. See the inner exception for details.--   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(DbContext _, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Tapas.Services.Data.OrdersService.CreateAsync(ApplicationUser user, OrderInpitModel model) in C:\Users\user\source\repos\Tapas\Services\Tapas.Services.Data\OrdersService.cs:line 178
+   at Tapas.Web.Controllers.OrdersController.Create(OrderInpitModel model) in C:\Users\user\source\repos\Tapas\Web\Tapas.Web\Controllers\OrdersController.cs:line 70
+3.4.2021 г. 13:32:44--The INSERT statement conflicted with the FOREIGN KEY constraint "FK_Orders_AspNetUsers_UserId". The conflict occurred in database "plamenru_tapas", table "plamenru_tapas.AspNetUsers", column 'Id'.
+The statement has been terminated.--   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__164_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ AddInfoOrder- 
+ Address-{"latitude":"","longitude":"","displayName":"","city":"","borough":"","street":"","streetNumber":"","block":"","entry":"","floor":"","addInfo":""} 
+ Username-Пламен 
+ Phone-0890321780 
+ TakeAway-True 
+ Cart-[{"SubTotal":"6.90","ProductPrice":"6.50","PackagePrice":"0.40","MaxProducts":"1","PName":"Гръцка салата","SName":"","PId":"157dd9f0-9317-41f8-8200-02818b80dcd0","SId":"45","SCId":"","Qty":"1","Description":"","Extras":[]}] 
+ CutleryCount-0 
+ Cutlery-System.Collections.Generic.List`1[Microsoft.AspNetCore.Mvc.Rendering.SelectListItem] 

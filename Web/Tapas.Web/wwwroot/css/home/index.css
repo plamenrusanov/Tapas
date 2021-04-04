@@ -332,7 +332,7 @@ li.li-item a{
         padding: 0px;
     }
     nav {
-        position: fixed;
+        position: absolute;
         top: 0;
         z-index: 100;
         padding: 0px;

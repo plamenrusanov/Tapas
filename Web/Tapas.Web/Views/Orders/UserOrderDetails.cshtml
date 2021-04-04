@@ -177,8 +177,8 @@
             <div class="comment-header">Оценете поръчката</div>
             @foreach (var item in Model.CartItems)
             {
-                <div class="row" id="rating@(item.Id)">
-                    <div style="display:none">@(item.Id)</div>
+                <div class="row ratingRow" id="@(item.Id)">
+                    <div class="ratingId" style="display:none">@(item.Id)</div>
                     <div class="w-50"><strong style="font-size: 1.1rem">@item.ProductName</strong> @item.Size?.SizeName</div>
                     <div class="w-50">
                         <span class="rating">

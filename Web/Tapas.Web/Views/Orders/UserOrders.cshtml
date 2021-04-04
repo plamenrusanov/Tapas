@@ -5,7 +5,7 @@
 }
 @if (newOrder)
 {
-    <div class="alert alert-success" role="alert">
+    <div class="alert alert-success" role="alert" style="margin:0 -15px;">
         <strong>Благодаря за поръчката!</strong> Може да проследите статуса на поръчката и след като достигне статус "Доставена" да дадете своята оценка.
     </div>
 }
@@ -64,10 +64,10 @@
 {
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/@@microsoft/signalr/dist/browser/signalr.js"></script>
-    <script src="~/js/orders/userOrders.js" type="text/javascript"></script>
+    <script src="~/js/orders/userOrders.js" type="text/javascript" asp-append-version="true"></script>
 }
 @section Style
 {
-    <link href="~/css/orders/userOrders.css" rel="stylesheet">
-    <link href="~/css/shared/shopingCartTable.css" rel="stylesheet">
+    <link href="~/css/orders/userOrders.css" rel="stylesheet" asp-append-version="true"/>
+    <link href="~/css/shared/shopingCartTable.css" rel="stylesheet" asp-append-version="true"/>
 }

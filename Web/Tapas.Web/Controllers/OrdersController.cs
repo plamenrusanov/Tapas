@@ -2,16 +2,17 @@
 {
     using System;
     using System.Threading.Tasks;
+
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.SignalR;
-    using Microsoft.Extensions.Logging;
     using Tapas.Common;
     using Tapas.Data.Models;
     using Tapas.Services.Data.Contracts;
     using Tapas.Web.Hubs;
+    using Tapas.Web.Log;
     using Tapas.Web.ViewModels.Orders;
 
     public class OrdersController : Controller
@@ -20,20 +21,19 @@
         private readonly IOrdersService ordersService;
         private readonly IHubContext<OrderHub> hubAdmin;
         private readonly IHubContext<UserOrdersHub> hubUser;
-        private readonly ILogger<OrdersController> logger;
+        private readonly Logger logger;
 
         public OrdersController(
             UserManager<ApplicationUser> userManager,
             IOrdersService ordersService,
             IHubContext<OrderHub> hubAdmin,
-            IHubContext<UserOrdersHub> hubUser,
-            ILogger<OrdersController> logger)
+            IHubContext<UserOrdersHub> hubUser)
         {
             this.userManager = userManager;
             this.ordersService = ordersService;
             this.hubAdmin = hubAdmin;
             this.hubUser = hubUser;
-            this.logger = logger;
+            this.logger = new Logger();
         }
 
         // Orders/Index
@@ -70,44 +70,15 @@
             }
             catch (Exception e)
             {
-                this.logger.LogInformation(GlobalConstants.DefaultLogPattern, this.User?.Identity.Name, e.Message, e.StackTrace);
+                await this.logger.WriteException(e);
+                await this.logger.WriteObject(typeof(OrderInpitModel), model);
                 return this.BadRequest();
             }
         }
 
-        private async Task<ApplicationUser> GetUser(OrderInpitModel model)
-        {
-            var user = await this.userManager.GetUserAsync(this.User);
-            if (user == null && this.Request.Cookies.ContainsKey(GlobalConstants.UserIdCookieKey))
-            {
-                user = await this.userManager.FindByIdAsync(this.Request.Cookies[GlobalConstants.UserIdCookieKey]);
-            }
-
-            if (user == null)
-            {
-                user = new ApplicationUser()
-                {
-                    UserName = model.Username,
-                    PhoneNumber = model.Phone,
-                    Email = $"{this.Request.HttpContext.Connection.RemoteIpAddress}@tapas.bg{DateTime.Now}",
-                };
-                var result = await this.userManager.CreateAsync(user);
-                this.Response.Cookies.Append(GlobalConstants.UserIdCookieKey, user.Id, new CookieOptions()
-                {
-                    Domain = this.Request.Host.Host,
-                    HttpOnly = true,
-                    Secure = true,
-                    Expires = DateTime.UtcNow.AddYears(2),
-                    Path = GlobalConstants.IndexRoute,
-                });
-            }
-
-            return user;
-        }
-
         // Ajax Orders/Details
         [Authorize(Roles = GlobalConstants.OperatorName)]
-        public IActionResult Details(string orderId)
+        public async Task<IActionResult> Details(string orderId)
         {
             if (string.IsNullOrEmpty(orderId))
             {
@@ -127,7 +98,7 @@
             }
             catch (Exception e)
             {
-                this.logger.LogInformation(GlobalConstants.DefaultLogPattern, this.User?.Identity.Name, e.Message, e.StackTrace);
+                await this.logger.WriteException(e);
                 return this.NotFound();
             }
         }
@@ -157,7 +128,7 @@
             }
             catch (Exception e)
             {
-                this.logger.LogInformation(GlobalConstants.DefaultLogPattern, this.User?.Identity.Name, e.Message, e.StackTrace);
+                await this.logger.WriteException(e);
                 return this.BadRequest();
             }
         }
@@ -167,9 +138,12 @@
         public async Task<IActionResult> UserOrders()
         {
             var user = await this.userManager.GetUserAsync(this.User);
-            if (user == null && this.Request.Cookies.ContainsKey(GlobalConstants.UserIdCookieKey))
+            if (user == null)
             {
-                user = await this.userManager.FindByIdAsync(this.Request.Cookies[GlobalConstants.UserIdCookieKey]);
+                if (this.Request.Cookies.ContainsKey(GlobalConstants.UserIdCookieKey))
+                {
+                    user = await this.userManager.FindByIdAsync(this.Request.Cookies[GlobalConstants.UserIdCookieKey]);
+                }
             }
 
             try
@@ -179,14 +153,14 @@
             }
             catch (Exception e)
             {
-                this.logger.LogInformation(GlobalConstants.DefaultLogPattern, this.User?.Identity.Name, e.Message, e.StackTrace);
+                await this.logger.WriteException(e);
                 return this.NotFound();
             }
         }
 
         // Orders/UserOrders/UserOrderDetails
         [AllowAnonymous]
-        public IActionResult UserOrderDetails(string orderId)
+        public async Task<IActionResult> UserOrderDetails(string orderId)
         {
             if (string.IsNullOrEmpty(orderId))
             {
@@ -206,7 +180,7 @@
             }
             catch (Exception e)
             {
-                this.logger.LogInformation(GlobalConstants.DefaultLogPattern, this.User?.Identity.Name, e.Message, e.StackTrace);
+                await this.logger.WriteException(e);
                 return this.NotFound();
             }
         }
@@ -223,9 +197,39 @@
             }
             catch (Exception e)
             {
-                this.logger.LogInformation(GlobalConstants.DefaultLogPattern, this.User?.Identity.Name, e.Message, e.StackTrace);
+                await this.logger.WriteException(e);
                 return this.BadRequest();
             }
+        }
+
+        private async Task<ApplicationUser> GetUser(OrderInpitModel model)
+        {
+            var user = await this.userManager.GetUserAsync(this.User);
+            if (user == null && this.Request.Cookies.ContainsKey(GlobalConstants.UserIdCookieKey))
+            {
+                user = await this.userManager.FindByIdAsync(this.Request.Cookies[GlobalConstants.UserIdCookieKey]);
+            }
+
+            if (user == null)
+            {
+                user = new ApplicationUser()
+                {
+                    UserName = model.Username,
+                    PhoneNumber = model.Phone,
+                    Email = $"{this.Request.HttpContext.Connection.RemoteIpAddress}@tapas.bg{DateTime.Now}",
+                };
+                await this.userManager.CreateAsync(user);
+                this.Response.Cookies.Append(GlobalConstants.UserIdCookieKey, user.Id, new CookieOptions()
+                {
+                    Domain = this.Request.Host.Host,
+                    HttpOnly = true,
+                    Secure = true,
+                    Expires = DateTime.UtcNow.AddYears(2),
+                    Path = GlobalConstants.IndexRoute,
+                });
+            }
+
+            return user;
         }
     }
 }
