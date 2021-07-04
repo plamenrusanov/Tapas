@@ -3,7 +3,13 @@
     ViewData["Title"] = "Дневни поръчки";
 }
 
-
+<style>
+    #loading {
+        position: absolute;
+        top: 0px;
+        width: 50px;
+    }
+</style>
 <h1 class="text-center">Поръчки</h1>
 <hr class="hr-tapas" />
 <div id="underHr">
@@ -21,6 +27,7 @@
     </div>
 </div>
 <hr class="hr-tapas" />
+<img src="~/120430.gif" id="loading"/>
 <audio loop id="audio"> <source src="~/Audio/Tyga - Ayy Macarena (Official Video).mp3" type="audio/mpeg"></audio>
 @section Scripts
 {
@@ -29,8 +36,8 @@
     <script src="~/js/orders/ordersIndex.js" asp-append-version="true"></script>
 }
 @section Style{
-    <link rel="stylesheet" type="text/css" href="~/css/orders/index.css" asp-append-version="true"/>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
-    <link href="~/css/orders/orderTable.css" rel="stylesheet" asp-append-version="true"/>
+    <link rel="stylesheet" type="text/css" href="~/css/orders/index.css" asp-append-version="true" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link href="~/css/orders/orderTable.css" rel="stylesheet" asp-append-version="true" />
 }
 

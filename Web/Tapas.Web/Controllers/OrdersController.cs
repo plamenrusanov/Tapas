@@ -94,6 +94,7 @@
             try
             {
                 var model = this.ordersService.GetDetailsById(id);
+                await this.logger.WriteMessage($"Име: {this.User.Identity.Name} || От: {this.Request.HttpContext.Connection.RemoteIpAddress} || Видяна: {DateTime.Now:dd/MM/yy HH:mm} || Създадена: {model.CreatedOn}");
                 return this.View(model);
             }
             catch (Exception e)

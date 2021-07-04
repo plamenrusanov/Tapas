@@ -1,7 +1,9 @@
 ﻿nav {
+    position: relative;
     background-color: white;
     display: flex;
     padding: 0 10%;
+
 }
 
 .user-icon {

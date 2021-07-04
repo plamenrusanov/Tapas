@@ -71,14 +71,15 @@ setupConnection = () => {
 
 setupConnection();
 
-function con () {
+async function con() {
     if (connection.connectionState === "Disconnected") {
         var al = document.getElementById('alertt');
         al.style.display = "block";
         var alContent = document.getElementById('alert-content');
         alContent.innerHTML = `Няма връзка със сървъра!`;
-        playMusic();
-        setupConnection();
+        //playMusic();
+        checkConnection();
+        await setupConnection();
     }
 }  
 
@@ -136,6 +137,14 @@ function closeAlert() {
     var al = document.getElementById('alertt');
     al.style.display = "none";
     stopMusic();
+}
+
+function checkConnection() {
+    setInterval(function () {
+        if (connection.connectionState === "Connected") {
+            window.location.reload();
+        }
+    }, 500);
 }
 
 

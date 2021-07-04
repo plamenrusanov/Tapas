@@ -1,6 +1,7 @@
 ﻿namespace Tapas.Services.Messaging
 {
     using System;
+    using System.Text.RegularExpressions;
     using System.Threading.Tasks;
 
     using Twilio;
@@ -9,7 +10,7 @@
     using Twilio.Exceptions;
     using Twilio.Rest.Api.V2010.Account;
     using Twilio.TwiML;
-    using Twilio.Types;
+    using Twilio.TwiML.Voice;
 
     public class TwilioSmsSenderService : /*TwilioController,*/ ITwilioSmsSenderService
     {
@@ -24,7 +25,7 @@
             this.twilioNumber = twilioNumber;
         }
 
-        public async Task SendSms(string userPhone, int code)
+        public async System.Threading.Tasks.Task SendSms(string userPhone, int code)
         {
             TwilioClient.Init(this.accountSid, this.authToken);
             try
@@ -44,12 +45,34 @@
             }
         }
 
-        public async Task VoiseCall(string userPhone)
+        public VoiceResponse VoiseCall(string userPhone)
         {
-            var response = new VoiceResponse();
-            response.Say("Thanks for calling! We just sent you a text with a clue.", voice: "Alice");
+            // response.Say("Thanks for calling! We just sent you a text with a clue.", voice: "Alice");
+            // TwiML(response);
+            var callerId = this.accountSid;
 
-            // this.TwiML(response);
+            var response = new VoiceResponse();
+
+            if (!string.IsNullOrEmpty(userPhone))
+            {
+                var dial = new Dial(callerId: callerId);
+                if (Regex.IsMatch(userPhone, "^[\\d\\+\\-\\(\\) ]+$"))
+                {
+                    dial.Number(userPhone);
+                }
+                else
+                {
+                    dial.Client(userPhone);
+                }
+
+                response.Append(dial);
+            }
+            else
+            {
+                response.Say("Thanks for calling!", voice: Say.VoiceEnum.Alice);
+            }
+
+            return response; // Content(response.ToString(), "text/xml");
         }
     }
 }

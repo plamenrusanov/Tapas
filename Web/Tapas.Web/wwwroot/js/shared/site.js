@@ -33,31 +33,33 @@ var position = 0;
 var up = null;
 ['scroll', 'touchmove', 'mousewheel'].forEach(evn =>
     window.addEventListener(evn, function () {
-        var st = window.pageYOffset || document.documentElement.scrollTop;
-        st = parseInt(st);
-        var n = document.querySelector("nav.navbar");
-        if (st > lastScrollTop) { // нагоре
+        if (window.innerWidth < 992) {
+            var st = window.pageYOffset || document.documentElement.scrollTop;
+            st = parseInt(st);
+            var n = document.querySelector("nav.navbar");
+            if (st > lastScrollTop) { // нагоре
 
-            if (!up) {
-                up = true;
-                var offset = n.offsetTop === 0 ? st : n.offsetTop;
-                n.style.position = "absolute";
-                var top = st > offset ? offset : st;
-                n.style.top = `${top}px`;
+                if (!up) {
+                    up = true;
+                    var offset = n.offsetTop === 0 ? st : n.offsetTop;
+                    n.style.position = "absolute";
+                    var top = st > offset ? offset : st;
+                    n.style.top = `${top}px`;
+                }
+                lastScrollTop = st <= 0 ? 0 : st;
+                position = lastScrollTop;
+            } else if (st < lastScrollTop) { // надолу    
+                if (st < position && up) {
+                    up = false;
+                    n.style.position = "absolute";
+                    var top = (st - 56) < n.offsetTop ? n.offsetTop : st - 56;
+                    n.style.top = `${top}px`;
+                } else if (st + 56 < position) {
+                    n.style.position = "fixed";
+                    n.style.top = "0px";
+                }
+                lastScrollTop = st <= 0 ? 0 : st;
             }
-            lastScrollTop = st <= 0 ? 0 : st;
-            position = lastScrollTop;
-        } else if (st < lastScrollTop) { // надолу    
-            if (st < position && up) {
-                up = false;
-                n.style.position = "absolute";
-                var top = (st - 56) < n.offsetTop ? n.offsetTop : st - 56;
-                n.style.top = `${top}px`;
-            } else if (st + 56 < position) {
-                n.style.position = "fixed";
-                n.style.top = "0px";
-            }
-            lastScrollTop = st <= 0 ? 0 : st;
         }
 
     }, false)
