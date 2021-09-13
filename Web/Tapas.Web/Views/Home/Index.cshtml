@@ -97,31 +97,38 @@
     }
 </div>
 <main>
-    @*<div id="alert" class="alert alert-info" role="alert">
-        <div style=" font-size: 30px; margin: 0 auto;">Сайта не приема поръчки!</div>
-    </div>*@
-    @if (GlobalConstants.TimeNow > GlobalConstants.CloseTime || GlobalConstants.TimeNow < GlobalConstants.OpenTime)
+    @if (GlobalConstants.IsOpen)
     {
-        if (GlobalConstants.TimeNow > GlobalConstants.CloseTime)
+        @if (GlobalConstants.TimeNow > GlobalConstants.CloseTime || GlobalConstants.TimeNow < GlobalConstants.OpenTime)
         {
-            <div id="alert" class="alert alert-danger " role="alert">
-                <div id="closed" class="center">Затворено. Ще приемаме поръчки отново утре в @GlobalConstants.OpenTime.ToString("hh':'mm") часа.</div>
-            </div>
-        }
-        else
-        {
-            <div id="alert" class="alert alert-danger " role="alert">
-                <div id="closed" class="center">Затворено. Ще приемаме поръчки отново в @GlobalConstants.OpenTime.ToString("hh':'mm") часа.</div>
-            </div>
-        }
+            if (GlobalConstants.TimeNow > GlobalConstants.CloseTime)
+            {
+                <div id="alert" class="alert alert-danger " role="alert">
+                    <div id="closed" class="center">Затворено. Ще приемаме поръчки отново утре в @GlobalConstants.OpenTime.ToString("hh':'mm") часа.</div>
+                </div>
+            }
+            else
+            {
+                <div id="alert" class="alert alert-danger " role="alert">
+                    <div id="closed" class="center">Затворено. Ще приемаме поръчки отново в @GlobalConstants.OpenTime.ToString("hh':'mm") часа.</div>
+                </div>
+            }
 
+        }
+        else if (GlobalConstants.TimeNow < GlobalConstants.CloseTime && GlobalConstants.TimeNow > GlobalConstants.LastOrderTime)
+        {
+            <div id="alert" class="alert alert-danger " role="alert">
+                <div id="lastOrder" class="center">Последни поръчки. Затваряме в @GlobalConstants.CloseTime.ToString("hh':'mm") часа.</div>
+            </div>
+        }
     }
-    else if (GlobalConstants.TimeNow < GlobalConstants.CloseTime && GlobalConstants.TimeNow > GlobalConstants.LastOrderTime)
+    else
     {
-        <div id="alert" class="alert alert-danger " role="alert">
-            <div id="lastOrder" class="center">Последни поръчки. Затваряме в @GlobalConstants.CloseTime.ToString("hh':'mm") часа.</div>
+        <div id="alert" class="alert alert-info" role="alert">
+            <div style=" font-size: 30px; margin: 0 auto; text-align: center;">Сайта временно не приема поръчки!</div>
         </div>
     }
+
     <partial name="_CookieConsentPartial" />
     <div id="index-banner" class="parallax-container">
         <div class="section no-pad-bot">

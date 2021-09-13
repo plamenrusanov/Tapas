@@ -1,6 +1,7 @@
 ﻿namespace Tapas.Web.Controllers
 {
     using System;
+    using System.Linq;
     using System.Threading.Tasks;
 
     using Microsoft.AspNetCore.Authorization;
@@ -17,6 +18,7 @@
 
     public class OrdersController : Controller
     {
+        private const int ORDERSCOUNT = 30;
         private readonly UserManager<ApplicationUser> userManager;
         private readonly IOrdersService ordersService;
         private readonly IHubContext<OrderHub> hubAdmin;
@@ -94,7 +96,7 @@
             try
             {
                 var model = this.ordersService.GetDetailsById(id);
-                await this.logger.WriteMessage($"Име: {this.User.Identity.Name} || От: {this.Request.HttpContext.Connection.RemoteIpAddress} || Видяна: {DateTime.Now:dd/MM/yy HH:mm} || Създадена: {model.CreatedOn}");
+               // await this.logger.WriteMessage($"Име: {this.User.Identity.Name} || От: {this.Request.HttpContext.Connection.RemoteIpAddress} || Видяна: {DateTime.Now:dd/MM/yy HH:mm} || Създадена: {model.CreatedOn}");
                 return this.View(model);
             }
             catch (Exception e)
@@ -108,7 +110,7 @@
         [Authorize(Roles = GlobalConstants.AdministratorName)]
         public async Task<IActionResult> All()
         {
-            var model = await this.ordersService.GetAllAsync();
+            var model = await this.ordersService.GetAllAsync(0, ORDERSCOUNT);
             return this.View(model);
         }
 
@@ -201,6 +203,19 @@
                 await this.logger.WriteException(e);
                 return this.BadRequest();
             }
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> LoadOrders(int skip = 0)
+        {
+            var model = await this.ordersService.GetAllAsync(skip, ORDERSCOUNT);
+
+            if (!model.Any())
+            {
+                return this.StatusCode(204);  // 204 := "No Content"
+            }
+
+            return this.PartialView("AllPartial", model);
         }
 
         private async Task<ApplicationUser> GetUser(OrderInpitModel model)

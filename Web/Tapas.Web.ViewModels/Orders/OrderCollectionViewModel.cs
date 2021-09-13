@@ -2,6 +2,8 @@
 {
     using System;
 
+    using Tapas.Data.Models.Enums;
+
     public class OrderCollectionViewModel
     {
         public int Id { get; set; }
@@ -10,6 +12,10 @@
 
         public DateTime DateTime { get; set; }
 
-        public string Status { get; set; }
+        public OrderStatus Status { get; set; }
+
+        public decimal Rating { get; set; }
+
+        public string Comment { get; set; }
     }
 }

@@ -3,7 +3,7 @@
 @{
     Layout = null;
     var i = 1;
-    bool hasRating = this.Model.CartItems.First().Rating > 0;
+    bool hasRating = this.Model.CartItems.Any(x => x.Rating > 0);
 }
 
 <div class="row">

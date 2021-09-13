@@ -21,7 +21,7 @@
 <body id="body">
     <nav class="navbar navbar-expand-md box-shadow">
         <a class="navbar-brand brand-logo" asp-area="" asp-controller="Home" asp-action="Index"></a>
-        <a class="mobile" asp-area="Administration" asp-controller="Products" asp-action="Index"><img class="menuMobile" src="/menu.png" width="40" height="40" /></a>       
+        <a class="mobile" asp-area="Administration" asp-controller="Products" asp-action="Index"><img class="menuMobile" src="/menu.png" width="40" height="40" /></a>
         <a class="mobile" asp-area="" asp-controller="ShoppingCart" asp-action="Index" style="font-size:40px;margin-left:3px;">🛒<span class="bad bad-dropdown"></span></a>
         <a class="mobile" href="tel:+359885565621"><img class="phone-logo" src="~/Images/phone-logo-CA0ABEDEEB-seeklogo.com (1).png" /></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -49,31 +49,39 @@
     </nav>
 
     <main role="main" id="main-transperant">
-        @*<div id="alert" class="alert alert-info" role="alert" style=" margin: 0 -15px;">
-            <div style=" font-size: 30px; margin: 0 auto;">Сайта не приема поръчки!</div>
-        </div>*@
-        @if (GlobalConstants.TimeNow > GlobalConstants.CloseTime || GlobalConstants.TimeNow < GlobalConstants.OpenTime)
+        @if (GlobalConstants.IsOpen)
+        {
+            @if (GlobalConstants.TimeNow > GlobalConstants.CloseTime || GlobalConstants.TimeNow < GlobalConstants.OpenTime)
             {
                 if (GlobalConstants.TimeNow > GlobalConstants.CloseTime)
                 {
-        <div id="alert" class="alert alert-danger " role="alert">
-            <div id="closed">Затворено. Ще приемаме поръчки отново утре в @GlobalConstants.OpenTime.ToString("hh':'mm") часа.</div>
-        </div>
+                    <div id="alert" class="alert alert-danger " role="alert">
+                        <div id="closed">Затворено. Ще приемаме поръчки отново утре в @GlobalConstants.OpenTime.ToString("hh':'mm") часа.</div>
+                    </div>
                 }
                 else
                 {
-        <div id="alert" class="alert alert-danger " role="alert">
-            <div id="closed">Затворено. Ще приемаме поръчки отново в @GlobalConstants.OpenTime.ToString("hh':'mm") часа.</div>
-        </div>
+                    <div id="alert" class="alert alert-danger " role="alert">
+                        <div id="closed">Затворено. Ще приемаме поръчки отново в @GlobalConstants.OpenTime.ToString("hh':'mm") часа.</div>
+                    </div>
                 }
 
             }
             else if (GlobalConstants.TimeNow < GlobalConstants.CloseTime && GlobalConstants.TimeNow > GlobalConstants.LastOrderTime)
             {
-        <div id="alert" class="alert alert-warning " role="alert">
-            <div id="closed">Последни поръчки. Затваряме в @GlobalConstants.CloseTime.ToString("hh':'mm") часа.</div>
-        </div>
+                <div id="alert" class="alert alert-warning " role="alert">
+                    <div id="closed">Последни поръчки. Затваряме в @GlobalConstants.CloseTime.ToString("hh':'mm") часа.</div>
+                </div>
             }
+        }
+        else
+        {
+            <div id="alert" class="alert alert-info" role="alert" style=" margin: 0 -15px;">
+                <div style=" font-size: 30px; margin: 0 auto; text-align: center;">Сайта временно не приема поръчки!</div>
+            </div>
+        }
+
+
         <partial name="_CookieConsentPartial" />
         @this.RenderBody()
         <button onclick="topFunction()" id="topBtn" title="Go to top"><i class="fa fa-chevron-up c-mocca" aria-hidden="true"></i></button>

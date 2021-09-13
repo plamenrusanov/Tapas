@@ -2,7 +2,8 @@
 @{
     ViewData["Title"] = "Количка";
 
-    bool prepOrder = GlobalConstants.TimeNow > GlobalConstants.CloseTime || GlobalConstants.TimeNow < GlobalConstants.OpenTime;
+    bool prepOrder = true;/*GlobalConstants.TimeNow > GlobalConstants.CloseTime || GlobalConstants.TimeNow < GlobalConstants.OpenTime;*/
+    prepOrder = !GlobalConstants.IsOpen;
     string displayOrd = prepOrder ? "none" : "block";
     string displayClose = prepOrder ? "block" : "none";
 }

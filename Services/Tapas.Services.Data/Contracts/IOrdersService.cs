@@ -19,7 +19,7 @@
 
         Task<string> ChangeStatusAsync(string status, string orderId, string setTime, string deliveryFee);
 
-        Task<IEnumerable<OrderCollectionViewModel>> GetAllAsync();
+        Task<IEnumerable<OrderCollectionViewModel>> GetAllAsync(int skip, int take);
 
         Task<IEnumerable<OrdersViewModel>> GetOrdersByUserNameAsync(string userName);
 

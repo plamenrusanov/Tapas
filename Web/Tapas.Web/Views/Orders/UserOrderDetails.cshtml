@@ -172,7 +172,7 @@
 <div class="mt-3 row">
     <div class="col-md-6" id="ratingHolder">
 
-        @if (!hasRating && Model.Status == OrderStatus.Delivered)
+        @if (!hasRating)
         {
             <div class="comment-header">Оценете поръчката</div>
             @foreach (var item in Model.CartItems)

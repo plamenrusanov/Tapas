@@ -3,3 +3,22 @@
     Layout = "_AdminLayout";
     this.ViewData["Title"] = "Admin dashboard";
 }
+
+<div>
+    <label for="check" >Отворено/Затворено</label>
+    <input id="check" type="checkbox" style="width:20px;height:20px"  @(GlobalConstants.IsOpen? "checked='checked'" : "") />
+</div>
+
+<script>
+    document.addEventListener("change", function () {
+        $.ajax({
+            url: '/Administration/Dashboard/OpenClose',
+            data: {
+                isOpen: $('#check').is(':checked')
+            },
+            success: function (responce) {
+                alert(responce);
+            }
+        })
+    })
+</script>

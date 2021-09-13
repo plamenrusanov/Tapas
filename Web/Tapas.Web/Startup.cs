@@ -1,6 +1,7 @@
 ﻿namespace Tapas.Web
 {
     using System;
+    using System.Linq;
     using System.Reflection;
 
     using AutoMapper;
@@ -12,6 +13,7 @@
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
     using Newtonsoft.Json;
+    using Tapas.Common;
     using Tapas.Data;
     using Tapas.Data.Common;
     using Tapas.Data.Common.Repositories;
@@ -129,6 +131,8 @@
                 }
 
                 new ApplicationDbContextSeeder().SeedAsync(dbContext, serviceScope.ServiceProvider).GetAwaiter().GetResult();
+
+                GlobalConstants.IsOpen = Convert.ToBoolean(dbContext.Users.Find("229c10f5-1596-4300-aa09-17c84cb44e56").Claims.First().ClaimValue);
             }
 
             if (!env.IsDevelopment())

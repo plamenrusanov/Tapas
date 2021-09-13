@@ -4,9 +4,12 @@
 }
 
 <h1 class="text-center">Всички поръчки</h1>
-
-<hr class="hr-tapas" />
-
+<style>
+    .clickable-row:hover{
+        cursor:pointer;
+        background-color:lightblue;
+    }
+</style>
 <hr class="hr-tapas" />
 <div class="container bg-light">
     <table class="table">
@@ -18,37 +21,51 @@
                 <th class="col-sm-3">
                     @Html.Label("Клиент")
                 </th>
-                <th class="col-sm-3">
+                <th class="col-sm-2">
                     @Html.Label("Поръчана")
                 </th>
-                <th class="col-sm-3">
-                    @Html.Label("Цена")
-                </th>
                 <th class="col-sm-2">
-                    @Html.Label("Опаковка")
+                    @Html.Label("Статус")
+                </th>
+                <th class="col-sm-1">
+                    @Html.Label("Рейтинг")
+                </th>
+                <th class="col-sm-3">
+                    @Html.Label("Коментар")
                 </th>
             </tr>
         </thead>
-        <tbody>
+        <tbody id="bodyTable">
             @foreach (var item in Model)
             {
-                <tr class="row">
+                <tr class="row clickable-row" onclick="window.location='/Orders/OrdersByUser?userName=@item.UserName'">
                     <td class="col-sm-1">
-                        <a class="btn btn-lg btn-default" href"#">@Html.DisplayFor(x => item.Id)</a> 
+                        @Html.DisplayFor(x => item.Id)
                     </td>
                     <td class="col-sm-3">
-                        <a class="btn btn-lg btn-default" href="/Orders/OrdersByUser?userName=@item.UserName">@Html.DisplayFor(x => item.UserName)</a>
-                    </td>
-                    <td class="col-sm-3">
-                        @Html.DisplayFor(x => item.DateTime)
-                    </td>
-                    <td class="col-sm-3">
+                        @Html.DisplayFor(x => item.UserName)
                     </td>
                     <td class="col-sm-2">
-                        @Html.Label("Опаковка")
+                        @Html.DisplayFor(x => item.DateTime)
+                    </td>
+                    <td class="col-sm-2">
+                        @Html.DisplayFor(x => item.Status)
+                    </td>
+                    <td class="col-sm-1">
+                        @Html.DisplayFor(x => item.Rating)
+                    </td>
+                    <td class="col-sm-3">
+                        @Html.DisplayFor(x => item.Comment)
                     </td>
                 </tr>
             }
         </tbody>
     </table>
 </div>
+@section Scripts{
+    <script src="~/js/orders/infinityScroll.js"></script>
+    <script>
+        var infinityScroll = new InfinitiySroll("bodyTable", "/Orders/LoadOrders", { skip: `${document.getElementById('bodyTable').childElementCount}` });
+
+    </script>
+}

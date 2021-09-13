@@ -49,6 +49,8 @@
 
         public const string Domain = "tapasrestaurant.bg";
 
+        public static bool IsOpen { get; set; }
+
         public static TimeSpan OpenTime => new TimeSpan(10, 0, 0);
 
         public static TimeSpan CloseTime => new TimeSpan(22, 45, 0);
@@ -56,5 +58,6 @@
         public static TimeSpan LastOrderTime => new TimeSpan(22, 30, 0);
 
         public static TimeSpan TimeNow => DateTime.Now.TimeOfDay;
+
     }
 }

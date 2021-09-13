@@ -1,0 +1,26 @@
+﻿@model List<Tapas.Web.ViewModels.Orders.OrderCollectionViewModel>
+
+
+@foreach (var item in Model)
+{
+    <tr class="row clickable-row" onclick="window.location='/Orders/OrdersByUser?userName=@item.UserName'">
+        <td class="col-sm-1">
+            @Html.DisplayFor(x => item.Id)
+        </td>
+        <td class="col-sm-3">
+            @Html.DisplayFor(x => item.UserName)
+        </td>
+        <td class="col-sm-2">
+            @Html.DisplayFor(x => item.DateTime)
+        </td>
+        <td class="col-sm-2">
+            @Html.DisplayFor(x => item.Status)
+        </td>
+        <td class="col-sm-1">
+            @Html.DisplayFor(x => item.Rating)
+        </td>
+        <td class="col-sm-3">
+            @Html.DisplayFor(x => item.Comment)
+        </td>
+    </tr>
+}

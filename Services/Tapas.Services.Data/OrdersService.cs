@@ -29,7 +29,6 @@
         private const int StoreId = 1;
         private const decimal Qtty = 1m;
         private readonly IRepository<Order> ordersRepository;
-        private readonly IDeletableEntityRepository<ShopingCart> cartRepository;
         private readonly IDeletableEntityRepository<ShopingCartItem> itemsRepository;
         private readonly IDeletableEntityRepository<ProductSize> sizeRepository;
         private readonly IDeletableEntityRepository<DeliveryAddress> addressRepository;
@@ -38,7 +37,6 @@
 
         public OrdersService(
             IRepository<Order> ordersRepository,
-            IDeletableEntityRepository<ShopingCart> cartRepository,
             IDeletableEntityRepository<ShopingCartItem> itemsRepository,
             IDeletableEntityRepository<ProductSize> sizeRepository,
             IDeletableEntityRepository<DeliveryAddress> addressRepository,
@@ -46,7 +44,6 @@
             IMistralService mistralService)
         {
             this.ordersRepository = ordersRepository;
-            this.cartRepository = cartRepository;
             this.itemsRepository = itemsRepository;
             this.sizeRepository = sizeRepository;
             this.addressRepository = addressRepository;
@@ -260,15 +257,22 @@
         public bool IsExists(int id) => this.ordersRepository.All().Any(x => x.Id == id);
 
         // Orders/All
-        public async Task<IEnumerable<OrderCollectionViewModel>> GetAllAsync()
+        public async Task<IEnumerable<OrderCollectionViewModel>> GetAllAsync(int skip, int take)
         {
             return await this.ordersRepository.All()
                 .Select(x => new OrderCollectionViewModel()
                 {
                     Id = x.Id,
                     UserName = x.User.UserName,
-                    DateTime = x.CreatedOn.ToLocalTime(),
-                }).OrderByDescending(x => x.Id).ToListAsync();
+                    DateTime = x.CreatedOn,
+                    Status = x.Status,
+                    Rating = Math.Round((decimal)(x.Bag.CartItems.Sum(x => x.Rating) / x.Bag.CartItems.Count()), 2),
+                    Comment = x.CustomerComment,
+                })
+                .OrderByDescending(x => x.Id)
+                .Skip(skip)
+                .Take(take)
+                .ToListAsync();
         }
 
         // Orders/All => OrdersByUser
@@ -386,8 +390,6 @@
                 this.ordersRepository.Update(order);
                 await this.ordersRepository.SaveChangesAsync();
 
-                Stopwatch s = new Stopwatch();
-                s.Start();
                 foreach (var item in rating)
                 {
                     if (byte.TryParse(item.Rating, out byte result) && int.TryParse(item.ItemId, out int itemId))
@@ -407,9 +409,6 @@
                         await this.itemsRepository.SaveChangesAsync();
                     }
                 }
-
-                s.Stop();
-                Console.WriteLine(s.Elapsed);
             }
         }
 
